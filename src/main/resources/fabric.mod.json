@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "ucr_stitch",
+	"version": "1.0.0",
+	"name": "UCR Stitch",
+	"description": "Small mod for the UCR server!",
+	"authors": [
+		"CMD_God"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/ucr_stitch/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.cmdgod.mc.ucr_stitch.UCRStitch"
+		],
+		"fabric-datagen": [
+			"com.cmdgod.mc.ucr_stitch.UCRStitchDataGenerator"
+		]
+	},
+	"mixins": [
+		"ucr_stitch.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.14.19",
+		"minecraft": "~1.19.2",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

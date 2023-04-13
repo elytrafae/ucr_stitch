@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#L#",
+        "RHR",
+        "RRR"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:string"
+        },
+        "L": {
+            "tag": "c:leather"
+        },
+        "R": {
+            "item": "minecraft:rabbit_hide"
+        },
+        "H": {
+            "item": "minecraft:red_dye"
+        }
+    },
+    "result": {
+        "item": "ucr_stitch:red_bundle",
+        "count": 1
+    }
+}

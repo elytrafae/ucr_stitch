@@ -1,0 +1,6 @@
+{
+  "parent": "item/bundle_filled",
+  "textures": {
+    "layer0": "ucr_stitch:item/purple_bundle_filled"
+  }
+}
