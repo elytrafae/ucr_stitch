@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#W#",
+        "WGW",
+        "#W#"
+    ],
+    "key": {
+        "#": {
+            "item": "ucr_stitch:essence_food_matter"
+        },
+        "W": {
+            "item": "minecraft:wheat"
+        },
+        "G": {
+            "item": "minecraft:glistering_melon_slice"
+        }
+    },
+    "result": {
+        "item": "ucr_stitch:essence_bar",
+        "count": 1
+    }
+}

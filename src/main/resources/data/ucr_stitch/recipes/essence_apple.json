@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "LAL",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "ucr_stitch:essence_bar"
+        },
+        "L": {
+            "item": "minecraft:lapis_lazuli"
+        },
+        "A": {
+            "item": "minecraft:apple"
+        }
+    },
+    "result": {
+        "item": "ucr_stitch:essence_apple",
+        "count": 1
+    }
+}

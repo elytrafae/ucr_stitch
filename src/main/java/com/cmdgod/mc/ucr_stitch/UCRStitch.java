@@ -8,25 +8,18 @@ import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.datafixer.fix.BedItemColorFix;
-import net.minecraft.entity.mob.ZombieEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.BundleItem;
-import net.minecraft.item.CrossbowItem;
+import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemGroups;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
-import net.minecraft.loot.condition.LootCondition;
-import net.minecraft.loot.condition.LootConditionType;
-import net.minecraft.loot.condition.LootConditionTypes;
 import net.minecraft.loot.condition.RandomChanceWithLootingLootCondition;
-import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.entry.ItemEntry;
-import net.minecraft.loot.provider.number.LootNumberProviderTypes;
-import net.minecraft.recipe.ArmorDyeRecipe;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.DyeColor;
@@ -34,16 +27,13 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.HashMap;
-import java.util.Map;
-
-import org.apache.commons.lang3.text.WordUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.cmdgod.mc.ucr_stitch.blockentities.CompressedCraftingTableEntity;
 import com.cmdgod.mc.ucr_stitch.blocks.CompressedCraftingTable;
+import com.cmdgod.mc.ucr_stitch.recipes.BundleRecolorRecipe;
 import com.cmdgod.mc.ucr_stitch.recipes.HeadFragmentCraftRecipe;
 
 public class UCRStitch implements ModInitializer {
@@ -66,6 +56,29 @@ public class UCRStitch implements ModInitializer {
         FabricBlockEntityTypeBuilder.create(CompressedCraftingTableEntity::new, COMPRESSED_CRAFTING_TABLE).build()
     );
 
+	public static final Item ESSENCE_FOOD_MATTER = new Item(new FabricItemSettings().rarity(Rarity.COMMON).maxCount(64));
+
+	public static final Item ESSENCE_BAR = new Item(new FabricItemSettings().rarity(Rarity.COMMON).maxCount(32).food(
+		new FoodComponent.Builder()
+			.hunger(4)
+			.saturationModifier(6f)
+			.alwaysEdible()
+			.statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 1800, 0), 1)
+			.statusEffect(new StatusEffectInstance(StatusEffects.HASTE, 1800, 0), 1)
+			.build()
+	));
+
+	public static final Item ESSENCE_APPLE = new Item(new FabricItemSettings().rarity(Rarity.COMMON).maxCount(16).food(
+		new FoodComponent.Builder()
+			.hunger(6)
+			.saturationModifier(9.6f)
+			.alwaysEdible()
+			.statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 2400, 1), 1)
+			.statusEffect(new StatusEffectInstance(StatusEffects.HASTE, 1800, 0), 1)
+			.statusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 1), 1)
+			.build()
+	));
+
 	private static final ItemGroup ITEM_GROUP = FabricItemGroup.builder(new Identifier(MOD_NAMESPACE, "misc_group")).icon(() -> new ItemStack(HEAD_FRAGMENT)).build();
 
 	@Override
@@ -74,14 +87,18 @@ public class UCRStitch implements ModInitializer {
 
 		registerAndAddToCreativeMenu(HEAD_FRAGMENT, "head_fragment");
 		registerAndAddToCreativeMenu(COMPRESSED_CRAFTING_TABLE, "compressed_crafting_table");
+		registerAndAddToCreativeMenu(ESSENCE_FOOD_MATTER, "essence_food_matter");
+		registerAndAddToCreativeMenu(ESSENCE_BAR, "essence_bar");
+		registerAndAddToCreativeMenu(ESSENCE_APPLE, "essence_apple");
 
 		for (DyeColor color : DyeColor.values()) {
-			BundleItem bundle = new BundleItem(new FabricItemSettings().rarity(Rarity.COMMON).maxCount(1));
+			BundleItem bundle = new BundleItem(new FabricItemSettings().rarity(Rarity.COMMON).maxCount(1).recipeRemainder(null));
 			BUNDLES.put(color, bundle);
 			registerAndAddToCreativeMenu(bundle, color.getName() + "_bundle");
 		}
 
 		Registry.register(Registries.RECIPE_SERIALIZER, new Identifier(MOD_NAMESPACE, "head_fragment"), HeadFragmentCraftRecipe.Serializer.INSTANCE);
+		Registry.register(Registries.RECIPE_SERIALIZER, new Identifier(MOD_NAMESPACE, "bundle_recolor"), BundleRecolorRecipe.Serializer.INSTANCE);
 
 		populateCreativeTab();
 		modifyLootTables();
@@ -107,11 +124,12 @@ public class UCRStitch implements ModInitializer {
 
 	public void modifyLootTables() {
 		Identifier ZOMBIE_LOOT_DROP_ID = new Identifier("minecraft:entities/zombie");
+		Identifier ZOMBIE_VILLAGER_LOOT_DROP_ID = new Identifier("minecraft:entities/zombie_villager");
 
 		LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
 			// Let's only modify built-in loot tables and leave data pack loot tables untouched by checking the source.
 			// We also check that the loot table ID is equal to the ID we want.
-			if (source.isBuiltin() && ZOMBIE_LOOT_DROP_ID.equals(id)) {
+			if (source.isBuiltin() && (ZOMBIE_LOOT_DROP_ID.equals(id) || ZOMBIE_VILLAGER_LOOT_DROP_ID.equals(id))) {
 				LootPool.Builder poolBuilder = LootPool.builder()
 												.with(ItemEntry.builder(Items.ZOMBIE_HEAD).weight(1))
 												.conditionally(RandomChanceWithLootingLootCondition.builder(0.05f, 0.02f));

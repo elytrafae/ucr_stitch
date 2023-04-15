@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+      "layer0": "ucr_stitch:item/essence_bar"
+    }
+  }

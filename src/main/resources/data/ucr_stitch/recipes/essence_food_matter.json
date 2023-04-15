@@ -1,0 +1,38 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#CZ",
+        "BLB",
+        "IRT"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:cooked_chicken"
+        },
+        "C": {
+            "tag": "c:cooked_fish"
+        },
+        "Z": {
+            "item": "minecraft:cooked_beef"
+        },
+        "B": {
+            "item": "minecraft:blaze_powder"
+        },
+        "L": {
+            "item": "minecraft:lapis_block"
+        },
+        "I": {
+            "item": "minecraft:cooked_porkchop"
+        },
+        "R": {
+            "item": "minecraft:cooked_rabbit"
+        },
+        "T": {
+            "item": "minecraft:cooked_mutton"
+        }
+    },
+    "result": {
+        "item": "ucr_stitch:essence_food_matter",
+        "count": 4
+    }
+}

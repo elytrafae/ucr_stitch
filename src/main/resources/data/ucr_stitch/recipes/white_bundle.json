@@ -13,11 +13,11 @@
             "tag": "c:leather"
         },
         "H": {
-            "item": "minecraft:red_dye"
+            "item": "minecraft:white_dye"
         }
     },
     "result": {
-        "item": "ucr_stitch:red_bundle",
+        "item": "ucr_stitch:white_bundle",
         "count": 1
     }
 }
