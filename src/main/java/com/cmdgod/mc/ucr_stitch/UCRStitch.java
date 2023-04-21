@@ -32,7 +32,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.cmdgod.mc.ucr_stitch.blockentities.CompressedCraftingTableEntity;
+import com.cmdgod.mc.ucr_stitch.blockentities.SpreaderBlockEntity;
 import com.cmdgod.mc.ucr_stitch.blocks.CompressedCraftingTable;
+import com.cmdgod.mc.ucr_stitch.blocks.SpreaderBlock;
 import com.cmdgod.mc.ucr_stitch.recipes.BundleRecolorRecipe;
 import com.cmdgod.mc.ucr_stitch.recipes.HeadFragmentCraftRecipe;
 
@@ -56,11 +58,18 @@ public class UCRStitch implements ModInitializer {
         FabricBlockEntityTypeBuilder.create(CompressedCraftingTableEntity::new, COMPRESSED_CRAFTING_TABLE).build()
     );
 
+	static public Block SPREADER_BLOCK = new SpreaderBlock();
+	public static final BlockEntityType<SpreaderBlockEntity> SPREADER_BLOCK_ENTITY = Registry.register(
+        Registries.BLOCK_ENTITY_TYPE,
+        new Identifier(MOD_NAMESPACE, "spreader_block_entity"),
+        FabricBlockEntityTypeBuilder.create(SpreaderBlockEntity::new, COMPRESSED_CRAFTING_TABLE).build()
+    );
+
 	public static final Item ESSENCE_FOOD_MATTER = new Item(new FabricItemSettings().rarity(Rarity.COMMON).maxCount(64));
 
 	public static final Item ESSENCE_BAR = new Item(new FabricItemSettings().rarity(Rarity.COMMON).maxCount(32).food(
 		new FoodComponent.Builder()
-			.hunger(4)
+			.hunger(1)
 			.saturationModifier(6f)
 			.alwaysEdible()
 			.statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 1800, 0), 1)
@@ -71,7 +80,7 @@ public class UCRStitch implements ModInitializer {
 	public static final Item ESSENCE_APPLE = new Item(new FabricItemSettings().rarity(Rarity.COMMON).maxCount(16).food(
 		new FoodComponent.Builder()
 			.hunger(6)
-			.saturationModifier(9.6f)
+			.saturationModifier(1.2f)
 			.alwaysEdible()
 			.statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 2400, 1), 1)
 			.statusEffect(new StatusEffectInstance(StatusEffects.HASTE, 1800, 0), 1)
@@ -90,6 +99,7 @@ public class UCRStitch implements ModInitializer {
 		registerAndAddToCreativeMenu(ESSENCE_FOOD_MATTER, "essence_food_matter");
 		registerAndAddToCreativeMenu(ESSENCE_BAR, "essence_bar");
 		registerAndAddToCreativeMenu(ESSENCE_APPLE, "essence_apple");
+		registerAndAddToCreativeMenu(SPREADER_BLOCK, "spreader");
 
 		for (DyeColor color : DyeColor.values()) {
 			BundleItem bundle = new BundleItem(new FabricItemSettings().rarity(Rarity.COMMON).maxCount(1).recipeRemainder(null));

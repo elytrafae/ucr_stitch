@@ -12,10 +12,10 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 
-public class CompressedCraftingTableEntity extends BlockEntity implements ImplementedInventory {
-    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(10, ItemStack.EMPTY); // 9 crafting slots + 1 output
+public class SpreaderBlockEntity extends BlockEntity implements ImplementedInventory {
+    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY); // 9 crafting slots + 1 output
 
-    public CompressedCraftingTableEntity(BlockPos pos, BlockState state) {
+    public SpreaderBlockEntity(BlockPos pos, BlockState state) {
         super(UCRStitch.COMPRESSED_CRAFTING_TABLE_ENTITY, pos, state);
     }
 

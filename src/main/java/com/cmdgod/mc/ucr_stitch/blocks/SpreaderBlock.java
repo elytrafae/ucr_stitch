@@ -9,9 +9,9 @@ import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.util.math.BlockPos;
 
-public class CompressedCraftingTable extends BlockWithEntity {
+public class SpreaderBlock extends BlockWithEntity {
 
-    public CompressedCraftingTable() {
+    public SpreaderBlock() {
         super(FabricBlockSettings.of(Material.BAMBOO).strength(4.0f));
     }
 
