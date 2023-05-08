@@ -37,6 +37,7 @@ import com.cmdgod.mc.ucr_stitch.blocks.CompressedCraftingTable;
 import com.cmdgod.mc.ucr_stitch.blocks.SpreaderBlock;
 import com.cmdgod.mc.ucr_stitch.recipes.BundleRecolorRecipe;
 import com.cmdgod.mc.ucr_stitch.recipes.HeadFragmentCraftRecipe;
+import com.cmdgod.mc.ucr_stitch.villagers.VillagersRegister;
 
 public class UCRStitch implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
@@ -112,6 +113,9 @@ public class UCRStitch implements ModInitializer {
 
 		populateCreativeTab();
 		modifyLootTables();
+
+		VillagersRegister.registerVillagers();
+		VillagersRegister.registerTrades();
 	}
 
 	public void registerAndAddToCreativeMenu(Item item, String id) {

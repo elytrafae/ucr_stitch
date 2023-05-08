@@ -20,5 +20,7 @@
     "item.ucr_stitch.brown_bundle": "Brown Bundle",
     "item.ucr_stitch.green_bundle": "Green Bundle",
     "item.ucr_stitch.red_bundle": "Red Bundle",
-    "item.ucr_stitch.black_bundle": "Black Bundle"
+    "item.ucr_stitch.black_bundle": "Black Bundle",
+
+    "entity.minecraft.villager.lumberjack": "Lumberjack"
 }

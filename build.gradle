@@ -32,6 +32,8 @@ loom {
             runDir "build/datagen"
         }
     }
+
+	accessWidenerPath = file("src/main/resources/ucr_stitch.accesswidener")
 }
 
 // Add the generated resources to the main source set
