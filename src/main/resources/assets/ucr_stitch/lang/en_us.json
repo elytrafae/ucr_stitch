@@ -2,6 +2,7 @@
     "itemGroup.ucr_stitch.misc_group": "UCR Stitch",
     "item.ucr_stitch.head_fragment": "Head Fragment",
     "block.ucr_stitch.compressed_crafting_table": "Compressed Crafting Table",
+    "block.ucr_stitch.woodcutter": "Woodcutter",
     "item.ucr_stitch.essence_food_matter": "Essence Food Matter",
     "item.ucr_stitch.essence_bar": "Essence Bar",
     "item.ucr_stitch.essence_apple": "Essence Apple",
@@ -21,6 +22,9 @@
     "item.ucr_stitch.green_bundle": "Green Bundle",
     "item.ucr_stitch.red_bundle": "Red Bundle",
     "item.ucr_stitch.black_bundle": "Black Bundle",
+
+    "item.ucr_stitch.stars_banner_pattern": "Banner Pattern",
+    "item.ucr_stitch.stars_banner_pattern.desc": "Stars",
 
     "entity.minecraft.villager.lumberjack": "Lumberjack"
 }

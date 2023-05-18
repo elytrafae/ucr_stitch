@@ -1,0 +1,12 @@
+{
+    "parent": "minecraft:block/cube",
+    "textures": {
+      "down": "minecraft:block/acacia_planks",
+      "east": "ucr_stitch:block/woodcutter/woodcutter_side",
+      "north": "ucr_stitch:block/woodcutter/woodcutter_front",
+      "particle": "ucr_stitch:block/woodcutter/woodcutter_front",
+      "south": "ucr_stitch:block/woodcutter/woodcutter_side",
+      "up": "ucr_stitch:block/woodcutter/woodcutter_top",
+      "west": "ucr_stitch:block/woodcutter/woodcutter_front"
+    }
+  }

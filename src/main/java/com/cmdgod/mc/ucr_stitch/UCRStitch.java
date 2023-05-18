@@ -1,15 +1,31 @@
 package com.cmdgod.mc.ucr_stitch;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRenderEvents;
+import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
+import net.minecraft.block.LoomBlock;
+import net.minecraft.block.MapColor;
+import net.minecraft.block.Material;
+import net.minecraft.block.entity.BannerBlockEntity;
+import net.minecraft.block.entity.BannerPatterns;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.client.gui.screen.ingame.LoomScreen;
+import net.minecraft.client.render.block.entity.BannerBlockEntityRenderer;
+import net.minecraft.client.render.entity.LivingEntityRenderer;
+import net.minecraft.client.render.entity.feature.FeatureRenderer;
+import net.minecraft.client.render.entity.model.PlayerEntityModel;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.BannerPatternItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.BundleItem;
 import net.minecraft.item.FoodComponent;
@@ -22,6 +38,7 @@ import net.minecraft.loot.condition.RandomChanceWithLootingLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.tag.BannerPatternTags;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
@@ -31,6 +48,8 @@ import java.util.HashMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.cmdgod.mc.ucr_stitch.banners.CustomBannerPatterns;
+import com.cmdgod.mc.ucr_stitch.banners.CustomBannerTags;
 import com.cmdgod.mc.ucr_stitch.blockentities.CompressedCraftingTableEntity;
 import com.cmdgod.mc.ucr_stitch.blockentities.SpreaderBlockEntity;
 import com.cmdgod.mc.ucr_stitch.blocks.CompressedCraftingTable;
@@ -89,6 +108,8 @@ public class UCRStitch implements ModInitializer {
 			.build()
 	));
 
+	public static final Block WOODCUTTER_BLOCK = new Block(FabricBlockSettings.of(Material.WOOD, MapColor.SPRUCE_BROWN).strength(2));
+
 	private static final ItemGroup ITEM_GROUP = FabricItemGroup.builder(new Identifier(MOD_NAMESPACE, "misc_group")).icon(() -> new ItemStack(HEAD_FRAGMENT)).build();
 
 	@Override
@@ -101,6 +122,9 @@ public class UCRStitch implements ModInitializer {
 		registerAndAddToCreativeMenu(ESSENCE_BAR, "essence_bar");
 		registerAndAddToCreativeMenu(ESSENCE_APPLE, "essence_apple");
 		registerAndAddToCreativeMenu(SPREADER_BLOCK, "spreader");
+		registerAndAddToCreativeMenu(WOODCUTTER_BLOCK, "woodcutter");
+
+		registerAndAddToCreativeMenu(new BannerPatternItem(CustomBannerTags.STARS_PATTERN_ITEM, new FabricItemSettings().rarity(Rarity.COMMON).maxCount(64)), "stars_banner_pattern");
 
 		for (DyeColor color : DyeColor.values()) {
 			BundleItem bundle = new BundleItem(new FabricItemSettings().rarity(Rarity.COMMON).maxCount(1).recipeRemainder(null));
@@ -116,6 +140,15 @@ public class UCRStitch implements ModInitializer {
 
 		VillagersRegister.registerVillagers();
 		VillagersRegister.registerTrades();
+		CustomBannerPatterns.registerAndGetDefault(Registries.BANNER_PATTERN);
+		LivingEntityFeatureRendererRegistrationCallback.EVENT.register(new Identifier(MOD_NAMESPACE, "player_cosmetics"), (entityType, entityRenderer, registrationHelper, context) -> {
+			if (EntityType.getId(entityType) != new Identifier("player")) {
+				return;
+			}
+			entityRenderer.getModel(); //. . . what now?;
+			//registrationHelper.register(new FeatureRenderer<PlayerEntity,PlayerEntityModel<PlayerEntity>>());
+		});
+		// BannerBlockEntityRenderer fix to allow partial transparency in pattern texture
 	}
 
 	public void registerAndAddToCreativeMenu(Item item, String id) {

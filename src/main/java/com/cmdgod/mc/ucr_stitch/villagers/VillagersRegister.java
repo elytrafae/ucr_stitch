@@ -8,22 +8,15 @@ import com.google.common.collect.ImmutableSet;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 
-import java.util.Collection;
 import java.util.function.Predicate;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.SaplingBlock;
-import net.minecraft.block.WoodType;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtElement;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtil;
-import net.minecraft.potion.Potions;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -42,7 +35,7 @@ public class VillagersRegister {
     private static ItemStack lumberAxe = createLumberAxe();
     private static ItemStack lumberDrink = createLumberDrink();
 
-    public static PointOfInterestType LUMBERJACK_POI = registerPOI("lumberjack_poi", Blocks.CRAFTING_TABLE);
+    public static PointOfInterestType LUMBERJACK_POI = registerPOI("lumberjack_poi", UCRStitch.WOODCUTTER_BLOCK);
     public static VillagerProfession LUMBERJACK = registerProfession("lumberjack", 
         RegistryKey.of(RegistryKeys.POINT_OF_INTEREST_TYPE, new Identifier(UCRStitch.MOD_NAMESPACE, "lumberjack_poi")), 
         SoundEvents.BLOCK_WOOD_HIT);
@@ -72,13 +65,7 @@ public class VillagersRegister {
     public static void registerTrades() {
         TradeOfferHelper.registerVillagerOffers(LUMBERJACK, 1, 
             factories -> {
-                factories.add(0, (entity, random) -> {
-                    WoodTypeConnection wtc = WoodTypeAssociation.getRandom(random);
-                    return new TradeOffer(
-                        new ItemStack(wtc.getSapling(), 1),
-                        new ItemStack(wtc.getLog(), 8),
-                        6, 2, 0.02f);
-                });
+                factories.add(0, VillagerTrades.createLumberjackSaplingLogTrade());
                 factories.add(1, (entity, random) -> {
                     return new TradeOffer(
                         new ItemStack(Items.STONE_AXE, 1),
@@ -90,33 +77,14 @@ public class VillagersRegister {
 
         TradeOfferHelper.registerVillagerOffers(LUMBERJACK, 2, 
             factories -> {
-                factories.add(0, (entity, random) -> {
-                    WoodTypeConnection wtc = WoodTypeAssociation.getRandom(random);
-                    return new TradeOffer(
-                        new ItemStack(wtc.getSapling(), 1),
-                        new ItemStack(wtc.getLog(), 8),
-                        6, 2, 0.02f);
-                });
-                factories.add(1, (entity, random) -> {
-                    WoodTypeConnection wtc = WoodTypeAssociation.getRandom(random);
-                    return new TradeOffer(
-                        new ItemStack(wtc.getLog(), 10),
-                        new ItemStack(Items.STICK, 10),
-                        new ItemStack(wtc.getSign(), 10),
-                        6, 2, 0.02f);
-                });
+                factories.add(0, VillagerTrades.createLumberjackSaplingLogTrade());
+                factories.add(1, VillagerTrades.createLumberjackSignTrade());
             }
         );
 
         TradeOfferHelper.registerVillagerOffers(LUMBERJACK, 3, 
             factories -> {
-                factories.add(0, (entity, random) -> {
-                    WoodTypeConnection wtc = WoodTypeAssociation.getRandom(random);
-                    return new TradeOffer(
-                        new ItemStack(wtc.getPlanks(), 4),
-                        new ItemStack(wtc.getLog(), 1),
-                        12, 2, 0.02f);
-                });
+                factories.add(0, VillagerTrades.createLumberjackLogUncraftTrade());
                 factories.add(1, (entity, random) -> {
                     return new TradeOffer(
                         new ItemStack(Items.IRON_AXE, 1),
@@ -135,15 +103,8 @@ public class VillagersRegister {
 
         TradeOfferHelper.registerVillagerOffers(LUMBERJACK, 4, 
             factories -> {
-                for (int i=0; i < 2; i++) {
-                    factories.add(i, (entity, random) -> {
-                        WoodTypeConnection wtc = WoodTypeAssociation.getRandom(random);
-                        return new TradeOffer(
-                            new ItemStack(wtc.getPlanks(), 3),
-                            new ItemStack(wtc.getStairs(), 4),
-                            8, 3, 0.02f);
-                    });
-                }
+                factories.add(0, VillagerTrades.createLumberjackStairTrade());
+                factories.add(1, VillagerTrades.createLumberjackStairTrade());
             }
         );
 
