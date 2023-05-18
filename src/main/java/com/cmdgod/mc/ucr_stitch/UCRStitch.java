@@ -56,6 +56,7 @@ import com.cmdgod.mc.ucr_stitch.blocks.CompressedCraftingTable;
 import com.cmdgod.mc.ucr_stitch.blocks.SpreaderBlock;
 import com.cmdgod.mc.ucr_stitch.recipes.BundleRecolorRecipe;
 import com.cmdgod.mc.ucr_stitch.recipes.HeadFragmentCraftRecipe;
+import com.cmdgod.mc.ucr_stitch.status_effect_tags.StatusEffectTags;
 import com.cmdgod.mc.ucr_stitch.villagers.VillagersRegister;
 
 public class UCRStitch implements ModInitializer {
@@ -141,6 +142,7 @@ public class UCRStitch implements ModInitializer {
 		VillagersRegister.registerVillagers();
 		VillagersRegister.registerTrades();
 		CustomBannerPatterns.registerAndGetDefault(Registries.BANNER_PATTERN);
+		StatusEffectTags.initializeTags();
 		LivingEntityFeatureRendererRegistrationCallback.EVENT.register(new Identifier(MOD_NAMESPACE, "player_cosmetics"), (entityType, entityRenderer, registrationHelper, context) -> {
 			if (EntityType.getId(entityType) != new Identifier("player")) {
 				return;
