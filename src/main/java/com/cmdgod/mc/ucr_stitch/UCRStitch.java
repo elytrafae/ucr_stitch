@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.LoomBlock;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.Material;
@@ -53,6 +54,7 @@ import com.cmdgod.mc.ucr_stitch.banners.CustomBannerTags;
 import com.cmdgod.mc.ucr_stitch.blockentities.CompressedCraftingTableEntity;
 import com.cmdgod.mc.ucr_stitch.blockentities.SpreaderBlockEntity;
 import com.cmdgod.mc.ucr_stitch.blocks.CompressedCraftingTable;
+import com.cmdgod.mc.ucr_stitch.blocks.HeadLampBlocks;
 import com.cmdgod.mc.ucr_stitch.blocks.SpreaderBlock;
 import com.cmdgod.mc.ucr_stitch.recipes.BundleRecolorRecipe;
 import com.cmdgod.mc.ucr_stitch.recipes.HeadFragmentCraftRecipe;
@@ -127,6 +129,8 @@ public class UCRStitch implements ModInitializer {
 
 		registerAndAddToCreativeMenu(new BannerPatternItem(CustomBannerTags.STARS_PATTERN_ITEM, new FabricItemSettings().rarity(Rarity.COMMON).maxCount(64)), "stars_banner_pattern");
 
+		HeadLampBlocks.registerHeads();
+
 		for (DyeColor color : DyeColor.values()) {
 			BundleItem bundle = new BundleItem(new FabricItemSettings().rarity(Rarity.COMMON).maxCount(1).recipeRemainder(null));
 			BUNDLES.put(color, bundle);
@@ -153,12 +157,12 @@ public class UCRStitch implements ModInitializer {
 		// BannerBlockEntityRenderer fix to allow partial transparency in pattern texture
 	}
 
-	public void registerAndAddToCreativeMenu(Item item, String id) {
+	public static void registerAndAddToCreativeMenu(Item item, String id) {
 		ITEMS.add(item);
 		Registry.register(Registries.ITEM, new Identifier(MOD_NAMESPACE, id), item);
 	}
 
-	public void registerAndAddToCreativeMenu(Block block, String id) {
+	public static void registerAndAddToCreativeMenu(Block block, String id) {
 		Registry.register(Registries.BLOCK, new Identifier(MOD_NAMESPACE, id), block);
 		registerAndAddToCreativeMenu(new BlockItem(block, new FabricItemSettings()), id);
 	}
