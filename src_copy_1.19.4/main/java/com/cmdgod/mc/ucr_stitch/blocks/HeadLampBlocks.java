@@ -30,6 +30,8 @@ import net.minecraft.world.World;
 
 public class HeadLampBlocks {
 
+    // TODO: Investigate how to make head lamps not invisible when placed.
+
     private static final int LUMINOSITY = 15;
 
     private static ToIntFunction<BlockState> ALWAYS_LIT = (blockState) -> {return LUMINOSITY;};
