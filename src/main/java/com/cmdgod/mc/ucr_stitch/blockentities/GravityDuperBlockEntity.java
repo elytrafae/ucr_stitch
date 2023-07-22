@@ -80,6 +80,7 @@ public class GravityDuperBlockEntity extends BlockEntity implements ImplementedI
         boolean isHalted = false;
         // Reset progress every tick while cannot input to output stack
         if (!be.canBeCombined(recipeOutput, outputStack)) {
+            System.out.println("Can't be combined: " + recipeOutput.getItem() + " and " + outputStack.getItem());
             be.ticksTillNext = recipe.getTime() + 1;
             isHalted = true;
         }
@@ -247,7 +248,7 @@ public class GravityDuperBlockEntity extends BlockEntity implements ImplementedI
     }
 
     private boolean canBeCombined(ItemStack s1, ItemStack s2) {
-        return s1.isEmpty() || s2.isEmpty() || (ItemStack.canCombine(s1, s2) && s1.getMaxCount() <= s1.getCount() + s2.getCount());
+        return s1.isEmpty() || s2.isEmpty() || (ItemStack.canCombine(s1, s2) && (s1.getMaxCount() > s1.getCount() + s2.getCount()));
     }
 
     @Override

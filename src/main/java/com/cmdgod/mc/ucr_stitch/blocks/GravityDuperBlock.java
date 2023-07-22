@@ -91,7 +91,6 @@ public class GravityDuperBlock extends BlockWithEntity {
         }
 
         if (handStack.isEmpty() || (ItemStack.canCombine(handStack, blockEntity.getStack(GravityDuperBlockEntity.OUTPUT_SLOT)))) {
-            System.out.println("Taking out stuff!");
             player.getInventory().offerOrDrop(blockEntity.getStack(GravityDuperBlockEntity.OUTPUT_SLOT));
             blockEntity.setStack(GravityDuperBlockEntity.OUTPUT_SLOT, ItemStack.EMPTY);
             blockEntity.markDirty();

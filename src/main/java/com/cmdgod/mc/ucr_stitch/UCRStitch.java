@@ -45,6 +45,7 @@ public class UCRStitch implements ModInitializer {
 		BlockRegistrer.registerAll();
 		ItemRegistrer.registerAll();
 
+		/*
 		ClientPickBlockCallback cb = new ClientPickBlockCallback() {
 			@Override
 			public boolean pick(PlayerEntity player, HitResult result, Container container) {
@@ -57,7 +58,7 @@ public class UCRStitch implements ModInitializer {
 		};
 
 		ClientPickBlockCallback.EVENT.register( Event.DEFAULT_PHASE, cb);
-		
+		*/
 
 		LOGGER.info("Hello Fabric world!");
 	}
