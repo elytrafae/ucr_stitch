@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "stuck=false,working=false": { "model": "ucr_stitch:block/gravity_duper_off" },
+        "stuck=false,working=true": { "model": "ucr_stitch:block/gravity_duper_on" },
+        "stuck=true,working=true": { "model": "ucr_stitch:block/gravity_duper_stuck" },
+        "stuck=true,working=false": { "model": "ucr_stitch:block/gravity_duper_stuck" }
+    }
+}

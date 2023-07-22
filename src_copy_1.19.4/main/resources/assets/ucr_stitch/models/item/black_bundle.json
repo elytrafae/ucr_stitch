@@ -1,9 +1,0 @@
-{
-  "parent": "item/bundle",
-  "textures": {
-    "layer0": "ucr_stitch:item/black_bundle"
-  },
-  "overrides": [
-    { "predicate": { "filled": 0.0000001 }, "model": "ucr_stitch:item/black_bundle_filled" }
-  ]
-}

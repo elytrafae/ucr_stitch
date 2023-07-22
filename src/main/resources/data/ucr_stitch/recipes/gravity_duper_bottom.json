@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#PG",
+        "PEP",
+        "GP#"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:echo_shard"
+        },
+        "P": {
+            "item": "minecraft:purpur_block"
+        },
+        "G": {
+            "item": "minecraft:glow_ink_sac"
+        },
+        "E": {
+            "item": "minecraft:end_crystal"
+        }
+    },
+    "result": {
+        "item": "ucr_stitch:gravity_duper_bottom",
+        "count": 1
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#P#",
+        "PYP",
+        "#P#"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:dragon_breath"
+        },
+        "P": {
+            "item": "minecraft:purpur_block"
+        },
+        "Y": {
+            "item": "betterend:eternal_crystal"
+        }
+    },
+    "result": {
+        "item": "ucr_stitch:gravity_duper_top",
+        "count": 1
+    }
+}

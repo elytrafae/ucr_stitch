@@ -1,0 +1,38 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#A#",
+        "REG",
+        "FMW"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:cobweb"
+        },
+        "A": {
+            "item": "minecraft:amethyst_cluster"
+        },
+        "R": {
+            "item": "minecraft:raw_gold_block"
+        },
+        "E": {
+            "item": "minecraft:ender_eye"
+        },
+        "G": {
+            "item": "minecraft:glow_berries"
+        },
+        "F": {
+            "item": "minecraft:fermented_spider_eye"
+        },
+        "M": {
+            "item": "minecraft:minecart"
+        },
+        "W": {
+            "item": "minecraft:raw_iron_block"
+        }
+    },
+    "result": {
+        "item": "endrem:lost_eye",
+        "count": 1
+    }
+}

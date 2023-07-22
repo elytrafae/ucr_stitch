@@ -1,0 +1,41 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#BI",
+        "MEJ",
+        "STG"
+    ],
+    "key": {
+        "#": {
+            "item": "bewitchment:grim_elixir"
+        },
+        "B": {
+            "item": "bewitchment:voodoo_protection_poppet"
+        },
+        "I": {
+            "item": "bewitchment:cleansing_balm"
+        },
+        "M": {
+            "item": "bewitchment:curse_poppet"
+        },
+        "E": {
+            "item": "minecraft:ender_eye"
+        },
+        "J": {
+            "item": "bewitchment:vampiric_poppet"
+        },
+        "S": {
+            "item": "bewitchment:fiery_serum"
+        },
+        "T": {
+            "item": "bewitchment:mending_poppet"
+        },
+        "G": {
+            "item": "bewitchment:earth_ichor"
+        }
+    },
+    "result": {
+        "item": "endrem:witch_eye",
+        "count": 1
+    }
+}

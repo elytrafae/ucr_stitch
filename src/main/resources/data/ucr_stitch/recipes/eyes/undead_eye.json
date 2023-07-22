@@ -1,0 +1,35 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#AB",
+        "HEL",
+        "BF#"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:rotten_flesh"
+        },
+        "A": {
+            "item": "aylyth:ghostcap_mushroom"
+        },
+        "B": {
+            "item": "minecraft:bone"
+        },
+        "H": {
+            "item": "aylyth:ympe_log"
+        },
+        "E": {
+            "item": "minecraft:ender_eye"
+        },
+        "L": {
+            "item": "aylyth:writhewood_log"
+        },
+        "F": {
+            "item": "minecraft:fermented_spider_eye"
+        }
+    },
+    "result": {
+        "item": "endrem:undead_eye",
+        "count": 1
+    }
+}

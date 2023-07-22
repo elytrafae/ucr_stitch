@@ -1,0 +1,12 @@
+{
+    "parent": "minecraft:block/cube",
+    "textures": {
+        "down": "ucr_stitch:block/gravity_duper/stuck_bottom",
+        "east": "ucr_stitch:block/gravity_duper/stuck_side",
+        "north": "ucr_stitch:block/gravity_duper/stuck_side",
+        "particle": "ucr_stitch:block/gravity_duper/stuck_top",
+        "south": "ucr_stitch:block/gravity_duper/stuck_side",
+        "up": "ucr_stitch:block/gravity_duper/stuck_top",
+        "west": "ucr_stitch:block/gravity_duper/stuck_side"
+    }
+}

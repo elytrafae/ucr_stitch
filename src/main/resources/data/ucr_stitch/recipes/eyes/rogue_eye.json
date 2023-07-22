@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "TET",
+        "RMR"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:infested_mossy_stone_bricks"
+        },
+        "T": {
+            "item": "minecraft:tipped_arrow"
+        },
+        "E": {
+            "item": "minecraft:ender_eye"
+        },
+        "R": {
+            "item": "minecraft:redstone_block"
+        },
+        "M": {
+            "item": "minecraft:mossy_cobblestone"
+        }
+    },
+    "result": {
+        "item": "endrem:rogue_eye",
+        "count": 1
+    }
+}

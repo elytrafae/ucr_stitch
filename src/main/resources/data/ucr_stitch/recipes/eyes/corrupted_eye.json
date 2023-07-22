@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#BT",
+        "BEB",
+        "CB#"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:emerald_block"
+        },
+        "B": {
+            "item": "minecraft:black_wool"
+        },
+        "T": {
+            "item": "minecraft:totem_of_undying"
+        },
+        "E": {
+            "item": "minecraft:ender_eye"
+        },
+        "C": {
+            "item": "minecraft:crossbow"
+        }
+    },
+    "result": {
+        "item": "endrem:corrupted_eye",
+        "count": 1
+    }
+}

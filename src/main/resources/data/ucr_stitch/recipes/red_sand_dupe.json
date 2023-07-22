@@ -1,0 +1,6 @@
+
+{
+    "type": "ucr_stitch:gravity_duper_recipe",
+    "output": "minecraft:red_sand",
+    "time": 200
+}

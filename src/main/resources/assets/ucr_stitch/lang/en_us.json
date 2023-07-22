@@ -1,0 +1,20 @@
+{
+    "itemGroup.ucr_stitch.misc_group": "UCR Stitch",
+    "item.ucr_stitch.head_fragment": "Head Fragment",
+    "block.ucr_stitch.woodcutter": "Woodcutter",
+
+    "block.ucr_stitch.gravity_duper": "Gravity Duper",
+    "block.ucr_stitch.gravity_duper.error": "ERROR: Invalid item/recipe for duping! Please break the block and construct a new one!",
+    "block.ucr_stitch.gravity_duper.duped_block": "Block: %s",
+    "item.ucr_stitch.gravity_duper_top": "Gravity Duper Top",
+    "item.ucr_stitch.gravity_duper_bottom": "Gravity Duper Bottom",
+    "item.ucr_stitch.gravity_duper_side": "Gravity Duper Side",
+
+    "item.ucr_stitch.edified_energy_bar": "Edified Energy Bar",
+    "item.ucr_stitch.edified_apple": "Edified Apple",
+
+    "item.ucr_stitch.stars_banner_pattern": "Banner Pattern",
+    "item.ucr_stitch.stars_banner_pattern.desc": "Stars",
+
+    "entity.minecraft.villager.lumberjack": "Lumberjack"
+}

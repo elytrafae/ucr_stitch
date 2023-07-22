@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#E#",
+        "EOE",
+        "#E#"
+    ],
+    "key": {
+        "#": {
+            "item": "betterend:silk_fiber"
+        },
+        "E": {
+            "item": "minecraft:end_stone"
+        },
+        "O": {
+            "item": "minecraft:ender_eye"
+        }
+    },
+    "result": {
+        "item": "ucr_stitch:gravity_duper_side",
+        "count": 1
+    }
+}

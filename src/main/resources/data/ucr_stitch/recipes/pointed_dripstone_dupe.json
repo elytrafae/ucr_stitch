@@ -1,0 +1,6 @@
+
+{
+    "type": "ucr_stitch:gravity_duper_recipe",
+    "output": "minecraft:pointed_dripstone",
+    "time": 1000
+}

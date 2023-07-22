@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#S#",
+        "EBD",
+        "STS"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:red_sand"
+        },
+        "S": {
+            "item": "minecraft:sandstone"
+        },
+        "E": {
+            "item": "minecraft:emerald"
+        },
+        "B": {
+            "item": "minecraft:ender_eye"
+        },
+        "D": {
+            "item": "minecraft:diamond"
+        },
+        "T": {
+            "item": "minecraft:tnt"
+        }
+    },
+    "result": {
+        "item": "endrem:old_eye",
+        "count": 1
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#IS",
+        "BEB",
+        "SI#"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:nautilus_shell"
+        },
+        "I": {
+            "item": "minecraft:ink_sac"
+        },
+        "S": {
+            "item": "minecraft:sea_lantern"
+        },
+        "B": {
+            "item": "minecraft:black_dye"
+        },
+        "E": {
+            "item": "minecraft:ender_eye"
+        }
+    },
+    "result": {
+        "item": "endrem:black_eye",
+        "count": 1
+    }
+}

@@ -1,0 +1,126 @@
+{
+    "type": "minecraft:block",
+    "pools": [
+        {
+            "rolls": 1,
+            "bonus_rolls": 0,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "ucr_stitch:gravity_duper_top",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": 1,
+                            "add": false
+                        }
+                    ]
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:block_state_property",
+                    "block": "ucr_stitch:gravity_duper",
+                    "properties": {
+                        "stuck": "true"
+                    }
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "bonus_rolls": 0,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "ucr_stitch:gravity_duper_bottom",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": 1,
+                            "add": false
+                        }
+                    ]
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:block_state_property",
+                    "block": "ucr_stitch:gravity_duper",
+                    "properties": {
+                        "stuck": "true"
+                    }
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "bonus_rolls": 0,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "ucr_stitch:gravity_duper_side",
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": 4,
+                            "add": false
+                        }
+                    ]
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:block_state_property",
+                    "block": "ucr_stitch:gravity_duper",
+                    "properties": {
+                        "stuck": "true"
+                    }
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "bonus_rolls": 0,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "ucr_stitch:gravity_duper",
+                    "functions": [
+                        {
+                            "function": "minecraft:copy_nbt",
+                            "source": "block_entity",
+                            "ops": [
+                                {
+                                    "source": "recipe",
+                                    "target": "BlockEntityTag.recipe",
+                                    "op": "replace"
+                                },
+                                {
+                                    "source": "dupe_block",
+                                    "target": "BlockEntityTag.dupe_block",
+                                    "op": "replace"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "functions": [
+                {
+                    "function": "minecraft:set_count",
+                    "count": 1
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:block_state_property",
+                    "block": "ucr_stitch:gravity_duper",
+                    "properties": {
+                        "stuck": "false"
+                    }
+                }
+            ]
+        }
+    ]
+}
