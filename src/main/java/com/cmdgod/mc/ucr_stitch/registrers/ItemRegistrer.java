@@ -3,6 +3,8 @@ package com.cmdgod.mc.ucr_stitch.registrers;
 import java.util.ArrayList;
 
 import com.cmdgod.mc.ucr_stitch.UCRStitch;
+import com.cmdgod.mc.ucr_stitch.items.GravityDuperPartItem;
+import com.cmdgod.mc.ucr_stitch.items.TooltippedItem;
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.item.v1.FabricItem;
@@ -44,9 +46,10 @@ public class ItemRegistrer {
             .statusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 1), 1)
             .build()));
 
-    public static final Item GRAVITY_DUPER_TOP = new Item(new FabricItemSettings().group(ITEM_GROUP));
-    public static final Item GRAVITY_DUPER_BOTTOM = new Item(new FabricItemSettings().group(ITEM_GROUP));
-    public static final Item GRAVITY_DUPER_SIDE = new Item(new FabricItemSettings().group(ITEM_GROUP));
+    public static final Item GRAVITY_DUPER_TOP = new GravityDuperPartItem(new FabricItemSettings().group(ITEM_GROUP), GravityDuperPartItem.PartType.TOP);
+    public static final Item GRAVITY_DUPER_BOTTOM = new GravityDuperPartItem(new FabricItemSettings().group(ITEM_GROUP), GravityDuperPartItem.PartType.BOTTOM);
+    public static final Item GRAVITY_DUPER_SIDE = new GravityDuperPartItem(new FabricItemSettings().group(ITEM_GROUP), GravityDuperPartItem.PartType.SIDE);
+    public static final Item HEAD_FRAGMENT = new TooltippedItem(new FabricItemSettings().group(ITEM_GROUP));
 
     public static void registerAll() {
         UCRStitch.LOGGER.info("UCR Stitch: Items registered!");
@@ -56,6 +59,8 @@ public class ItemRegistrer {
         registerItem("gravity_duper_top", GRAVITY_DUPER_TOP);
         registerItem("gravity_duper_bottom", GRAVITY_DUPER_BOTTOM);
         registerItem("gravity_duper_side", GRAVITY_DUPER_SIDE);
+
+        registerItem("head_fragment", HEAD_FRAGMENT);
     }
 
     public static Item GRAVITY_DUPER_ITEM;

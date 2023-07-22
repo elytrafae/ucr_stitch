@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:zombie_head"
+        }
+    ],
+    "result": {
+        "item": "ucr_stitch:head_fragment",
+        "count": 4
+    },
+    "group": "head_fragment"
+}

@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.client.player.ClientPickBlockCallback;
 import net.fabricmc.fabric.api.event.client.player.ClientPickBlockCallback.Container;
+import net.minecraft.advancement.AdvancementCriterion;
 import net.minecraft.block.BarrelBlock;
 import net.minecraft.block.ChestBlock;
 import net.minecraft.block.SandBlock;

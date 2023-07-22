@@ -1,6 +1,7 @@
 {
     "itemGroup.ucr_stitch.misc_group": "UCR Stitch",
     "item.ucr_stitch.head_fragment": "Head Fragment",
+    "item.ucr_stitch.head_fragment.desc": "§5Spend these with /head§r",
     "block.ucr_stitch.woodcutter": "Woodcutter",
 
     "block.ucr_stitch.gravity_duper": "Gravity Duper",
@@ -16,5 +17,10 @@
     "item.ucr_stitch.stars_banner_pattern": "Banner Pattern",
     "item.ucr_stitch.stars_banner_pattern.desc": "Stars",
 
-    "entity.minecraft.villager.lumberjack": "Lumberjack"
+    "entity.minecraft.villager.lumberjack": "Lumberjack",
+
+    "poem.ucr_stitch.gravity_duper.line1": "\" This one to the top,",
+    "poem.ucr_stitch.gravity_duper.line2": "  Let that one sink,",
+    "poem.ucr_stitch.gravity_duper.line3": "  Banish some to the corners,",
+    "poem.ucr_stitch.gravity_duper.line4": "  And the rest will fall down \""
 }
