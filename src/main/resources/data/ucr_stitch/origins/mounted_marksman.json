@@ -1,0 +1,15 @@
+{
+    "name": "Mounted Marksman",
+    "description": "Their most trusted friend is their trusty steed . . . Or boat.",
+    "powers": [
+        "ucr_stitch:mounted_marksman/bullseye",
+        "ucr_stitch:mounted_marksman/master_rider",
+        "ucr_stitch:mounted_marksman/nyctophobia",
+        "ucr_stitch:too_heavy"
+    ],
+    "icon": {
+        "item": "minecraft:bow",
+        "amount": 1
+    },
+    "impact": 1
+}

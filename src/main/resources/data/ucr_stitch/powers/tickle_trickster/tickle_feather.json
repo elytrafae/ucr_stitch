@@ -1,0 +1,85 @@
+{
+    "name": "Tickle Feather",
+    "description": "When you have a feather in your main hand, you deal no damage. Living entities you hit like this get -80% movement speed for as long as you are within 10 blocks of them. When you land a hit on a mob like this without the effect already on them, you gain +1 Hunger, +1 Saturation and +2 Health.",
+    "condition": {
+        "type": "origins:equipped_item",
+        "equipment_slot": "mainhand",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:feather"
+            }
+        }
+    },
+    "type": "origins:modify_damage_dealt",
+    "damage_condition": {
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:name",
+                "name": "player"
+            },
+            {
+                "inverted": true,
+                "type": "origins:projectile"
+            },
+            {
+                "inverted": true,
+                "type": "origins:explosive"
+            },
+            {
+                "inverted": true,
+                "type": "origins:fire"
+            }
+        ]
+    },
+    "target_condition": {
+        "type": "origins:living"
+    },
+    "modifier": {
+        "operation": "max_total",
+        "value": 0
+    },
+    "bientity_action": {
+        "type": "origins:if_else",
+        "condition": {
+            "inverted": true,
+            "type": "origins:target_condition",
+            "condition": {
+                "type": "origins:power",
+                "power": "ucr_stitch:tickle_trickster/tickle_feather_effect",
+                "source": "ucr_stitch:tickle_trickster"
+            }
+        },
+        "if_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:grant_power",
+                        "power": "ucr_stitch:tickle_trickster/tickle_feather_effect",
+                        "source": "ucr_stitch:tickle_trickster"
+                    }
+                },
+                {
+                    "type": "origins:actor_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:feed",
+                                "food": 1,
+                                "saturation": 1
+                            },
+                            {
+                                "type": "origins:heal",
+                                "amount": 2
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

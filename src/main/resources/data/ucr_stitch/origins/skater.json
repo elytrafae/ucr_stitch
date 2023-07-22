@@ -1,0 +1,16 @@
+{
+    "name": "Ice Skater",
+    "description": "Decades of excercising Ice Skating made you able to skate anywhere, and on anything!",
+    "powers": [
+        "ucr_stitch:skater/skate_blades",
+        "ucr_stitch:skater/slippery_shoes",
+        "ucr_stitch:skater/running_start",
+        "ucr_stitch:skater/cold_snack",
+        "ucr_stitch:skater/born_in_the_cold",
+        "ucr_stitch:brittle"
+    ],
+    "icon": {
+        "item": "minecraft:ice"
+    },
+    "impact": 2
+}

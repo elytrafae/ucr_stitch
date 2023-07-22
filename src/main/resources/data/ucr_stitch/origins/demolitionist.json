@@ -1,0 +1,14 @@
+{
+    "name": "Demolitionist",
+    "description": "The answer to all of your problems is ALWAYS more explosives!",
+    "powers": [
+        "ucr_stitch:demolitionist/blast_protection_pp",
+        "ucr_stitch:demolitionist/improvisation",
+        "ucr_stitch:demolitionist/blast_jump",
+        "ucr_stitch:demolitionist/too_much_fun"
+    ],
+    "icon": {
+        "item": "minecraft:tnt"
+    },
+    "impact": 2
+}

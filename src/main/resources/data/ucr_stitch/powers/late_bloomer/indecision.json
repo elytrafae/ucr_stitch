@@ -1,0 +1,13 @@
+{
+    "name": "Indecision",
+    "description": "Use this ability when you're ready to choose an origin!",
+    "type": "origins:active_self",
+    "entity_action": {
+        "type": "origins:execute_command",
+        "command": "origin gui"
+    },
+    "cooldown": 0,
+    "key": {
+        "key": "key.origins.primary_active"
+    }
+}

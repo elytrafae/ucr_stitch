@@ -1,0 +1,13 @@
+{
+    "name": "Air Mage",
+    "description": "Even though the lore makes you light as a feather, no, you won't have Slow Fall priviliges.",
+    "powers": [
+        "ucr_stitch:mage/air/propel",
+        "ucr_stitch:mage/air/mighty_gust",
+        "ucr_stitch:fragile"
+    ],
+    "icon": {
+        "item": "minecraft:feather"
+    },
+    "impact": 0
+}

@@ -1,0 +1,1 @@
+playsound minecraft:block.glass.break player @a ~ ~ ~ 2 0.8

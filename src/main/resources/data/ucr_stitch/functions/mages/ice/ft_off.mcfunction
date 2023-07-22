@@ -1,0 +1,2 @@
+tellraw @s ["",{"text":"222","obfuscated":true,"color":"aqua"},{"text":" Frost Walker deactivated! ","color":"dark_blue"},{"text":"222","obfuscated":true,"color":"aqua"}]
+playsound minecraft:block.glass.break player @s ~ ~ ~ 1 1.5

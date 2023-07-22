@@ -1,0 +1,194 @@
+{
+    "name": "Guardian Magic",
+    "description": "Mimic a Guardian's laser attack, dealing 10 Damage after a delay of 2 seconds. During this time, you cannot use items or attack. Has a maximum range of 30 blocks. No cooldown, costs 100 Essence.",
+    "type": "origins:multiple",
+    "charge_meter": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 40,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "bar_index": 6,
+            "condition": {
+                "type": "origins:resource",
+                "resource": "ucr_stitch:mage/water/guardian_magic_charge_meter",
+                "comparison": ">",
+                "compare_to": 0
+            }
+        },
+        "max_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "ucr_stitch:mage/water/guardian_magic_charge_meter",
+                    "change": 0,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:raycast",
+                    "distance": 30,
+                    "block": true,
+                    "entity": true,
+                    "shape_type": "visual",
+                    "fluid_handling": "none",
+                    "bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:living"
+                        }
+                    },
+                    "bientity_action": {
+                        "type": "origins:if_else",
+                        "condition": {
+                            "type": "origins:target_condition",
+                            "condition": {
+                                "type": "origins:exists"
+                            }
+                        },
+                        "if_action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:damage",
+                                    "amount": 10,
+                                    "source": {
+                                        "name": "player",
+                                        "magic": true
+                                    }
+                                },
+                                {
+                                    "type": "origins:actor_action",
+                                    "action": {
+                                        "type": "origins:execute_command",
+                                        "command": "function ucr_stitch:mages/water/guard_laser_hit"
+                                    }
+                                }
+                            ]
+                        },
+                        "else_action": {
+                            "type": "origins:actor_action",
+                            "action": {
+                                "type": "origins:execute_command",
+                                "command": "function ucr_stitch:mages/water/guard_laser_miss"
+                            }
+                        }
+                    },
+                    "block_action": {
+                        "type": "origins:execute_command",
+                        "command": "function ucr_stitch:mages/water/guard_laser_miss"
+                    },
+                    "miss_action": {
+                        "type": "origins:execute_command",
+                        "command": "function ucr_stitch:mages/water/guard_laser_miss"
+                    },
+                    "command_along_ray": "function ucr_stitch:mages/water/guard_laser_path_fire"
+                }
+            ]
+        }
+    },
+    "active": {
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "ucr_stitch:mage/water/guardian_magic_charge_meter",
+                    "comparison": "<=",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "ucr_stitch:mage/essence_real",
+                    "comparison": ">=",
+                    "compare_to": 100
+                }
+            ]
+        },
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "ucr_stitch:mage/essence_real",
+                    "change": -100,
+                    "operation": "add"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "ucr_stitch:mage/water/guardian_magic_charge_meter",
+                    "change": 1,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "function ucr_stitch:mages/water/guard_laser_active"
+                }
+            ]
+        },
+        "cooldown": 0,
+        "key": {
+            "key": "key.origins.primary_active"
+        }
+    },
+    "visual_laser": {
+        "condition": {
+            "type": "origins:resource",
+            "resource": "ucr_stitch:mage/water/guardian_magic_charge_meter",
+            "comparison": ">",
+            "compare_to": 0
+        },
+        "type": "origins:action_over_time",
+        "interval": 2,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:raycast",
+                    "distance": 30,
+                    "block": true,
+                    "entity": true,
+                    "shape_type": "visual",
+                    "fluid_handling": "none",
+                    "command_along_ray": "function ucr_stitch:mages/water/guard_laser_path"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "ucr_stitch:mage/water/guardian_magic_charge_meter",
+                    "change": 2,
+                    "operation": "add"
+                }
+            ]
+        }
+    },
+    "no_use": {
+        "condition": {
+            "type": "origins:resource",
+            "resource": "ucr_stitch:mage/water/guardian_magic_charge_meter",
+            "comparison": ">",
+            "compare_to": 0
+        },
+        "type": "origins:prevent_item_use"
+    },
+    "no_attk": {
+        "condition": {
+            "type": "origins:resource",
+            "resource": "ucr_stitch:mage/water/guardian_magic_charge_meter",
+            "comparison": ">",
+            "compare_to": 0
+        },
+        "type": "origins:modify_damage_dealt",
+        "damage_condition": {
+            "inverted": true,
+            "type": "origins:name",
+            "name": "magic"
+        },
+        "modifier": {
+            "operation": "set_total",
+            "value": 0
+        }
+    }
+}

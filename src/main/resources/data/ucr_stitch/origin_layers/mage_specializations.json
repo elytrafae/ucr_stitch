@@ -1,0 +1,27 @@
+{
+    "order": 1,
+    "origins": [
+        {
+            "condition": {
+                "type": "origins:origin",
+                "origin": "ucr_stitch:mage",
+                "layer": "origins:origin"
+            },
+            "origins": [
+                "ucr_stitch:mages/battle",
+                "ucr_stitch:mages/ice",
+                "ucr_stitch:mages/water",
+                "ucr_stitch:mages/air",
+                "ucr_stitch:mages/time",
+                "ucr_stitch:mages/fire"
+            ]
+        }
+    ],
+    "enabled": true,
+    "name": "Specialization",
+    "gui_title": {
+        "choose_origin": "Choose a Specialization!",
+        "view_origin": "This is your Specialization."
+    },
+    "allow_random": true
+}

@@ -1,0 +1,13 @@
+{
+    "name": "Specialization",
+    "description": "Choose your abilities and additional perks after you choose this origin.",
+    "type": "origins:multiple",
+    "spec_clean_when_switch": {
+        "type": "origins:action_on_callback",
+        "execute_chosen_when_orb": true,
+        "entity_action_lost": {
+            "type": "origins:execute_command",
+            "command": "origin set @s ucr_stitch:mage_specializations origins:empty"
+        }
+    }
+}

@@ -1,0 +1,118 @@
+{
+    "name": "Flower Magic",
+    "description": "You can consume Flowers in exchange for 10 seconds off of Rush of Vitality's cooldown and +20 Flight Energy.",
+    "condition": {
+        "type": "origins:or",
+        "conditions": [
+            {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:resource",
+                        "resource": "ucr_stitch:fairy/fairy_flight_meter",
+                        "comparison": "<",
+                        "compare_to": 100
+                    },
+                    {
+                        "inverted": true,
+                        "type": "origins:creative_flying"
+                    },
+                    {
+                        "inverted": true,
+                        "type": "origins:fall_flying"
+                    }
+                ]
+            },
+            {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:resource",
+                        "resource": "ucr_stitch:fairy/rush_of_vitality_cd",
+                        "comparison": "<",
+                        "compare_to": 1800
+                    },
+                    {
+                        "type": "origins:resource",
+                        "resource": "ucr_stitch:fairy/rush_of_vitality_duration",
+                        "comparison": "<=",
+                        "compare_to": 0
+                    }
+                ]
+            }
+        ]
+    },
+    "type": "apugli:edible_item",
+    "item_condition": {
+        "type": "origins:ingredient",
+        "ingredient": {
+            "tag": "minecraft:flowers"
+        }
+    },
+    "food_component": {
+        "hunger": 0,
+        "saturation": 0,
+        "meat": false,
+        "always_edible": true
+    },
+    "use_action": "eat",
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:if_else",
+                "condition": {
+                    "type": "origins:and",
+                    "conditions": [
+                        {
+                            "type": "origins:resource",
+                            "resource": "ucr_stitch:fairy/fairy_flight_meter",
+                            "comparison": "<",
+                            "compare_to": 100
+                        },
+                        {
+                            "inverted": true,
+                            "type": "origins:creative_flying"
+                        },
+                        {
+                            "inverted": true,
+                            "type": "origins:fall_flying"
+                        }
+                    ]
+                },
+                "if_action": {
+                    "type": "origins:change_resource",
+                    "resource": "ucr_stitch:fairy/fairy_flight_meter",
+                    "change": 20,
+                    "operation": "add"
+                }
+            },
+            {
+                "type": "origins:if_else",
+                "condition": {
+                    "type": "origins:and",
+                    "conditions": [
+                        {
+                            "type": "origins:resource",
+                            "resource": "ucr_stitch:fairy/rush_of_vitality_cd",
+                            "comparison": "<",
+                            "compare_to": 1800
+                        },
+                        {
+                            "type": "origins:resource",
+                            "resource": "ucr_stitch:fairy/rush_of_vitality_duration",
+                            "comparison": "<=",
+                            "compare_to": 0
+                        }
+                    ]
+                },
+                "if_action": {
+                    "type": "origins:change_resource",
+                    "resource": "ucr_stitch:fairy/rush_of_vitality_cd",
+                    "change": 200,
+                    "operation": "add"
+                }
+            }
+        ]
+    }
+}

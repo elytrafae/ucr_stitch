@@ -1,0 +1,76 @@
+{
+    "name": "Living Bomb",
+    "description": "Ignite an enemy for 3 seconds. Once they are put out, they explode in a fiery explosion that does not alter terrain, taking 6 damage and being ignited again for 5 seconds. Others caught in the explosion take 8 damage and are lit on fire for 8 seconds. Max range of 15 blocks. (20 seconds, 250 Essence)",
+    "condition": {
+        "type": "origins:resource",
+        "resource": "ucr_stitch:mage/essence_real",
+        "comparison": ">=",
+        "compare_to": 150
+    },
+    "type": "origins:active_self",
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:change_resource",
+                "resource": "ucr_stitch:mage/essence_real",
+                "change": -250,
+                "operation": "add"
+            },
+            {
+                "type": "origins:raycast",
+                "distance": 15,
+                "block": true,
+                "entity": true,
+                "shape_type": "collider",
+                "fluid_handling": "none",
+                "bientity_condition": {
+                    "type": "origins:target_condition",
+                    "condition": {
+                        "type": "origins:living"
+                    }
+                },
+                "bientity_action": {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "playsound minecraft:entity.blaze.ambient player @s ~ ~ ~ 1 0.6"
+                            },
+                            {
+                                "type": "origins:set_on_fire",
+                                "duration": 5
+                            },
+                            {
+                                "type": "origins:grant_power",
+                                "power": "ucr_stitch:mage/fire/living_bomb_effect",
+                                "source": "ucr_stitch:mages/fire"
+                            }
+                        ]
+                    }
+                },
+                "block_action": {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.fire.extinguish player @a ~ ~ ~ 2 0.7"
+                },
+                "miss_action": {
+                    "type": "origins:execute_command",
+                    "command": "playsound minecraft:block.fire.extinguish player @s ~ ~ ~ 2 0.7"
+                },
+                "command_along_ray": "particle minecraft:dust 0.9 0.5 0.02 1 ^ ^ ^ 0 0 0 0 2 force",
+                "command_step": 0.5
+            }
+        ]
+    },
+    "cooldown": 600,
+    "hud_render": {
+        "should_render": true,
+        "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+        "bar_index": 15
+    },
+    "key": {
+        "key": "key.origins.secondary_active"
+    }
+}

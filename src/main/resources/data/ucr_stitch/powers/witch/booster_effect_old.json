@@ -1,0 +1,66 @@
+{
+    "name": "Booster Effect",
+    "description": "All motion is increased by 60% and whenever this collides with something, it deals 5 Magic Damage.",
+    "type": "origins:multiple",
+    "mor_sped": {
+        "type": "origins:modify_velocity",
+        "modifier": {
+            "operation": "multiply_total_multiplicative",
+            "value": 0.6
+        },
+        "axes": [
+            "x",
+            "y",
+            "z"
+        ]
+    },
+    "dmg": {
+        "type": "origins:action_over_time",
+        "interval": 10,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_duration",
+                    "change": -10,
+                    "operation": "add"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "particle minecraft:entity_effect ~ ~0.5 ~ 1 0.5 1 1 40 force"
+                },
+                {
+                    "type": "origins:area_of_effect",
+                    "radius": 2,
+                    "bientity_condition": {
+                        "inverted": true,
+                        "type": "origins:invert",
+                        "condition": {
+                            "type": "origins:riding"
+                        }
+                    },
+                    "bientity_action": {
+                        "type": "origins:damage",
+                        "amount": 5,
+                        "source": {
+                            "name": "magic",
+                            "magic": true
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "duration": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 60,
+        "start_value": 60,
+        "min_action": {
+            "type": "origins:revoke_power",
+            "power": "ucr_stitch:witch/booster_effect",
+            "source": "ucr_stitch:witch"
+        }
+    }
+}

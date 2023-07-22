@@ -1,0 +1,27 @@
+{
+    "name": "Spirit Runner",
+    "description": "Instead of Hunger, sprinting consumes Essence, at a rate of 4 Essence every 4 ticks. You cannot sprint while below 50 Essence.",
+    "type": "origins:multiple",
+    "prevent": {
+        "condition": {
+            "type": "origins:resource",
+            "resource": "ucr_stitch:mage/essence_real",
+            "comparison": "<",
+            "compare_to": 50
+        },
+        "type": "origins:prevent_sprinting"
+    },
+    "consume": {
+        "condition": {
+            "type": "origins:sprinting"
+        },
+        "type": "origins:action_over_time",
+        "interval": 4,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "ucr_stitch:mage/essence_real",
+            "change": -4,
+            "operation": "add"
+        }
+    }
+}

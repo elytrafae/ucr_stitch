@@ -1,0 +1,102 @@
+{
+    "name": "Time Stop Effect",
+    "description": "Velocity and damage in and out are nullified. Healing and item use are disabled.",
+    "type": "origins:multiple",
+    "duration": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 200,
+        "start_value": 10,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "bar_index": 1
+        }
+    },
+    "duration_tick": {
+        "type": "origins:action_over_time",
+        "interval": 4,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "ucr_stitch:mage/time/time_stop_effect_duration",
+                    "change": -4,
+                    "operation": "add"
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "ucr_stitch:mage/time/time_stop_effect_duration",
+                        "comparison": "<=",
+                        "compare_to": 0
+                    },
+                    "if_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:if_else",
+                                "condition": {
+                                    "inverted": true,
+                                    "type": "origins:entity_type",
+                                    "entity_type": "minecraft:player"
+                                },
+                                "if_action": {
+                                    "type": "origins:execute_command",
+                                    "command": "function ucr_stitch:mages/time/time_stop_mobs_end"
+                                }
+                            },
+                            {
+                                "type": "origins:revoke_power",
+                                "power": "ucr_stitch:mage/time/time_stop_effect",
+                                "source": "ucr_stitch:mages/time"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "nodmg": {
+        "type": "origins:invulnerability",
+        "damage_condition": {
+            "type": "origins:constant",
+            "value": true
+        }
+    },
+    "nomove": {
+        "type": "origins:modify_velocity",
+        "modifier": {
+            "operation": "multiply_total_multiplicative",
+            "value": -1
+        },
+        "axes": [
+            "x",
+            "y",
+            "z"
+        ]
+    },
+    "noheal": {
+        "type": "origins:modify_healing",
+        "modifier": {
+            "operation": "multiply_total_multiplicative",
+            "value": -1
+        }
+    },
+    "nodealdmg": {
+        "type": "origins:modify_damage_dealt",
+        "modifier": {
+            "operation": "multiply_total_multiplicative",
+            "value": -1
+        }
+    },
+    "nouseitem": {
+        "type": "origins:prevent_item_use",
+        "item_condition": {
+            "type": "origins:constant",
+            "value": true
+        }
+    }
+}

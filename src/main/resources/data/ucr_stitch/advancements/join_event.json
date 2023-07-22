@@ -1,0 +1,16 @@
+{
+    "requirements": [
+        [
+            "always"
+        ]
+    ],
+    "rewards": {
+        "experience": 0,
+        "function": "ucr_stitch:player_join"
+    },
+    "criteria": {
+        "always": {
+            "trigger": "minecraft:tick"
+        }
+    }
+}

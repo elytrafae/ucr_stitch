@@ -1,0 +1,22 @@
+{
+    "name": "Wand Effect",
+    "description": "This marks every entity that should be hit by the wand. Huge jank incoming!",
+    "type": "origins:multiple",
+    "magic_damage": {
+        "type": "origins:modify_damage_taken",
+        "modifier": {
+            "operation": "set_base",
+            "value": 0,
+            "resource": "*:*_damage"
+        }
+    },
+    "damage": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 20,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": false
+        }
+    }
+}

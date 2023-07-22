@@ -1,0 +1,45 @@
+{
+    "name": "Debilitate Effect",
+    "hidden": true,
+    "type": "origins:multiple",
+    "actual_effect": {
+        "type": "origins:modify_damage_taken",
+        "damage_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "inverted": true,
+                    "type": "origins:projectile"
+                },
+                {
+                    "inverted": true,
+                    "type": "origins:explosive"
+                },
+                {
+                    "inverted": true,
+                    "type": "origins:fire"
+                },
+                {
+                    "type": "origins:name",
+                    "name": "player"
+                }
+            ]
+        },
+        "modifier": {
+            "operation": "multiply_total_additive",
+            "value": 0.5
+        },
+        "self_action": {
+            "type": "origins:revoke_power",
+            "power": "ucr_stitch:fisherman/debilitate_effect",
+            "source": "ucr_stitch:fisherman"
+        }
+    },
+    "color_indicator": {
+        "type": "origins:model_color",
+        "red": 0.8,
+        "green": 0.8,
+        "blue": 1,
+        "alpha": 1
+    }
+}

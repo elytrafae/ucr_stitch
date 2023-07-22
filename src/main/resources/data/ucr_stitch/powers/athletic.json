@@ -1,0 +1,9 @@
+{
+    "name": "Athletic",
+    "description": "You lose hunger half as fast.",
+    "type": "origins:modify_exhaustion",
+    "modifier": {
+        "operation": "multiply_total_multiplicative",
+        "value": 0.5
+    }
+}

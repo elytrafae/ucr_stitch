@@ -1,0 +1,12 @@
+{
+    "name": "Mage",
+    "description": "Studying magic for decades, you will now be able to put it to the test!",
+    "powers": [
+        "ucr_stitch:mage/essence",
+        "ucr_stitch:mage/essence_charge",
+        "ucr_stitch:mage/hungerless",
+        "ucr_stitch:mage/spirit_runner",
+        "ucr_stitch:mage/specialization"
+    ],
+    "impact": 3
+}

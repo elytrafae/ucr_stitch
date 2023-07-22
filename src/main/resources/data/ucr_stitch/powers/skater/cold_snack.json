@@ -1,0 +1,83 @@
+{
+    "name": "Cold Snack",
+    "description": "You can eat Ice, Packed Ice and Blue Ice, giving you Regeneration.\nIce: Regeneration I for 4 seconds.\nPacked Ice: Regeneration II for 8 seconds.\nBlue Ice: Regeneration III for 16 seconds.",
+    "type": "origins:multiple",
+    "ice": {
+        "type": "apugli:edible_item",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:ice"
+            }
+        },
+        "food_component": {
+            "hunger": 0,
+            "saturation": 0,
+            "meat": false,
+            "always_edible": true,
+            "effect": {
+                "effect": {
+                    "effect": "minecraft:regeneration",
+                    "duration": 80,
+                    "amplifier": 0,
+                    "show_particles": true,
+                    "show_icon": true
+                },
+                "chance": 1
+            }
+        },
+        "use_action": "eat"
+    },
+    "packed_ice": {
+        "type": "apugli:edible_item",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:packed_ice"
+            }
+        },
+        "food_component": {
+            "hunger": 0,
+            "saturation": 0,
+            "meat": false,
+            "always_edible": true,
+            "effect": {
+                "effect": {
+                    "effect": "minecraft:regeneration",
+                    "duration": 160,
+                    "amplifier": 1,
+                    "show_particles": true,
+                    "show_icon": true
+                },
+                "chance": 1
+            }
+        },
+        "use_action": "eat"
+    },
+    "blue_ice": {
+        "type": "apugli:edible_item",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:blue_ice"
+            }
+        },
+        "food_component": {
+            "hunger": 0,
+            "saturation": 0,
+            "meat": false,
+            "always_edible": true,
+            "effect": {
+                "effect": {
+                    "effect": "minecraft:regeneration",
+                    "duration": 240,
+                    "amplifier": 2,
+                    "show_particles": true,
+                    "show_icon": true
+                },
+                "chance": 1
+            }
+        },
+        "use_action": "eat"
+    }
+}

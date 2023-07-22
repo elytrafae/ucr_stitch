@@ -1,0 +1,44 @@
+{
+    "name": "Bullseye",
+    "description": "Hitting living entities with arrows increases the damage they take from subsequent arrow shots by 15%. Stacks up to 3 times. Lasts up to 10 seconds.",
+    "type": "origins:action_on_hit",
+    "bientity_action": {
+        "type": "origins:target_action",
+        "action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:grant_power",
+                    "power": "ucr_stitch:mounted_marksman/bullseye_effect",
+                    "source": "ucr_stitch:mounted_marksman"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "ucr_stitch:mounted_marksman/bullseye_effect_stacks",
+                    "change": 1,
+                    "operation": "add"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "ucr_stitch:mounted_marksman/bullseye_effect_duration",
+                    "change": 10,
+                    "operation": "set"
+                }
+            ]
+        }
+    },
+    "bientity_condition": {
+        "type": "origins:target_condition",
+        "condition": {
+            "type": "origins:living"
+        }
+    },
+    "damage_condition": {
+        "type": "origins:projectile",
+        "projectile": "minecraft:arrow"
+    },
+    "cooldown": 0,
+    "hud_render": {
+        "should_render": false
+    }
+}

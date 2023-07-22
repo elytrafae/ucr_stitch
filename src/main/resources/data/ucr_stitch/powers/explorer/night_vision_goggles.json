@@ -1,0 +1,36 @@
+{
+    "name": "Night Vision Goggles",
+    "description": "You have permanent Night Vision. Can be toggled while you don't have a Map or Filled Map in your hand.",
+    "type": "origins:multiple",
+    "vision": {
+        "condition": {
+            "type": "origins:power_active",
+            "power": "ucr_stitch:explorer/night_vision_goggles_toggle"
+        },
+        "type": "origins:night_vision",
+        "strength": 1
+    },
+    "toggle": {
+        "condition": {
+            "type": "origins:equipped_item",
+            "equipment_slot": "mainhand",
+            "item_condition": {
+                "type": "origins:ingredient",
+                "ingredient": [
+                    {
+                        "item": "minecraft:map"
+                    },
+                    {
+                        "item": "minecraft:filled_map"
+                    }
+                ]
+            }
+        },
+        "type": "origins:toggle",
+        "active_by_default": true,
+        "key": {
+            "key": "key.origins.secondary_active"
+        },
+        "retain_state": true
+    }
+}

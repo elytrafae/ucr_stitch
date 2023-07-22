@@ -1,0 +1,13 @@
+{
+    "name": "Ice Mage",
+    "description": "Ironically, they never mastered freeze spells on anything other than water.",
+    "powers": [
+        "ucr_stitch:mage/ice/snowball_salvo",
+        "ucr_stitch:mage/ice/frost_traveler",
+        "ucr_stitch:mage/ice/icy_veins"
+    ],
+    "icon": {
+        "item": "minecraft:ice"
+    },
+    "impact": 0
+}

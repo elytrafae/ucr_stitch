@@ -1,0 +1,20 @@
+{
+    "name": "Merling+",
+    "description": "A rendition of the classic Mermaid origin, but with the small bonus of spawning in/near water!",
+    "powers": [
+        "origins:water_breathing",
+        "origins:water_vision",
+        "origins:aqua_affinity",
+        "origins:swim_speed",
+        "origins:like_water",
+        "origins:aquatic",
+        "origins:conduit_power_on_land",
+        "origins:air_from_potions",
+        "ucr_stitch:merling_p/spawn_in_water"
+    ],
+    "icon": {
+        "item": "minecraft:cod"
+    },
+    "order": 0,
+    "impact": 3
+}

@@ -1,0 +1,9 @@
+{
+    "name": "Water Spawn",
+    "description": "Spawn inside of, or very close to, water!",
+    "type": "origins:modify_player_spawn",
+    "dimension": "minecraft:overworld",
+    "biome": "minecraft:ocean",
+    "spawn_strategy": "default",
+    "dimension_distance_multiplier": 1
+}

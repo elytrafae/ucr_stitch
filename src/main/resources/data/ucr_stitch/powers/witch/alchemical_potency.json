@@ -1,0 +1,9 @@
+{
+    "name": "Alchemical Potency",
+    "description": "Positive status effects you receive have +1 level. (Currently, all effects are. This will be fixed when the modlist is finalized)",
+    "type": "origins:modify_status_effect_amplifier",
+    "modifier": {
+        "operation": "add_base_early",
+        "value": 1
+    }
+}

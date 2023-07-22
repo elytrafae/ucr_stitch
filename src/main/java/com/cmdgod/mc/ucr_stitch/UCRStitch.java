@@ -22,6 +22,7 @@ import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperRecipe;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperRecipeSerializer;
 import com.cmdgod.mc.ucr_stitch.registrers.BlockRegistrer;
 import com.cmdgod.mc.ucr_stitch.registrers.ItemRegistrer;
+import com.cmdgod.mc.ucr_stitch.registrers.LootTableModifier;
 import com.cmdgod.mc.ucr_stitch.tools.GetAllGravityBlocks;
 import com.cmdgod.mc.ucr_stitch.tools.GetAllItems;
 
@@ -45,6 +46,7 @@ public class UCRStitch implements ModInitializer {
 
 		BlockRegistrer.registerAll();
 		ItemRegistrer.registerAll();
+		LootTableModifier.doAllChanges();
 
 		/*
 		ClientPickBlockCallback cb = new ClientPickBlockCallback() {

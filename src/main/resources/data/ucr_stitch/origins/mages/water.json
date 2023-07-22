@@ -1,0 +1,13 @@
+{
+    "name": "Water Mage",
+    "description": "Spent years studying sealife, so much so that they developed a natural affinity in water.",
+    "powers": [
+        "ucr_stitch:mage/water/guardian_magic",
+        "ucr_stitch:mage/water/diving_champion",
+        "ucr_stitch:mage/water/duality_of_the_sea"
+    ],
+    "icon": {
+        "item": "minecraft:water_bucket"
+    },
+    "impact": 0
+}

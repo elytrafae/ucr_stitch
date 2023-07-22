@@ -1,0 +1,13 @@
+{
+    "name": "Fire Mage",
+    "description": "May be a little clumsier than the rest, but nobody tells this to their face.",
+    "powers": [
+        "ucr_stitch:mage/fire/fireballs",
+        "ucr_stitch:mage/fire/living_bomb",
+        "ucr_stitch:mage/fire/burn_affinity"
+    ],
+    "icon": {
+        "item": "minecraft:fire_charge"
+    },
+    "impact": 0
+}

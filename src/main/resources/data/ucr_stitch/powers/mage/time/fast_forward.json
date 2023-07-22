@@ -1,0 +1,161 @@
+{
+    "name": "Fast Forward",
+    "description": "Instantly refresh Time Stop's cooldown, then gain +30% Movement Speed, +50% Mining Speed and 1.5 Attack Speed. Lasts 15 seconds. Costs 250 Essence. Has a cooldown of 30 seconds.",
+    "type": "origins:multiple",
+    "duration": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 300,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+            "bar_index": 9,
+            "condition": {
+                "type": "origins:resource",
+                "resource": "ucr_stitch:mage/time/fast_forward_duration",
+                "comparison": ">",
+                "compare_to": 0
+            }
+        }
+    },
+    "cooldown": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 600,
+        "start_value": 600,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+            "bar_index": 9,
+            "condition": {
+                "type": "origins:resource",
+                "resource": "ucr_stitch:mage/time/fast_forward_duration",
+                "comparison": "<=",
+                "compare_to": 0
+            }
+        }
+    },
+    "cd_dur_tick": {
+        "type": "origins:action_over_time",
+        "interval": 4,
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "ucr_stitch:mage/time/fast_forward_duration",
+                "comparison": ">",
+                "compare_to": 0
+            },
+            "if_action": {
+                "type": "origins:change_resource",
+                "resource": "ucr_stitch:mage/time/fast_forward_duration",
+                "change": -4,
+                "operation": "add"
+            },
+            "else_action": {
+                "type": "origins:change_resource",
+                "resource": "ucr_stitch:mage/time/fast_forward_cooldown",
+                "change": 4,
+                "operation": "add"
+            }
+        }
+    },
+    "active": {
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "ucr_stitch:mage/time/fast_forward_cooldown",
+                    "comparison": ">=",
+                    "compare_to": 600
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "ucr_stitch:mage/essence_real",
+                    "comparison": ">=",
+                    "compare_to": 250
+                }
+            ]
+        },
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "ucr_stitch:mage/time/fast_forward_cooldown",
+                    "change": 0,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "ucr_stitch:mage/time/fast_forward_duration",
+                    "change": 300,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "ucr_stitch:mage/time/time_stop_cooldown",
+                    "change": 600,
+                    "operation": "add"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "ucr_stitch:mage/essence_real",
+                    "change": -250,
+                    "operation": "add"
+                }
+            ]
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.origins.secondary_active"
+        }
+    },
+    "mining": {
+        "condition": {
+            "type": "origins:resource",
+            "resource": "ucr_stitch:mage/time/fast_forward_duration",
+            "comparison": ">",
+            "compare_to": 0
+        },
+        "type": "origins:modify_break_speed",
+        "block_condition": {
+            "type": "origins:hardness",
+            "comparison": ">",
+            "compare_to": 0
+        },
+        "modifier": {
+            "operation": "multiply_total_multiplicative",
+            "value": 0.5
+        }
+    },
+    "move_and_attk_spd": {
+        "condition": {
+            "type": "origins:resource",
+            "resource": "ucr_stitch:mage/time/fast_forward_duration",
+            "comparison": ">",
+            "compare_to": 0
+        },
+        "type": "origins:conditioned_attribute",
+        "modifiers": [
+            {
+                "attribute": "minecraft:generic.movement_speed",
+                "operation": "multiply_total",
+                "value": 0.3
+            },
+            {
+                "attribute": "minecraft:generic.attack_speed",
+                "operation": "addition",
+                "value": 1.5
+            }
+        ],
+        "tick_rate": 4,
+        "update_health": true
+    }
+}

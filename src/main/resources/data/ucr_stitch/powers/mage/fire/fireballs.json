@@ -1,0 +1,78 @@
+{
+    "name": "Fireballs",
+    "description": "Shoot 3 Blaze Fireballs in rapid succession (10 second cooldown, 100 Essence)",
+    "type": "origins:multiple",
+    "active": {
+        "condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "ucr_stitch:mage/essence_real",
+                    "comparison": ">=",
+                    "compare_to": 100
+                },
+                {
+                    "type": "origins:nbt",
+                    "nbt": "{Tags: ['CMD_FireMage_Salvo']}"
+                }
+            ]
+        },
+        "type": "origins:fire_projectile",
+        "entity_type": "minecraft:small_fireball",
+        "cooldown": 300,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+            "bar_index": 7
+        },
+        "count": 3,
+        "interval": 10,
+        "start_delay": 0,
+        "speed": 3,
+        "divergence": 0.3,
+        "sound": "minecraft:entity.blaze.shoot",
+        "key": {
+            "key": "key.origins.primary_active"
+        }
+    },
+    "consume_mana": {
+        "condition": {
+            "type": "origins:resource",
+            "resource": "ucr_stitch:mage/essence_real",
+            "comparison": ">=",
+            "compare_to": 100
+        },
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "ucr_stitch:mage/essence_real",
+                    "change": -100,
+                    "operation": "add"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "tag @s add CMD_FireMage_Salvo"
+                },
+                {
+                    "type": "origins:delay",
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "tag @s remove CMD_FireMage_Salvo"
+                    },
+                    "ticks": 1
+                }
+            ]
+        },
+        "cooldown": 300,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.origins.primary_active"
+        }
+    }
+}

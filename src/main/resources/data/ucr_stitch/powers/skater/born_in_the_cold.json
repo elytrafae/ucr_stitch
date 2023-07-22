@@ -1,0 +1,74 @@
+{
+    "name": "Born in the Cold",
+    "description": "You start in a Snowy Taiga. Immune to Freezing damage. Hot biomes give you Weakness and Slowness unless there is any ice or snow block nearby.",
+    "type": "origins:multiple",
+    "spawn_point": {
+        "type": "origins:modify_player_spawn",
+        "name": "Spawn in Snowy Taiga",
+        "dimension": "minecraft:overworld",
+        "biome": "minecraft:snowy_taiga",
+        "spawn_strategy": "default",
+        "dimension_distance_multiplier": 1
+    },
+    "freeze_immunity": {
+        "type": "origins:invulnerability",
+        "damage_condition": {
+            "type": "origins:name",
+            "name": "freeze"
+        }
+    },
+    "hot_biome_nerf": {
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:biome",
+                    "condition": {
+                        "type": "origins:temperature",
+                        "comparison": ">=",
+                        "compare_to": 2
+                    }
+                },
+                {
+                    "type": "origins:block_in_radius",
+                    "block_condition": {
+                        "type": "origins:in_tag",
+                        "tag": "minecraft:ice"
+                    },
+                    "radius": 6,
+                    "shape": "sphere",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "type": "origins:stacking_status_effect",
+        "min_stacks": -5,
+        "max_stacks": 3,
+        "duration_per_stack": 20,
+        "tick_rate": 20,
+        "effects": [
+            {
+                "effect": "minecraft:slowness",
+                "duration": 20,
+                "amplifier": 0,
+                "show_particles": false,
+                "show_icon": true
+            },
+            {
+                "effect": "minecraft:weakness",
+                "duration": 20,
+                "amplifier": 0,
+                "show_particles": false,
+                "show_icon": true
+            }
+        ]
+    },
+    "blue_skin": {
+        "type": "origins:model_color",
+        "red": 0.0666,
+        "green": 0.6509,
+        "blue": 0.9294,
+        "alpha": 1
+    }
+}

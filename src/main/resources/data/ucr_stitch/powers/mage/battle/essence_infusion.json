@@ -1,0 +1,76 @@
+{
+    "name": "Essence Infusion",
+    "description": "You can infuse your blows with your inner power, making them deal 25% more Damage, but draining your Essence by 80 every time you do so. Can be toggled on or off.\n",
+    "type": "origins:multiple",
+    "toggle": {
+        "type": "origins:toggle",
+        "active_by_default": true,
+        "key": {
+            "key": "key.ucr_stitch.never_active"
+        },
+        "retain_state": true
+    },
+    "ability": {
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:toggle",
+                    "power": "ucr_stitch:mage/battle/essence_infusion_toggle"
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:power_active",
+                        "power": "ucr_stitch:mage/battle/essence_infusion_toggle"
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "function ucr_stitch:mages/battle/ei_on"
+                    },
+                    "else_action": {
+                        "type": "origins:execute_command",
+                        "command": "function ucr_stitch:mages/battle/ei_off"
+                    }
+                }
+            ]
+        },
+        "cooldown": 0,
+        "key": {
+            "key": "key.origins.secondary_active"
+        }
+    },
+    "buff": {
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "ucr_stitch:mage/essence_real",
+                    "comparison": ">=",
+                    "compare_to": 80
+                },
+                {
+                    "type": "origins:power_active",
+                    "power": "ucr_stitch:mage/battle/essence_infusion_toggle"
+                }
+            ]
+        },
+        "type": "origins:modify_damage_dealt",
+        "modifier": {
+            "operation": "multiply_total_additive",
+            "value": 0.25
+        },
+        "self_action": {
+            "type": "origins:change_resource",
+            "resource": "ucr_stitch:mage/essence_real",
+            "change": -80,
+            "operation": "add"
+        },
+        "target_action": {
+            "type": "origins:execute_command",
+            "command": "function ucr_stitch:mages/battle/ei_hit"
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "name": "Battle Mage",
+    "description": "Strong, fierce. Managed to strike a perfect balance between magic and brute force!",
+    "powers": [
+        "ucr_stitch:mage/battle/blink",
+        "ucr_stitch:mage/battle/essence_infusion",
+        "ucr_stitch:mage/battle/spirit_of_war",
+        "ucr_stitch:fragile"
+    ],
+    "icon": {
+        "item": "minecraft:iron_sword"
+    },
+    "impact": 0
+}

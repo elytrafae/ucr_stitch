@@ -1,0 +1,39 @@
+{
+    "name": "Unwieldy",
+    "description": "Weapons other than hoes are too complicated to wrap your head around, dealing 1 less damage with them.",
+    "condition": {
+        "type": "origins:and",
+        "conditions": [
+            {
+                "inverted": true,
+                "type": "origins:equipped_item",
+                "equipment_slot": "mainhand",
+                "item_condition": {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "tag": "c:hoes"
+                    }
+                }
+            },
+            {
+                "inverted": true,
+                "type": "origins:equipped_item",
+                "equipment_slot": "mainhand",
+                "item_condition": {
+                    "type": "origins:empty"
+                }
+            }
+        ]
+    },
+    "type": "origins:conditioned_attribute",
+    "modifiers": [
+        {
+            "attribute": "minecraft:generic.attack_damage",
+            "operation": "addition",
+            "value": -1,
+            "name": "ucr_stitch:unweildy_nerf"
+        }
+    ],
+    "tick_rate": 5,
+    "update_health": false
+}

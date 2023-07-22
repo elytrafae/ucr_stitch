@@ -1,0 +1,15 @@
+{
+    "name": "Farmer",
+    "description": "Simple life, simple perks.",
+    "powers": [
+        "ucr_stitch:farmer/hoe_master",
+        "ucr_stitch:farmer/good_food",
+        "ucr_stitch:farmer/family_values",
+        "ucr_stitch:farmer/unwieldy"
+    ],
+    "icon": {
+        "item": "minecraft:hay_block"
+    },
+    "upgrades": [],
+    "impact": 1
+}

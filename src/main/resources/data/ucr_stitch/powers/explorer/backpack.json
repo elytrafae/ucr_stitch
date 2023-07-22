@@ -1,0 +1,31 @@
+{
+    "name": "Backpack",
+    "description": "Open a 27-slot bonus inventory. Sadly, the weight of it makes it harder to fight, giving you -2 Attack Damage and -0.5 Attack Speed.",
+    "type": "origins:multiple",
+    "backpack": {
+        "type": "origins:inventory",
+        "title": "Explorer's Backpack",
+        "container_type": "CHEST",
+        "drop_on_death": true,
+        "key": {
+            "key": "key.origins.primary_active"
+        },
+        "recoverable": true
+    },
+    "combat_nerf": {
+        "type": "origins:attribute",
+        "modifiers": [
+            {
+                "attribute": "minecraft:generic.attack_damage",
+                "operation": "addition",
+                "value": -2
+            },
+            {
+                "attribute": "minecraft:generic.attack_speed",
+                "operation": "addition",
+                "value": -0.5
+            }
+        ],
+        "update_health": false
+    }
+}

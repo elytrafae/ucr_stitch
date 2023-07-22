@@ -1,0 +1,16 @@
+{
+    "name": "Witch",
+    "description": "May brew some terrible concoctions of mischief and destruction",
+    "powers": [
+        "ucr_stitch:witch/ethereal_bottle",
+        "ucr_stitch:witch/wand",
+        "ucr_stitch:witch/special_delivery",
+        "ucr_stitch:witch/booster",
+        "ucr_stitch:witch/alchemical_potency",
+        "ucr_stitch:too_heavy"
+    ],
+    "icon": {
+        "item": "minecraft:cauldron"
+    },
+    "impact": 3
+}

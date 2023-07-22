@@ -1,0 +1,193 @@
+{
+    "name": "Rush of Vitality",
+    "description": "Gain +60% Movement Speed and greatly increased Jump Height for 10 seconds. 60 second cooldown. Cooldown cannot be recovered while the ability is active!",
+    "type": "origins:multiple",
+    "cd": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1200,
+        "start_value": 1200,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+            "bar_index": 16,
+            "condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:resource",
+                        "resource": "ucr_stitch:fairy/rush_of_vitality_cd",
+                        "comparison": "<",
+                        "compare_to": 1800
+                    },
+                    {
+                        "type": "origins:resource",
+                        "resource": "ucr_stitch:fairy/rush_of_vitality_duration",
+                        "comparison": "<=",
+                        "compare_to": 0
+                    }
+                ]
+            }
+        }
+    },
+    "ability": {
+        "condition": {
+            "type": "origins:resource",
+            "resource": "ucr_stitch:fairy/rush_of_vitality_cd",
+            "comparison": ">=",
+            "compare_to": 1200
+        },
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "ucr_stitch:fairy/rush_of_vitality_cd",
+                    "change": 0,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "ucr_stitch:fairy/rush_of_vitality_duration",
+                    "change": 200,
+                    "operation": "set"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "function ucr_stitch:fairy/rush_of_vitality_start"
+                }
+            ]
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.origins.primary_active"
+        }
+    },
+    "duration": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 200,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+            "bar_index": 16,
+            "condition": {
+                "type": "origins:resource",
+                "resource": "ucr_stitch:fairy/rush_of_vitality_duration",
+                "comparison": ">",
+                "compare_to": 0
+            }
+        }
+    },
+    "ability_tick": {
+        "condition": {
+            "type": "origins:resource",
+            "resource": "ucr_stitch:fairy/rush_of_vitality_duration",
+            "comparison": ">",
+            "compare_to": 0
+        },
+        "type": "origins:action_over_time",
+        "interval": 2,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "ucr_stitch:fairy/rush_of_vitality_duration",
+                    "change": -2,
+                    "operation": "add"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "function ucr_stitch:fairy/rush_of_vitality_trail"
+                },
+                {
+                    "type": "origins:chance",
+                    "chance": 0.05,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "function ucr_stitch:fairy/rush_of_vitality_trail_chance"
+                    }
+                }
+            ]
+        }
+    },
+    "speed_buff": {
+        "condition": {
+            "type": "origins:resource",
+            "resource": "ucr_stitch:fairy/rush_of_vitality_duration",
+            "comparison": ">",
+            "compare_to": 0
+        },
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.movement_speed",
+            "operation": "multiply_base",
+            "value": 0.6
+        },
+        "tick_rate": 2,
+        "update_health": false
+    },
+    "jump_buff": {
+        "condition": {
+            "type": "origins:resource",
+            "resource": "ucr_stitch:fairy/rush_of_vitality_duration",
+            "comparison": ">",
+            "compare_to": 0
+        },
+        "type": "origins:modify_jump",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": 3
+        },
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "function ucr_stitch:fairy/rush_of_vitality_jump"
+        }
+    },
+    "cd_tick": {
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "ucr_stitch:fairy/rush_of_vitality_cd",
+                    "comparison": "<",
+                    "compare_to": 1800
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "ucr_stitch:fairy/rush_of_vitality_duration",
+                    "comparison": "<=",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "type": "origins:action_over_time",
+        "interval": 5,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "ucr_stitch:fairy/rush_of_vitality_cd",
+            "change": 5,
+            "operation": "add"
+        }
+    },
+    "air_speed_buff": {
+        "condition": {
+            "type": "origins:resource",
+            "resource": "ucr_stitch:fairy/rush_of_vitality_duration",
+            "comparison": ">",
+            "compare_to": 0
+        },
+        "type": "origins:modify_air_speed",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": 1.5
+        }
+    }
+}

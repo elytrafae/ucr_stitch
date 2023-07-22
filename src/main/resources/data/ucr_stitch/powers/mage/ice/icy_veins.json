@@ -1,0 +1,30 @@
+{
+    "name": "Icy Veins",
+    "description": "Your Movement Speed and Attack Speed are reduced by 10%. Due to technical issues, you also cannot throw snowballs!",
+    "type": "origins:multiple",
+    "stat_mods": {
+        "type": "origins:attribute",
+        "modifiers": [
+            {
+                "attribute": "minecraft:generic.movement_speed",
+                "operation": "multiply_total",
+                "value": -0.1
+            },
+            {
+                "attribute": "minecraft:generic.attack_speed",
+                "operation": "multiply_total",
+                "value": -0.1
+            }
+        ],
+        "update_health": true
+    },
+    "no_snowballs": {
+        "type": "origins:prevent_item_use",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:snowball"
+            }
+        }
+    }
+}

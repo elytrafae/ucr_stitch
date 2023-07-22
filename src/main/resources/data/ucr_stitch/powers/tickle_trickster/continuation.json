@@ -1,0 +1,24 @@
+{
+    "name": "Continuation",
+    "description": "You spawn and respawn with a Feather already in your inventory.",
+    "type": "origins:multiple",
+    "spawn_stuff": {
+        "type": "origins:starting_equipment",
+        "stack": {
+            "item": "minecraft:feather",
+            "amount": 1
+        },
+        "recurrent": true
+    },
+    "funni_tooltip": {
+        "type": "origins:tooltip",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:feather"
+            }
+        },
+        "text": "Your ultimate weapon!",
+        "order": 0
+    }
+}

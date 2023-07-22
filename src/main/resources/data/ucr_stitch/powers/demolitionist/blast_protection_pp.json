@@ -1,0 +1,22 @@
+{
+    "name": "Blast Protection++",
+    "description": "You take 40% less damage from explosives and firework rockets.",
+    "type": "origins:modify_damage_taken",
+    "damage_condition": {
+        "type": "origins:or",
+        "conditions": [
+            {
+                "type": "origins:name",
+                "name": "fireworks"
+            },
+            {
+                "type": "origins:explosive"
+            }
+        ]
+    },
+    "modifier": {
+        "operation": "multiply_total_additive",
+        "value": -0.4,
+        "name": "blast_protection_pp"
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "name": "Fisherman",
+    "description": "Fish Tasty <3",
+    "powers": [
+        "ucr_stitch:fisherman/lure_or_luck",
+        "ucr_stitch:fisherman/debilitate",
+        "ucr_stitch:fisherman/curse_of_the_sea",
+        "ucr_stitch:zeus_wraith"
+    ],
+    "icon": {
+        "item": "minecraft:fishing_rod"
+    },
+    "impact": 1
+}

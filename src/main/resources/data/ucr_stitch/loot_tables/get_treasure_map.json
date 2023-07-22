@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:generic",
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": 1
+                        },
+                        {
+                            "function": "minecraft:exploration_map",
+                            "destination": "ucr_stitch:explorer_map_destinations",
+                            "decoration": "target_point",
+                            "search_radius": 200,
+                            "skip_existing_chunks": true
+                        }
+                    ],
+                    "type": "minecraft:item",
+                    "name": "minecraft:map"
+                }
+            ]
+        }
+    ]
+}

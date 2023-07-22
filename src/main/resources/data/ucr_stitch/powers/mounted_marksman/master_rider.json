@@ -1,0 +1,15 @@
+{
+    "name": "Master Rider",
+    "description": "Any living entity you ride gets +30% Speed. Horses also get +50% Jump Strength.",
+    "type": "origins:action_over_time",
+    "interval": 5,
+    "entity_action": {
+        "type": "origins:riding_action",
+        "action": {
+            "type": "origins:grant_power",
+            "power": "ucr_stitch:mounted_marksman/master_rider_effect",
+            "source": "ucr_stitch:mounted_marksman"
+        },
+        "recursive": true
+    }
+}

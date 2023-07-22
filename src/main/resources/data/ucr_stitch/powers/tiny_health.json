@@ -1,0 +1,11 @@
+{
+    "name": "Tiny Health",
+    "description": "Your Maximum Health is halved!",
+    "type": "origins:attribute",
+    "modifier": {
+        "attribute": "minecraft:generic.max_health",
+        "operation": "multiply_total",
+        "value": -0.5
+    },
+    "update_health": true
+}

@@ -1,0 +1,28 @@
+{
+    "order": 0,
+    "origins": [
+        "ucr_stitch:late_bloomer",
+        "ucr_stitch:farmer",
+        "ucr_stitch:fisherman",
+        "ucr_stitch:explorer",
+        "ucr_stitch:skater",
+        "ucr_stitch:tickle_trickster",
+        "ucr_stitch:mounted_marksman",
+        "ucr_stitch:traveling_merchant",
+        "ucr_stitch:demolitionist",
+        "ucr_stitch:fairy",
+        "ucr_stitch:merling_p",
+        "ucr_stitch:avian_p",
+        "ucr_stitch:witch",
+        "ucr_stitch:mage"
+    ],
+    "enabled": true,
+    "replace": true,
+    "missing_name": "None",
+    "missing_description": "You are not a mage!",
+    "allow_random": true,
+    "exclude_random": [
+        "ucr_stitch:mages/none"
+    ],
+    "auto_choose": true
+}

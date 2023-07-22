@@ -1,0 +1,9 @@
+{
+    "name": "Curse of the Sea",
+    "description": "You are good at fishing! Maybe too good . . . Drowned, Guardians and Elder Guardians may randomly appear when you are fishing.",
+    "type": "origins:replace_loot_table",
+    "replace": {
+        "minecraft:gameplay\\/fishing\\/([a-z|0-9|\\\\-|_])*": "ucr_stitch:fisherman_loot"
+    },
+    "priority": 0
+}

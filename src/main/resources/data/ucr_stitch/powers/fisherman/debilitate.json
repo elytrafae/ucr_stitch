@@ -1,0 +1,43 @@
+{
+    "name": "Debilitate",
+    "description": "Gain +3 Attack Damage and +2 Looting while you hold a Fishing Rod in your main hand.",
+    "type": "origins:multiple",
+    "bonus_attack": {
+        "condition": {
+            "type": "origins:equipped_item",
+            "equipment_slot": "mainhand",
+            "item_condition": {
+                "type": "origins:ingredient",
+                "ingredient": {
+                    "item": "minecraft:fishing_rod"
+                }
+            }
+        },
+        "type": "origins:conditioned_attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.attack_damage",
+            "operation": "addition",
+            "value": 3
+        },
+        "tick_rate": 1,
+        "update_health": false
+    },
+    "bonus_looting": {
+        "condition": {
+            "type": "origins:equipped_item",
+            "equipment_slot": "mainhand",
+            "item_condition": {
+                "type": "origins:ingredient",
+                "ingredient": {
+                    "item": "minecraft:fishing_rod"
+                }
+            }
+        },
+        "type": "apugli:modify_enchantment_level",
+        "enchantment": "minecraft:looting",
+        "modifier": {
+            "operation": "add_base_late",
+            "value": 2
+        }
+    }
+}

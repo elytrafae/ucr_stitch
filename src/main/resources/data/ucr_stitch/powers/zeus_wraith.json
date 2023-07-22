@@ -1,0 +1,53 @@
+{
+    "name": "Zeus's Wraith",
+    "description": "While exposed to the sky during a rain or thunderstorm, lightning might strike you unexpectedly!",
+    "type": "origins:multiple",
+    "rain": {
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:exposed_to_sky"
+                },
+                {
+                    "type": "origins:predicate",
+                    "predicate": "ucr_stitch:is_rain"
+                }
+            ]
+        },
+        "type": "origins:action_over_time",
+        "interval": 10,
+        "entity_action": {
+            "type": "origins:chance",
+            "chance": 0.05,
+            "action": {
+                "type": "origins:spawn_entity",
+                "entity_type": "minecraft:lightning_bolt"
+            }
+        }
+    },
+    "thunderstorm": {
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:exposed_to_sky"
+                },
+                {
+                    "type": "origins:predicate",
+                    "predicate": "ucr_stitch:is_thunderstorm"
+                }
+            ]
+        },
+        "type": "origins:action_over_time",
+        "interval": 10,
+        "entity_action": {
+            "type": "origins:chance",
+            "chance": 0.1,
+            "action": {
+                "type": "origins:spawn_entity",
+                "entity_type": "minecraft:lightning_bolt"
+            }
+        }
+    }
+}

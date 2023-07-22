@@ -1,0 +1,1 @@
+execute as @s at @s anchored eyes run particle minecraft:dust 1.0 0.0 0.0 1 ^ ^ ^ 0.3 0.5 0.3 0.8 50 force

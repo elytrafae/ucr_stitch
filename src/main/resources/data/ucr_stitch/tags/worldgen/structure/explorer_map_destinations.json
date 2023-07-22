@@ -1,0 +1,25 @@
+{
+    "values": [
+        "minecraft:ancient_city",
+        "minecraft:bastion_remnant",
+        "minecraft:buried_treasure",
+        "minecraft:desert_pyramid",
+        "minecraft:end_city",
+        "minecraft:fortress",
+        "minecraft:igloo",
+        "minecraft:jungle_pyramid",
+        "minecraft:mansion",
+        "minecraft:mineshaft",
+        "minecraft:mineshaft_mesa",
+        "minecraft:monument",
+        "minecraft:nether_fossil",
+        "minecraft:ocean_ruin_cold",
+        "minecraft:ocean_ruin_warm",
+        "minecraft:pillager_outpost",
+        "#minecraft:ruined_portal",
+        "#minecraft:shipwreck",
+        "#minecraft:village",
+        "minecraft:stronghold",
+        "minecraft:swamp_hut"
+    ]
+}

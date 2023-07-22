@@ -1,0 +1,13 @@
+{
+    "name": "Time Mage",
+    "description": "The ability to control time is not an exact science . . .",
+    "powers": [
+        "ucr_stitch:mage/time/time_stop",
+        "ucr_stitch:mage/time/fast_forward",
+        "ucr_stitch:mage/time/clockwork_failure"
+    ],
+    "icon": {
+        "item": "minecraft:clock"
+    },
+    "impact": 0
+}

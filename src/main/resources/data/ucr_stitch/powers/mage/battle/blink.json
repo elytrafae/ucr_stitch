@@ -1,0 +1,51 @@
+{
+    "name": "Blink",
+    "description": "Teleport a short distance in the direction you are moving. Costs 120 Mana. Cooldown of 1 second.",
+    "condition": {
+        "type": "origins:resource",
+        "resource": "ucr_stitch:mage/essence_real",
+        "comparison": ">=",
+        "compare_to": 120
+    },
+    "type": "origins:active_self",
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:change_resource",
+                "resource": "ucr_stitch:mage/essence_real",
+                "change": -120,
+                "operation": "add"
+            },
+            {
+                "type": "origins:add_velocity",
+                "z": 30,
+                "space": "velocity_horizontal_normalized",
+                "client": true,
+                "server": true,
+                "set": true
+            },
+            {
+                "type": "origins:delay",
+                "action": {
+                    "type": "origins:add_velocity",
+                    "x": 0,
+                    "y": 0,
+                    "z": 0,
+                    "space": "world",
+                    "client": true,
+                    "server": true,
+                    "set": true
+                },
+                "ticks": 1
+            }
+        ]
+    },
+    "cooldown": 1,
+    "hud_render": {
+        "should_render": false
+    },
+    "key": {
+        "key": "key.origins.primary_active"
+    }
+}

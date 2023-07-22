@@ -1,0 +1,24 @@
+{
+    "name": "Daring Dish",
+    "description": "Food restores double Hunger and Saturation when you're at 6 hunger points or less.",
+    "condition": {
+        "type": "origins:food_level",
+        "comparison": "<=",
+        "compare_to": 6
+    },
+    "type": "origins:modify_food",
+    "food_modifier": {
+        "operation": "multiply_total",
+        "value": 1
+    },
+    "saturation_modifier": {
+        "operation": "multiply_total",
+        "value": 1
+    },
+    "entity_action": {
+        "type": "origins:play_sound",
+        "sound": "minecraft:entity.player.burp",
+        "volume": 1,
+        "pitch": 0.8
+    }
+}

@@ -1,0 +1,175 @@
+{
+    "name": "Witch: Great Wand",
+    "description": "Zap a foe with arcane power, dealing 6 Damage. Then, every mob within 3 blocks of them is also zapped for 1 less damage, and so on. The maximum distance from you is 24 blocks. Has a cooldown of 30 seconds if you hit, or 1 second if you miss.",
+    "type": "origins:multiple",
+    "active": {
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_cooldown",
+                    "comparison": ">=",
+                    "compare_to": 600
+                },
+                {
+                    "inverted": true,
+                    "type": "origins:riding",
+                    "bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:in_tag",
+                            "tag": "ucr_stitch:brooms"
+                        }
+                    }
+                }
+            ]
+        },
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_cooldown",
+                    "change": -20,
+                    "operation": "add"
+                },
+                {
+                    "type": "origins:raycast",
+                    "distance": 12,
+                    "block": true,
+                    "entity": true,
+                    "shape_type": "collider",
+                    "fluid_handling": "none",
+                    "bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:living"
+                        }
+                    },
+                    "bientity_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:actor_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:change_resource",
+                                            "resource": "*:*_cooldown",
+                                            "change": 0,
+                                            "operation": "set"
+                                        },
+                                        {
+                                            "type": "origins:play_sound",
+                                            "sound": "minecraft:entity.allay.death",
+                                            "volume": 1,
+                                            "pitch": 0.5
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "scoreboard players set @s CMD_WBDMG 6"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "function ucr_stitch:witch/wand_bounce"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "origins:actor_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "function ucr_stitch:witch/wand_clear_var"
+                                        },
+                                        {
+                                            "type": "origins:area_of_effect",
+                                            "radius": 24,
+                                            "bientity_condition": {
+                                                "type": "origins:target_condition",
+                                                "condition": {
+                                                    "type": "origins:and",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "origins:living"
+                                                        },
+                                                        {
+                                                            "type": "origins:power",
+                                                            "power": "ucr_stitch:witch/wand_effect"
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "bientity_action": {
+                                                "type": "origins:damage",
+                                                "amount": 1,
+                                                "source": {
+                                                    "name": "magic",
+                                                    "magic": true
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "power revoke @e ucr_stitch:witch/wand_effect"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "command_along_ray": "particle minecraft:dust 0.6 0.1 0.5 1 ^ ^ ^ 0 0 0 0 2 force",
+                    "command_step": 0.5
+                }
+            ]
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.origins.secondary_active"
+        }
+    },
+    "cooldown": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 600,
+        "start_value": 600,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "bar_index": 5,
+            "condition": {
+                "type": "origins:resource",
+                "resource": "*:*_cooldown",
+                "comparison": "<",
+                "compare_to": 600
+            }
+        }
+    },
+    "cd_tick": {
+        "type": "origins:action_over_time",
+        "interval": 4,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_cooldown",
+            "change": 4,
+            "operation": "add"
+        }
+    }
+}

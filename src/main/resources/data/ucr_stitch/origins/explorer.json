@@ -1,0 +1,16 @@
+{
+    "name": "Explorer",
+    "description": "None have traveled farther and wider than this brave soul!",
+    "powers": [
+        "ucr_stitch:explorer/backpack",
+        "ucr_stitch:explorer/explorer_instinct",
+        "ucr_stitch:explorer/daring_dish",
+        "ucr_stitch:explorer/night_vision_goggles",
+        "ucr_stitch:explorer/slow_and_steady",
+        "ucr_stitch:explorer/farmhand_klutz"
+    ],
+    "icon": {
+        "item": "minecraft:filled_map"
+    },
+    "impact": 2
+}

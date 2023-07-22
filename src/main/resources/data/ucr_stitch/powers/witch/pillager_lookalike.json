@@ -1,0 +1,11 @@
+{
+    "name": "Pillager Lookalike",
+    "description": "You refuse to take a side in the Villager-Pillager war. However, nor Villagers, nor Pillagers trust you, and Iron Golems attack you on sight.",
+    "type": "origins:multiple",
+    "notrades": {
+        "type": "origins:prevent_entity_use",
+        "bientity_condition": {
+            "type": "origins:and"
+        }
+    }
+}

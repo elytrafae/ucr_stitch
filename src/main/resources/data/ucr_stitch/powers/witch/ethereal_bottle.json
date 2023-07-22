@@ -1,0 +1,134 @@
+{
+    "name": "Witch: Ethereal Bottle",
+    "description": "Throw a splash potion copy of the potion you are holding with greater strength. The cooldown is 1 minute and is shared with Special Delivery.",
+    "type": "origins:multiple",
+    "cooldown": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1200,
+        "start_value": 1200,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+            "bar_index": 23,
+            "condition": {
+                "type": "origins:resource",
+                "resource": "*:*_cooldown",
+                "comparison": "<",
+                "compare_to": 1200
+            }
+        }
+    },
+    "active": {
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_cooldown",
+                    "comparison": ">=",
+                    "compare_to": 1200
+                },
+                {
+                    "inverted": true,
+                    "type": "origins:riding",
+                    "bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                            "type": "origins:in_tag",
+                            "tag": "ucr_stitch:brooms"
+                        }
+                    }
+                }
+            ]
+        },
+        "type": "origins:active_self",
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "inverted": true,
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "tag": "ucr_stitch:potions"
+                                    }
+                                }
+                            },
+                            {
+                                "inverted": true,
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "tag": "ucr_stitch:potions"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "tellraw @s {\"text\":\"Hold a Potion before using this!\",\"bold\":true,\"color\":\"light_purple\"}"
+                    },
+                    "else_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_cooldown",
+                                "change": 0,
+                                "operation": "set"
+                            },
+                            {
+                                "type": "eggolib:fire_projectile",
+                                "entity_type": "minecraft:potion",
+                                "divergence": 0,
+                                "speed": 1.4,
+                                "entity_action": {
+                                    "type": "origins:execute_command",
+                                    "command": "tag @s add CMD_WitchPotion"
+                                }
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "function ucr_stitch:witch/set_potion"
+                            },
+                            {
+                                "type": "origins:play_sound",
+                                "sound": "minecraft:entity.witch.throw",
+                                "volume": 1,
+                                "pitch": 0.8
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "cooldown": 1,
+        "hud_render": {
+            "should_render": false
+        },
+        "key": {
+            "key": "key.origins.primary_active"
+        }
+    },
+    "cdtick": {
+        "type": "origins:action_over_time",
+        "interval": 4,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_cooldown",
+            "change": 4,
+            "operation": "add"
+        }
+    }
+}

@@ -1,0 +1,1 @@
+playsound minecraft:entity.generic.death player @a ~ ~ ~ 3 0.8
