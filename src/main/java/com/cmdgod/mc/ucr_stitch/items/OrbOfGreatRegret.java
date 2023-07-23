@@ -27,7 +27,7 @@ public class OrbOfGreatRegret extends TooltippedItem {
         if (world.isClient) {
             return TypedActionResult.success(user.getStackInHand(hand));
         }
-        world.getServer().getCommandManager().executeWithPrefix(user.getCommandSource().withMaxLevel(2).withOutput(CommandOutput.DUMMY), "tp @s ~ ~1 ~");
+        world.getServer().getCommandManager().executeWithPrefix(user.getCommandSource().withMaxLevel(2).withOutput(CommandOutput.DUMMY), "function ucr_stitch:skill_point_reset/start");
         return TypedActionResult.success(user.getStackInHand(hand));
     }
     
