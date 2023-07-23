@@ -25,10 +25,11 @@ public class OrbOfGreatRegret extends TooltippedItem {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (world.isClient) {
-            return TypedActionResult.success(user.getStackInHand(hand));
+            return TypedActionResult.consume(user.getStackInHand(hand));
         }
         world.getServer().getCommandManager().executeWithPrefix(user.getCommandSource().withMaxLevel(2).withOutput(CommandOutput.DUMMY), "function ucr_stitch:skill_point_reset/start");
-        return TypedActionResult.success(user.getStackInHand(hand));
+        user.getStackInHand(hand).decrement(1);
+        return TypedActionResult.consume(user.getStackInHand(hand));
     }
     
 }

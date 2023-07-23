@@ -52,7 +52,7 @@ public class ItemRegistrer {
     public static final Item GRAVITY_DUPER_SIDE = new GravityDuperPartItem(new FabricItemSettings().group(ITEM_GROUP), GravityDuperPartItem.PartType.SIDE);
 
     public static final Item HEAD_FRAGMENT = new TooltippedItem(new FabricItemSettings().group(ITEM_GROUP));
-    public static final Item ORB_OF_GREAT_REGRET = new OrbOfGreatRegret(new FabricItemSettings().group(ITEM_GROUP));
+    public static final Item ORB_OF_GREAT_REGRET = new OrbOfGreatRegret(new FabricItemSettings().group(ITEM_GROUP).maxCount(1));
 
     public static void registerAll() {
         UCRStitch.LOGGER.info("UCR Stitch: Items registered!");

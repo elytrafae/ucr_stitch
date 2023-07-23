@@ -248,7 +248,7 @@ public class GravityDuperBlockEntity extends BlockEntity implements ImplementedI
     }
 
     private boolean canBeCombined(ItemStack s1, ItemStack s2) {
-        return s1.isEmpty() || s2.isEmpty() || (ItemStack.canCombine(s1, s2) && (s1.getMaxCount() > s1.getCount() + s2.getCount()));
+        return s1.isEmpty() || s2.isEmpty() || (ItemStack.canCombine(s1, s2) && (s1.getMaxCount() >= s1.getCount() + s2.getCount()));
     }
 
     @Override

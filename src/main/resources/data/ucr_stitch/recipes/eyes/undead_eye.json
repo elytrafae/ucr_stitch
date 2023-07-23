@@ -10,19 +10,19 @@
             "item": "minecraft:rotten_flesh"
         },
         "A": {
-            "item": "aylyth:ghostcap_mushroom"
+            "item": "bewitchment:belladonna"
         },
         "B": {
             "item": "minecraft:bone"
         },
         "H": {
-            "item": "aylyth:ympe_log"
+            "item": "bewitchment:cypress_log"
         },
         "E": {
             "item": "minecraft:ender_eye"
         },
         "L": {
-            "item": "aylyth:writhewood_log"
+            "item": "bewitchment:elder_log"
         },
         "F": {
             "item": "minecraft:fermented_spider_eye"
