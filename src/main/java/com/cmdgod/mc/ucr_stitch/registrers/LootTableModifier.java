@@ -1,6 +1,7 @@
 package com.cmdgod.mc.ucr_stitch.registrers;
 
 import java.lang.reflect.Array;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -21,6 +22,7 @@ import net.minecraft.util.registry.Registry;
 public class LootTableModifier {
 
     private static final Identifier RANDOM_PROFESSION_LOOT_TABLE = new Identifier(UCRStitch.MOD_NAMESPACE, "random_villager_profession");
+    private static HashMap<Identifier, Double> NAUTILUS_CHANCES = new HashMap<>();
 
     // Decided to not add it for balancing and technical concerns with workstations
     private static void addRandomProfessionLootTable() {
@@ -37,7 +39,7 @@ public class LootTableModifier {
         });
     }
 
-    public static void addHeadsToZombieLootTables() {
+    private static void addHeadsToZombieLootTables() {
 		Identifier ZOMBIE_LOOT_DROP_ID = new Identifier("minecraft:entities/zombie");
 		Identifier ZOMBIE_VILLAGER_LOOT_DROP_ID = new Identifier("minecraft:entities/zombie_villager");
 
@@ -54,8 +56,41 @@ public class LootTableModifier {
 		});
 	}
 
+    private static void addExtraNautilus() {
+        NAUTILUS_CHANCES.put(new Identifier("minecraft:entities/drowned"), 0.01);
+        NAUTILUS_CHANCES.put(new Identifier("minecraft:entities/guardian"), 0.1);
+
+        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
+			if (source.isBuiltin() && NAUTILUS_CHANCES.containsKey(id)) {
+                double d = NAUTILUS_CHANCES.get(id);
+                float f = (float)d;
+				LootPool.Builder poolBuilder = LootPool.builder()
+												.with(ItemEntry.builder(Items.NAUTILUS_SHELL).weight(1))
+												.conditionally(RandomChanceWithLootingLootCondition.builder(f, 0.01f));
+ 
+        		tableBuilder.pool(poolBuilder);
+			}
+		});
+    }
+
+    private static void addRedSandToHusks() {
+        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
+			if (source.isBuiltin() && id.equals(new Identifier("minecraft:entities/husk"))) {
+				LootPool.Builder poolBuilder = LootPool.builder()
+												.with(ItemEntry.builder(Items.RED_SAND).weight(1))
+                                                .with(ItemEntry.builder(Items.RED_SANDSTONE).weight(1))
+												.conditionally(RandomChanceWithLootingLootCondition.builder(0.2f, 0.01f));
+ 
+        		tableBuilder.pool(poolBuilder);
+			}
+		});
+    }
+
     public static void doAllChanges() {
+        UCRStitch.LOGGER.info("UCR Stitch: Loot tables modified!");
         addHeadsToZombieLootTables();
+        addExtraNautilus();
+        addRedSandToHusks();
     }
 
 }

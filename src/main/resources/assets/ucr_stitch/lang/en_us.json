@@ -2,6 +2,8 @@
     "itemGroup.ucr_stitch.misc_group": "UCR Stitch",
     "item.ucr_stitch.head_fragment": "Head Fragment",
     "item.ucr_stitch.head_fragment.desc": "§5Spend these with /head§r",
+    "item.ucr_stitch.orb_of_great_regret": "Orb Of Great Regret",
+    "item.ucr_stitch.orb_of_great_regret.desc": "§5Resets your skill points§r",
     "block.ucr_stitch.woodcutter": "Woodcutter",
 
     "block.ucr_stitch.gravity_duper": "Gravity Duper",
