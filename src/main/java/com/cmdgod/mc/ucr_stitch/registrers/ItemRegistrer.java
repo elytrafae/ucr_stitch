@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.cmdgod.mc.ucr_stitch.UCRStitch;
 import com.cmdgod.mc.ucr_stitch.items.GravityDuperPartItem;
+import com.cmdgod.mc.ucr_stitch.items.Multitool;
 import com.cmdgod.mc.ucr_stitch.items.OrbOfGreatRegret;
 import com.cmdgod.mc.ucr_stitch.items.TooltippedItem;
 
@@ -13,11 +14,16 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.AxeItem;
 import net.minecraft.item.FoodComponent;
+import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.item.PickaxeItem;
+import net.minecraft.item.ShovelItem;
+import net.minecraft.item.ToolMaterials;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -54,6 +60,13 @@ public class ItemRegistrer {
     public static final Item HEAD_FRAGMENT = new TooltippedItem(new FabricItemSettings().group(ITEM_GROUP));
     public static final Item ORB_OF_GREAT_REGRET = new OrbOfGreatRegret(new FabricItemSettings().group(ITEM_GROUP).maxCount(1));
 
+    public static final Item DIAMOND_MULTITOOL = new Multitool(1.125f, -2.2f, ToolMaterials.DIAMOND, new FabricItemSettings().group(ITEM_GROUP), 
+        (HoeItem)Items.DIAMOND_HOE, 
+        (ShovelItem)Items.DIAMOND_SHOVEL,
+        (AxeItem)Items.DIAMOND_AXE,
+        (PickaxeItem)Items.DIAMOND_PICKAXE
+    );
+
     public static void registerAll() {
         UCRStitch.LOGGER.info("UCR Stitch: Items registered!");
         registerItem("edified_energy_bar", EDIFIED_ENERGY_BAR);
@@ -65,6 +78,8 @@ public class ItemRegistrer {
 
         registerItem("head_fragment", HEAD_FRAGMENT);
         registerItem("orb_of_great_regret", ORB_OF_GREAT_REGRET);
+
+        registerItem("diamond_multitool", DIAMOND_MULTITOOL);
     }
 
     public static Item GRAVITY_DUPER_ITEM;

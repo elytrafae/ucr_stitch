@@ -7,7 +7,7 @@
     ],
     "key": {
         "#": {
-            "item": "betterend:silk_fiber"
+            "item": "minecraft:string"
         },
         "E": {
             "item": "minecraft:end_stone"
