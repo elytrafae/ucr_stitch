@@ -6,6 +6,13 @@
     "item.ucr_stitch.orb_of_great_regret.desc": "§7Crafting ingredient§r",
     "block.ucr_stitch.woodcutter": "Woodcutter",
 
+    "item.ucr_stitch.wooden_multitool": "Wooden Multitool",
+    "item.ucr_stitch.stone_multitool": "Stone Multitool",
+    "item.ucr_stitch.iron_multitool": "Iron Multitool",
+    "item.ucr_stitch.golden_multitool": "Golden Multitool",
+    "item.ucr_stitch.diamond_multitool": "Diamond Multitool",
+    "item.ucr_stitch.netherite_multitool": "Netherite Multitool",
+
     "block.ucr_stitch.gravity_duper": "Gravity Duper",
     "block.ucr_stitch.gravity_duper.error": "ERROR: Invalid item/recipe for duping! Please break the block and construct a new one!",
     "block.ucr_stitch.gravity_duper.duped_block": "Block: %s",

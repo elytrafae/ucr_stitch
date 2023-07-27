@@ -1,16 +1,9 @@
 package com.cmdgod.mc.ucr_stitch.items;
 
-import java.util.Map;
-
-
 import com.cmdgod.mc.ucr_stitch.UCRStitch;
-import com.google.common.base.Predicate;
+import com.cmdgod.mc.ucr_stitch.registrers.ItemRegistrer;
 import com.google.common.collect.Multimap;
 
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.entity.StructureBlockBlockEntity.Action;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -19,17 +12,14 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.ItemUsageContext;
-import net.minecraft.item.Items;
 import net.minecraft.item.MiningToolItem;
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ShovelItem;
-import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.tag.TagKey;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import com.mojang.datafixers.util.Pair;
 
 public class Multitool extends MiningToolItem {
 
@@ -41,18 +31,19 @@ public class Multitool extends MiningToolItem {
     AxeItem axe;
     PickaxeItem pickaxe;
 
-    public Multitool(ToolMaterial material, Settings settings, HoeItem hoe, ShovelItem shovel, AxeItem axe, PickaxeItem pickaxe) {
+    public Multitool(Settings settings, HoeItem hoe, ShovelItem shovel, AxeItem axe, PickaxeItem pickaxe) {
         super(
                 getAverageAttackDamage(hoe, shovel, axe, pickaxe), 
                 getAverageAttackSpeed(hoe, shovel, axe, pickaxe), 
-                material, 
+                hoe.getMaterial(), 
                 TagKey.of(Registry.BLOCK_KEY, new Identifier(UCRStitch.MOD_NAMESPACE, "mineable/multitool")), 
-                settings.maxDamage(material.getDurability() * 3)
+                settings.maxDamage(hoe.getMaterial().getDurability() * 3)
             );
         this.hoe = hoe;
         this.shovel = shovel;
         this.axe = axe;
         this.pickaxe = pickaxe;
+        ItemRegistrer.MULTITOOLS.put(hoe.getMaterial(), this);
         //UCRStitch.LOGGER.info(material.toString() + " has attack damage of " + getAverageAttackDamage(hoe, shovel, axe, pickaxe) + " and an attack speed of " + getAverageAttackSpeed(hoe, shovel, axe, pickaxe));
     }
 

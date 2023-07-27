@@ -1,6 +1,8 @@
 package com.cmdgod.mc.ucr_stitch.registrers;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.HashMap;
 
 import com.cmdgod.mc.ucr_stitch.UCRStitch;
 import com.cmdgod.mc.ucr_stitch.items.GravityDuperPartItem;
@@ -23,6 +25,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ShovelItem;
+import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.ToolMaterials;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -30,6 +33,7 @@ import net.minecraft.util.registry.Registry;
 public class ItemRegistrer {
 
     private static ArrayList<Item> ITEMS = new ArrayList<>();
+    public static HashMap<ToolMaterial, Multitool> MULTITOOLS = new HashMap<>();
 
     public static final ItemGroup ITEM_GROUP = FabricItemGroupBuilder
             .create(new Identifier(UCRStitch.MOD_NAMESPACE, "misc_group"))
@@ -60,42 +64,42 @@ public class ItemRegistrer {
     public static final Item HEAD_FRAGMENT = new TooltippedItem(new FabricItemSettings().group(ITEM_GROUP));
     public static final Item ORB_OF_GREAT_REGRET = new OrbOfGreatRegret(new FabricItemSettings().group(ITEM_GROUP).maxCount(16));
 
-    public static final Item WOODEN_MULTITOOL = new Multitool(ToolMaterials.WOOD, new FabricItemSettings().group(ITEM_GROUP), 
+    public static final Item WOODEN_MULTITOOL = new Multitool(new FabricItemSettings().group(ITEM_GROUP), 
         (HoeItem)Items.WOODEN_HOE, 
         (ShovelItem)Items.WOODEN_SHOVEL,
         (AxeItem)Items.WOODEN_AXE,
         (PickaxeItem)Items.WOODEN_PICKAXE
     );
 
-    public static final Item STONE_MULTITOOL = new Multitool(ToolMaterials.STONE, new FabricItemSettings().group(ITEM_GROUP), 
+    public static final Item STONE_MULTITOOL = new Multitool(new FabricItemSettings().group(ITEM_GROUP), 
         (HoeItem)Items.STONE_HOE, 
         (ShovelItem)Items.STONE_SHOVEL,
         (AxeItem)Items.STONE_AXE,
         (PickaxeItem)Items.STONE_PICKAXE
     );
 
-    public static final Item IRON_MULTITOOL = new Multitool(ToolMaterials.IRON, new FabricItemSettings().group(ITEM_GROUP), 
+    public static final Item IRON_MULTITOOL = new Multitool(new FabricItemSettings().group(ITEM_GROUP), 
         (HoeItem)Items.IRON_HOE, 
         (ShovelItem)Items.IRON_SHOVEL,
         (AxeItem)Items.IRON_AXE,
         (PickaxeItem)Items.IRON_PICKAXE
     );
 
-    public static final Item GOLDEN_MULTITOOL = new Multitool(ToolMaterials.GOLD, new FabricItemSettings().group(ITEM_GROUP), 
+    public static final Item GOLDEN_MULTITOOL = new Multitool(new FabricItemSettings().group(ITEM_GROUP), 
         (HoeItem)Items.GOLDEN_HOE, 
         (ShovelItem)Items.GOLDEN_SHOVEL,
         (AxeItem)Items.GOLDEN_AXE,
         (PickaxeItem)Items.GOLDEN_PICKAXE
     );
 
-    public static final Item DIAMOND_MULTITOOL = new Multitool(ToolMaterials.DIAMOND, new FabricItemSettings().group(ITEM_GROUP), 
+    public static final Item DIAMOND_MULTITOOL = new Multitool(new FabricItemSettings().group(ITEM_GROUP), 
         (HoeItem)Items.DIAMOND_HOE, 
         (ShovelItem)Items.DIAMOND_SHOVEL,
         (AxeItem)Items.DIAMOND_AXE,
         (PickaxeItem)Items.DIAMOND_PICKAXE
     );
 
-    public static final Item NETHERITE_MULTITOOL = new Multitool(ToolMaterials.NETHERITE, new FabricItemSettings().group(ITEM_GROUP), 
+    public static final Item NETHERITE_MULTITOOL = new Multitool(new FabricItemSettings().group(ITEM_GROUP).fireproof(), 
         (HoeItem)Items.NETHERITE_HOE, 
         (ShovelItem)Items.NETHERITE_SHOVEL,
         (AxeItem)Items.NETHERITE_AXE,

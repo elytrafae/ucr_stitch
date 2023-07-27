@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "ucr_stitch:item/netherite_multitool"
+  }
+}
