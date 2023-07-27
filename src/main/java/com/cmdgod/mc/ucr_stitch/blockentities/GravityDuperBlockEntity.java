@@ -103,7 +103,7 @@ public class GravityDuperBlockEntity extends BlockEntity implements ImplementedI
         if (be.fuelTicks <= 0 && !isHalted && isStackFuel(fuelStack)) {
             be.fuelTicks = FuelRegistry.INSTANCE.get(fuelStack.getItem());
             if (fuelStack.getCount() == 1) {
-                be.setStack(FUEL_SLOT, fuelStack.getRecipeRemainder());
+                be.setStack(FUEL_SLOT, new ItemStack(fuelStack.getItem().getRecipeRemainder()));
             } else {
                 fuelStack.decrement(1);
             }

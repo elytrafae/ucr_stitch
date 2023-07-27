@@ -7,7 +7,10 @@
             "type": "origins:and",
             "conditions": [
                 {
-                    "type": "origins:exposed_to_sky"
+                    "type": "origins:resource",
+                    "resource": "*:*_resource",
+                    "comparison": ">=",
+                    "compare_to": 200
                 },
                 {
                     "type": "origins:predicate",
@@ -16,10 +19,10 @@
             ]
         },
         "type": "origins:action_over_time",
-        "interval": 10,
+        "interval": 30,
         "entity_action": {
             "type": "origins:chance",
-            "chance": 0.05,
+            "chance": 0.15,
             "action": {
                 "type": "origins:spawn_entity",
                 "entity_type": "minecraft:lightning_bolt"
@@ -31,7 +34,10 @@
             "type": "origins:and",
             "conditions": [
                 {
-                    "type": "origins:exposed_to_sky"
+                    "type": "origins:resource",
+                    "resource": "*:*_resource",
+                    "comparison": ">=",
+                    "compare_to": 200
                 },
                 {
                     "type": "origins:predicate",
@@ -40,13 +46,52 @@
             ]
         },
         "type": "origins:action_over_time",
-        "interval": 10,
+        "interval": 30,
         "entity_action": {
             "type": "origins:chance",
-            "chance": 0.1,
+            "chance": 0.3,
             "action": {
                 "type": "origins:spawn_entity",
                 "entity_type": "minecraft:lightning_bolt"
+            }
+        }
+    },
+    "resource": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 200,
+        "start_value": 0,
+        "hud_render": {
+            "should_render": true
+        }
+    },
+    "resource_tick": {
+        "type": "origins:action_over_time",
+        "interval": 20,
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:exposed_to_sky"
+                    },
+                    {
+                        "type": "origins:in_rain"
+                    }
+                ]
+            },
+            "if_action": {
+                "type": "origins:change_resource",
+                "resource": "*:*_resource",
+                "change": 20,
+                "operation": "add"
+            },
+            "else_action": {
+                "type": "origins:change_resource",
+                "resource": "*:*_resource",
+                "change": -10,
+                "operation": "add"
             }
         }
     }

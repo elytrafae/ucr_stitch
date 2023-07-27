@@ -5,7 +5,7 @@
         "ucr_stitch:traveling_merchant/pockets",
         "ucr_stitch:traveling_merchant/business_advice",
         "ucr_stitch:traveling_merchant/nightly_fright",
-        "ucr_stitch:traveling_merchant/crippling_fear"
+        "ucr_stitch:traveling_merchant/present_ignorance"
     ],
     "icon": {
         "item": "minecraft:emerald"

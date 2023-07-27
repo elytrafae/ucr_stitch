@@ -1,0 +1,26 @@
+{
+    "name": "sniF",
+    "description": "You can swim in lava and swim faster while doing so!",
+    "type": "origins:multiple",
+    "speed": {
+        "condition": {
+            "type": "origins:fluid_height",
+            "fluid": "minecraft:lava",
+            "comparison": ">",
+            "compare_to": 0
+        },
+        "type": "origins:modify_swim_speed",
+        "modifier": {
+            "operation": "multiply_base",
+            "value": 1.3,
+            "name": "Additional lava speed"
+        }
+    },
+    "swim": {
+        "condition": {
+            "type": "origins:submerged_in",
+            "fluid": "minecraft:lava"
+        },
+        "type": "origins:swimming"
+    }
+}

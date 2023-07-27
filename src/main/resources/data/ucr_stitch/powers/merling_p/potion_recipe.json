@@ -1,0 +1,6 @@
+{
+    "type": "origins:recipe",
+    "recipe": {
+        "type": "minecraft:crafting_shaped"
+    }
+}

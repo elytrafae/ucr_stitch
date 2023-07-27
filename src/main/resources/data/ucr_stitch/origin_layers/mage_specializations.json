@@ -23,5 +23,7 @@
         "choose_origin": "Choose a Specialization!",
         "view_origin": "This is your Specialization."
     },
+    "missing_name": "None",
+    "missing_description": "You are not a mage!",
     "allow_random": true
 }

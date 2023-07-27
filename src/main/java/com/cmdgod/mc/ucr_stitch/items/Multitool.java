@@ -2,13 +2,19 @@ package com.cmdgod.mc.ucr_stitch.items;
 
 import java.util.Map;
 
+
 import com.cmdgod.mc.ucr_stitch.UCRStitch;
 import com.google.common.base.Predicate;
+import com.google.common.collect.Multimap;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.StructureBlockBlockEntity.Action;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.attribute.EntityAttribute;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.HoeItem;
@@ -35,12 +41,35 @@ public class Multitool extends MiningToolItem {
     AxeItem axe;
     PickaxeItem pickaxe;
 
-    public Multitool(float attackDamage, float attackSpeed, ToolMaterial material, Settings settings, HoeItem hoe, ShovelItem shovel, AxeItem axe, PickaxeItem pickaxe) {
-        super(attackDamage, attackSpeed, material, TagKey.of(Registry.BLOCK_KEY, new Identifier(UCRStitch.MOD_NAMESPACE, "mineable/multitool")), settings.maxDamage(material.getDurability() * 3) );
+    public Multitool(ToolMaterial material, Settings settings, HoeItem hoe, ShovelItem shovel, AxeItem axe, PickaxeItem pickaxe) {
+        super(
+                getAverageAttackDamage(hoe, shovel, axe, pickaxe), 
+                getAverageAttackSpeed(hoe, shovel, axe, pickaxe), 
+                material, 
+                TagKey.of(Registry.BLOCK_KEY, new Identifier(UCRStitch.MOD_NAMESPACE, "mineable/multitool")), 
+                settings.maxDamage(material.getDurability() * 3)
+            );
         this.hoe = hoe;
         this.shovel = shovel;
         this.axe = axe;
         this.pickaxe = pickaxe;
+        //UCRStitch.LOGGER.info(material.toString() + " has attack damage of " + getAverageAttackDamage(hoe, shovel, axe, pickaxe) + " and an attack speed of " + getAverageAttackSpeed(hoe, shovel, axe, pickaxe));
+    }
+
+    private static float getAverageAttackDamage(HoeItem hoe, ShovelItem shovel, AxeItem axe, PickaxeItem pickaxe) {
+        return (hoe.getAttackDamage() + shovel.getAttackDamage() + axe.getAttackDamage() + pickaxe.getAttackDamage())/4;
+    }
+
+    private static float getAverageAttackSpeed(HoeItem hoe, ShovelItem shovel, AxeItem axe, PickaxeItem pickaxe) {
+        return (getAttackSpeedFrom(hoe) + getAttackSpeedFrom(pickaxe) + getAttackSpeedFrom(shovel) + getAttackSpeedFrom(pickaxe))/4;
+    }
+
+    private static float getAttackSpeedFrom(MiningToolItem toolItem) {
+        Multimap<EntityAttribute, EntityAttributeModifier> modifiers = toolItem.getAttributeModifiers(EquipmentSlot.MAINHAND);
+        if (modifiers.containsKey(EntityAttributes.GENERIC_ATTACK_SPEED)) {
+            return (float)modifiers.get(EntityAttributes.GENERIC_ATTACK_SPEED).iterator().next().getValue();
+        }
+        return 0;
     }
 
     @Override
@@ -55,12 +84,12 @@ public class Multitool extends MiningToolItem {
         // First try
         if (crouched) {
             result = hoe.useOnBlock(context);
-            if (result.compareTo(ActionResult.SUCCESS) == 0) {
+            if (result.compareTo(ActionResult.PASS) != 0) {
                 return result;
             }
         } else {
             result = shovel.useOnBlock(context);
-            if (result.compareTo(ActionResult.SUCCESS) == 0) {
+            if (result.compareTo(ActionResult.PASS) != 0) {
                 return result;
             }
         }
@@ -68,19 +97,19 @@ public class Multitool extends MiningToolItem {
         // Second try, reversed. Make sure the code below is the same as above, but copy-pasted!
         if (!crouched) {
             result = hoe.useOnBlock(context);
-            if (result.compareTo(ActionResult.SUCCESS) == 0) {
+            if (result.compareTo(ActionResult.PASS) != 0) {
                 return result;
             }
         } else {
             result = shovel.useOnBlock(context);
-            if (result.compareTo(ActionResult.SUCCESS) == 0) {
+            if (result.compareTo(ActionResult.PASS) != 0) {
                 return result;
             }
         }
 
         // Now, if nothing happened yet, axe
         result = axe.useOnBlock(context);
-        if (result.compareTo(ActionResult.SUCCESS) == 0) {
+        if (result.compareTo(ActionResult.PASS) != 0) {
             return result;
         }
 

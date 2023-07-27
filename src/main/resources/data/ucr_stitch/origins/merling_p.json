@@ -10,7 +10,9 @@
         "origins:aquatic",
         "origins:conduit_power_on_land",
         "origins:air_from_potions",
-        "ucr_stitch:merling_p/spawn_in_water"
+        "ucr_stitch:merling_p/spawn_in_water",
+        "ucr_stitch:merling_p/evolution",
+        "ucr_stitch:merling_p/swap_origins"
     ],
     "icon": {
         "item": "minecraft:cod"

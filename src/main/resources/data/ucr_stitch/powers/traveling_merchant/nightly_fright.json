@@ -47,12 +47,6 @@
                 }
             },
             {
-                "type": "origins:resource",
-                "resource": "ucr_stitch:traveling_merchant/crippling_fear_fear",
-                "comparison": "<=",
-                "compare_to": 0
-            },
-            {
                 "inverted": true,
                 "type": "origins:daytime"
             }

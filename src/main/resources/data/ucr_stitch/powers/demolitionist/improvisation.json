@@ -4,8 +4,6 @@
     "type": "origins:multiple",
     "cooldown_bar": {
         "type": "origins:resource",
-        "name": "Cooldown Bar",
-        "hidden": true,
         "min": 0,
         "max": 60,
         "start_value": 60,
@@ -23,8 +21,6 @@
     },
     "ticking_cooldown": {
         "type": "origins:action_over_time",
-        "name": "Ticking Cooldown",
-        "hidden": true,
         "interval": 20,
         "entity_action": {
             "type": "origins:change_resource",
@@ -35,8 +31,6 @@
     },
     "kill_cooldown": {
         "type": "origins:self_action_on_kill",
-        "name": "Kill Cooldown Reduction",
-        "hidden": true,
         "damage_condition": {
             "type": "origins:or",
             "conditions": [
@@ -68,8 +62,6 @@
             "compare_to": 60
         },
         "type": "origins:active_self",
-        "name": "Improvisation Activatable",
-        "hidden": true,
         "entity_action": {
             "type": "origins:and",
             "actions": [

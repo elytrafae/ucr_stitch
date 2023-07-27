@@ -22,6 +22,7 @@ public class OrbOfGreatRegret extends TooltippedItem {
         //TODO Auto-generated constructor stub
     }
 
+    /*
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (world.isClient) {
@@ -31,5 +32,6 @@ public class OrbOfGreatRegret extends TooltippedItem {
         user.getStackInHand(hand).decrement(1);
         return TypedActionResult.consume(user.getStackInHand(hand));
     }
+    */
     
 }

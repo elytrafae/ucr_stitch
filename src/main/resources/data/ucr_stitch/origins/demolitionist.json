@@ -4,8 +4,7 @@
     "powers": [
         "ucr_stitch:demolitionist/blast_protection_pp",
         "ucr_stitch:demolitionist/improvisation",
-        "ucr_stitch:demolitionist/blast_jump",
-        "ucr_stitch:demolitionist/too_much_fun"
+        "ucr_stitch:demolitionist/blast_jump"
     ],
     "icon": {
         "item": "minecraft:tnt"

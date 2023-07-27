@@ -1,6 +1,6 @@
 {
     "name": "Rush of Vitality",
-    "description": "Gain +60% Movement Speed and greatly increased Jump Height for 10 seconds. 60 second cooldown. Cooldown cannot be recovered while the ability is active!",
+    "description": "Gain +45% Movement Speed, greatly increased Jump Height and increases vertical movement while creative flying by 30% for 10 seconds. 60 second cooldown. Cooldown cannot be recovered while the ability is active!",
     "type": "origins:multiple",
     "cd": {
         "type": "origins:resource",
@@ -128,7 +128,7 @@
         "modifier": {
             "attribute": "minecraft:generic.movement_speed",
             "operation": "multiply_base",
-            "value": 0.6
+            "value": 0.45
         },
         "tick_rate": 2,
         "update_health": false
@@ -189,5 +189,29 @@
             "operation": "multiply_total",
             "value": 1.5
         }
+    },
+    "vertical_movement": {
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "ucr_stitch:fairy/rush_of_vitality_duration",
+                    "comparison": ">",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:creative_flying"
+                }
+            ]
+        },
+        "type": "origins:modify_velocity",
+        "modifier": {
+            "operation": "multiply_total_multiplicative",
+            "value": 0.3
+        },
+        "axes": [
+            "y"
+        ]
     }
 }

@@ -13,15 +13,14 @@
         "ucr_stitch:fairy",
         "ucr_stitch:merling_p",
         "ucr_stitch:avian_p",
-        "ucr_stitch:mage"
+        "ucr_stitch:mage",
+        "ucr_stitch:lavaling"
     ],
     "enabled": true,
     "replace": true,
-    "missing_name": "None",
-    "missing_description": "You are not a mage!",
     "allow_random": true,
     "exclude_random": [
-        "ucr_stitch:mages/none"
+        "ucr_stitch:lavaling"
     ],
     "auto_choose": true
 }

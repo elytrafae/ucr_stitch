@@ -1,12 +1,14 @@
 {
     "name": "Avian+",
-    "description": "A rendition of the classic Avian origin, with the removal of the Vegetarian downside!",
+    "description": "A rendition of the classic Avian origin, with a slight rework!",
     "powers": [
         "origins:slow_falling",
         "origins:fresh_air",
         "origins:like_air",
         "origins:tailwind",
-        "origins:lay_eggs"
+        "origins:lay_eggs",
+        "ucr_stitch:avian_p/lesser_propel",
+        "ucr_stitch:fragile"
     ],
     "icon": {
         "item": "minecraft:feather"

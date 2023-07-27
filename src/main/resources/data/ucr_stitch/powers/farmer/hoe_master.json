@@ -20,7 +20,7 @@
                 "item_condition": {
                     "type": "origins:ingredient",
                     "ingredient": {
-                        "item": "minecraft:leather_helmet"
+                        "tag": "ucr_stitch:leatherlike_armor"
                     }
                 }
             },
@@ -30,7 +30,7 @@
                 "item_condition": {
                     "type": "origins:ingredient",
                     "ingredient": {
-                        "item": "minecraft:leather_boots"
+                        "tag": "ucr_stitch:leatherlike_armor"
                     }
                 }
             }

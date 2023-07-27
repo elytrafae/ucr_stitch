@@ -3,7 +3,6 @@
     "description": "You have 20% increased movement speed and +0.5 jump height when on ice or when you have your Slippery Shoes on.",
     "type": "origins:multiple",
     "speed": {
-        "name": "Speed Buff",
         "condition": {
             "type": "origins:or",
             "conditions": [
@@ -23,13 +22,12 @@
         "modifier": {
             "attribute": "minecraft:generic.movement_speed",
             "operation": "multiply_base",
-            "value": 0.2
+            "value": 0.25
         },
         "tick_rate": 10,
         "update_health": true
     },
     "jump_height": {
-        "name": "Jump Height",
         "condition": {
             "type": "origins:or",
             "conditions": [
@@ -46,6 +44,7 @@
             ]
         },
         "type": "origins:modify_jump",
+        "name": "Jump Height",
         "modifier": {
             "operation": "addition",
             "value": 0.05

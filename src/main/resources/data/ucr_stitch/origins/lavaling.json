@@ -1,0 +1,19 @@
+{
+    "name": "Lavaling",
+    "description": "The flames of The Nether beckon your flesh. And you are ready to heed their call!",
+    "powers": [
+        "origins:conduit_power_on_land",
+        "ucr_stitch:lavaling/lava_breathing",
+        "ucr_stitch:lavaling/lava_vision",
+        "ucr_stitch:lavaling/lava_affinity",
+        "ucr_stitch:lavaling/lava_speed",
+        "ucr_stitch:lavaling/fire_immunity",
+        "ucr_stitch:lavaling/reversion",
+        "ucr_stitch:merling_p/swap_origins"
+    ],
+    "icon": {
+        "item": "minecraft:lava_bucket"
+    },
+    "unchoosable": true,
+    "impact": 3
+}
