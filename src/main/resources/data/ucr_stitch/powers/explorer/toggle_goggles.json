@@ -1,0 +1,11 @@
+{
+    "name": "Toggle Goggles",
+    "description": "Love me some technical limitations",
+    "hidden": true,
+    "type": "origins:toggle",
+    "active_by_default": true,
+    "key": {
+        "key": "key.ucr_stitch.never_active"
+    },
+    "retain_state": true
+}

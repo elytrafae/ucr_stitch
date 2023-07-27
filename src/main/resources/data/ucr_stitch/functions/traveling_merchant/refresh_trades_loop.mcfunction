@@ -12,7 +12,7 @@ data modify entity @s Offers.Recipes prepend from entity @e[tag=CMD_RefTrades_Do
 
 # Get rid of Donor
 tp @e[tag=CMD_RefTrades_Donor] ~ -1000 ~
-kill @e[tag=CMD_RefTrades_Donor]
+execute as @e[tag=CMD_RefTrades_Donor] run kill @s
 
 # Continue loop
 scoreboard players remove @s CMD_Temp 1

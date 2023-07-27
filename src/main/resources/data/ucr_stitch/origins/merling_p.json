@@ -1,6 +1,6 @@
 {
     "name": "Merling+",
-    "description": "A rendition of the classic Mermaid origin, but with the small bonus of spawning in/near water!",
+    "description": "A rendition of the classic Mermaid origin, but with some more versatility",
     "powers": [
         "origins:water_breathing",
         "origins:water_vision",
@@ -10,7 +10,6 @@
         "origins:aquatic",
         "origins:conduit_power_on_land",
         "origins:air_from_potions",
-        "ucr_stitch:merling_p/spawn_in_water",
         "ucr_stitch:merling_p/evolution",
         "ucr_stitch:merling_p/swap_origins"
     ],
