@@ -14,7 +14,7 @@
             "actions": [
                 {
                     "type": "origins:damage",
-                    "amount": 6,
+                    "amount": 10,
                     "source": {
                         "name": "onFire",
                         "fire": true

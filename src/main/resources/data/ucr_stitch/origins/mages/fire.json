@@ -4,7 +4,7 @@
     "powers": [
         "ucr_stitch:mage/fire/fireballs",
         "ucr_stitch:mage/fire/living_bomb",
-        "ucr_stitch:mage/fire/burn_affinity"
+        "ucr_stitch:mage/fire/it_burns"
     ],
     "icon": {
         "item": "minecraft:fire_charge"

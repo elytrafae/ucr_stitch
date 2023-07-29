@@ -1,0 +1,30 @@
+{
+    "name": "Hulking Power",
+    "description": "You have +50% Health, +2 Armor, +3 Attack Damage and +30% Break Speed.",
+    "type": "origins:attribute",
+    "modifiers": [
+        {
+            "attribute": "minecraft:generic.max_health",
+            "operation": "multiply_total",
+            "value": 0.5,
+            "name": "Ogre Max HP"
+        },
+        {
+            "attribute": "minecraft:generic.armor",
+            "operation": "addition",
+            "value": 2,
+            "name": "Ogre Base Armor"
+        },
+        {
+            "attribute": "minecraft:generic.attack_damage",
+            "operation": "addition",
+            "value": 3
+        },
+        {
+            "attribute": "additionalentityattributes:dig_speed",
+            "operation": "multiply_total",
+            "value": 0.3
+        }
+    ],
+    "update_health": true
+}

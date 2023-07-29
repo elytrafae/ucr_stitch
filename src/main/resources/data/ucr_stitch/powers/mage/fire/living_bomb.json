@@ -1,6 +1,6 @@
 {
     "name": "Living Bomb",
-    "description": "Ignite an enemy for 3 seconds. Once they are put out, they explode in a fiery explosion that does not alter terrain, taking 6 damage and being ignited again for 5 seconds. Others caught in the explosion take 8 damage and are lit on fire for 8 seconds. Max range of 15 blocks. (20 seconds, 250 Essence)",
+    "description": "Ignite an enemy for 3 seconds. Once they are put out, they explode in a fiery explosion that does not alter terrain, taking 10 damage and being ignited again for 5 seconds. Others caught in the explosion take 8 damage and are lit on fire for 8 seconds. Max range of 15 blocks. (20 seconds, 250 Essence)",
     "condition": {
         "type": "origins:resource",
         "resource": "ucr_stitch:mage/essence_real",

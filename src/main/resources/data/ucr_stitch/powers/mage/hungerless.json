@@ -35,16 +35,32 @@
                     "compare_to": 1
                 },
                 {
-                    "type": "origins:resource",
-                    "resource": "ucr_stitch:mage/hungerless_regen_essence",
-                    "comparison": ">=",
-                    "compare_to": 50
-                },
-                {
-                    "inverted": true,
-                    "type": "origins:origin",
-                    "origin": "ucr_stitch:mages/battle",
-                    "layer": "ucr_stitch:mage_specializations"
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:resource",
+                            "resource": "ucr_stitch:mage/hungerless_regen_essence",
+                            "comparison": ">=",
+                            "compare_to": 100
+                        },
+                        {
+                            "type": "origins:and",
+                            "conditions": [
+                                {
+                                    "type": "origins:resource",
+                                    "resource": "ucr_stitch:mage/hungerless_regen_essence",
+                                    "comparison": ">=",
+                                    "compare_to": 50
+                                },
+                                {
+                                    "inverted": true,
+                                    "type": "origins:origin",
+                                    "origin": "ucr_stitch:mages/battle",
+                                    "layer": "ucr_stitch:mage_specializations"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         },
@@ -58,10 +74,25 @@
                     "amount": 1
                 },
                 {
-                    "type": "origins:change_resource",
-                    "resource": "ucr_stitch:mage/hungerless_regen_essence",
-                    "change": -50,
-                    "operation": "add"
+                    "type": "origins:if_else",
+                    "condition": {
+                        "inverted": true,
+                        "type": "origins:origin",
+                        "origin": "ucr_stitch:mages/battle",
+                        "layer": "ucr_stitch:mage_specializations"
+                    },
+                    "if_action": {
+                        "type": "origins:change_resource",
+                        "resource": "ucr_stitch:mage/hungerless_regen_essence",
+                        "change": -50,
+                        "operation": "add"
+                    },
+                    "else_action": {
+                        "type": "origins:change_resource",
+                        "resource": "ucr_stitch:mage/hungerless_regen_essence",
+                        "change": -100,
+                        "operation": "add"
+                    }
                 }
             ]
         }

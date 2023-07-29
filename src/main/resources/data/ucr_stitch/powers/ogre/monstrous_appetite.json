@@ -1,0 +1,22 @@
+{
+    "name": "Monstrous Appetite",
+    "description": "You get exhausted 50% faster, but you can also eat Rotten Flesh without any side effects.",
+    "type": "origins:multiple",
+    "exhaust": {
+        "type": "origins:modify_exhaustion",
+        "modifier": {
+            "operation": "multiply_total_multiplicative",
+            "value": 0.5
+        }
+    },
+    "no_poison": {
+        "type": "origins:modify_food",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "ucr_stitch:bad_foods"
+            }
+        },
+        "prevent_effects": true
+    }
+}

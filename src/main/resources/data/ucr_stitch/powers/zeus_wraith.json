@@ -62,7 +62,7 @@
         "max": 200,
         "start_value": 0,
         "hud_render": {
-            "should_render": true
+            "should_render": false
         }
     },
     "resource_tick": {

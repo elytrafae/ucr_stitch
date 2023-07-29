@@ -1,6 +1,6 @@
 {
     "name": "Spirit Of War",
-    "description": "The blood of your enemies heals you for 4 every time you hit them if you are close enough to them, but Hungerless's regeneration is disabled!",
+    "description": "The blood of your enemies heals you for 4 every time you hit them if you are close enough to them, but Hungerless's regeneration's cost is doubled!",
     "type": "origins:multiple",
     "heal_on_hit": {
         "type": "origins:action_on_hit",

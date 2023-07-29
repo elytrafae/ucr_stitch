@@ -11,8 +11,8 @@
         "retain_state": true
     },
     "ability": {
-        "hidden": true,
         "type": "origins:active_self",
+        "hidden": true,
         "entity_action": {
             "type": "origins:and",
             "actions": [

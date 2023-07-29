@@ -1,6 +1,6 @@
 {
     "name": "Debilitate",
-    "description": "Gain +3 Attack Damage and +2 Looting while you hold a Fishing Rod in your main hand.",
+    "description": "Gain +3 Sharpness and +2 Looting while you hold a Fishing Rod in your main hand, or +1 Smite and +1 Looting in offhand.",
     "type": "origins:multiple",
     "bonus_attack": {
         "condition": {
@@ -13,14 +13,12 @@
                 }
             }
         },
-        "type": "origins:conditioned_attribute",
+        "type": "apugli:modify_enchantment_level",
+        "enchantment": "minecraft:sharpness",
         "modifier": {
-            "attribute": "minecraft:generic.attack_damage",
-            "operation": "addition",
+            "operation": "add_base_late",
             "value": 3
-        },
-        "tick_rate": 1,
-        "update_health": false
+        }
     },
     "bonus_looting": {
         "condition": {
@@ -38,6 +36,42 @@
         "modifier": {
             "operation": "add_base_late",
             "value": 2
+        }
+    },
+    "bonus_attack_off": {
+        "condition": {
+            "type": "origins:equipped_item",
+            "equipment_slot": "offhand",
+            "item_condition": {
+                "type": "origins:ingredient",
+                "ingredient": {
+                    "item": "minecraft:fishing_rod"
+                }
+            }
+        },
+        "type": "apugli:modify_enchantment_level",
+        "enchantment": "minecraft:smite",
+        "modifier": {
+            "operation": "add_base_late",
+            "value": 2
+        }
+    },
+    "bonus_looting_off": {
+        "condition": {
+            "type": "origins:equipped_item",
+            "equipment_slot": "offhand",
+            "item_condition": {
+                "type": "origins:ingredient",
+                "ingredient": {
+                    "item": "minecraft:fishing_rod"
+                }
+            }
+        },
+        "type": "apugli:modify_enchantment_level",
+        "enchantment": "minecraft:looting",
+        "modifier": {
+            "operation": "add_base_late",
+            "value": 1
         }
     }
 }

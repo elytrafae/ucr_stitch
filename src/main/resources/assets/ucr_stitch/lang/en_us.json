@@ -31,5 +31,7 @@
     "poem.ucr_stitch.gravity_duper.line1": "\" This one to the top,",
     "poem.ucr_stitch.gravity_duper.line2": "  Let that one sink,",
     "poem.ucr_stitch.gravity_duper.line3": "  Banish some to the corners,",
-    "poem.ucr_stitch.gravity_duper.line4": "  And the rest will fall down \""
+    "poem.ucr_stitch.gravity_duper.line4": "  And the rest will fall down \"",
+
+    "death.attack.ucr_stitch.shatter": "%s shattered into pieces"
 }

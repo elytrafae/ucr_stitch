@@ -31,7 +31,7 @@
                     "actions": [
                         {
                             "type": "origins:add_velocity",
-                            "z": 1,
+                            "z": 1.4,
                             "space": "local_horizontal_normalized",
                             "client": true,
                             "server": true,
@@ -39,7 +39,7 @@
                         },
                         {
                             "type": "origins:add_velocity",
-                            "y": 1,
+                            "y": 0.6,
                             "space": "world",
                             "client": true,
                             "server": true
@@ -54,6 +54,10 @@
                     "server": true,
                     "set": true
                 }
+            },
+            {
+                "type": "origins:set_fall_distance",
+                "fall_distance": 0
             },
             {
                 "type": "origins:play_sound",

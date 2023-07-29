@@ -1,12 +1,22 @@
 {
     "name": "Burn Affinity",
-    "description": "You may have mastered creating fire and harnessing its power, but you sure are not immune to it. You take double fire damage, but you regenerate 50 Essence whenever you take fire damage.",
+    "description": "You may have mastered creating fire and harnessing its power, but you sure are not immune to it. You take double fire damage and it pierces armor, but you regenerate 50 Essence whenever you take fire damage.",
     "type": "origins:modify_damage_taken",
     "damage_condition": {
-        "type": "origins:fire"
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:fire"
+            },
+            {
+                "type": "origins:amount",
+                "comparison": ">",
+                "compare_to": 0
+            }
+        ]
     },
     "modifier": {
-        "operation": "multiply_total_multiplicative",
+        "operation": "multiply_base_multiplicative",
         "value": 1
     },
     "self_action": {

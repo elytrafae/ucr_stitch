@@ -1,0 +1,12 @@
+{
+    "name": "Fresher Air",
+    "description": "Your bed needs to be above Y 240.",
+    "type": "origins:prevent_sleep",
+    "block_condition": {
+        "type": "origins:height",
+        "comparison": "<",
+        "compare_to": 240
+    },
+    "message": "Your bed needs to be at an altitude of 240 or more!",
+    "set_spawn_point": false
+}
