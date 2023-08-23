@@ -22,6 +22,7 @@
 			"com.cmdgod.mc.ucr_stitch.UCRStitchDataGenerator"
 		]
 	},
+	"accessWidener" : "ucr_stitch.accesswidener",
 	"mixins": [
 		"ucr_stitch.mixins.json"
 	],

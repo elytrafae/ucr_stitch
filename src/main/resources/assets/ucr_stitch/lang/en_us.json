@@ -36,5 +36,26 @@
     "poem.ucr_stitch.gravity_duper.line3": "  Banish some to the corners,",
     "poem.ucr_stitch.gravity_duper.line4": "  And the rest will fall down \"",
 
-    "death.attack.ucr_stitch.shatter": "%s shattered into pieces"
+    "death.attack.ucr_stitch.shatter": "%s shattered into pieces",
+
+    "effect.ucr_stitch.void_repellent": "Void Repellent",
+    "effect.ucr_stitch.totem_popper": "Totem Popper",
+
+    "item.minecraft.potion.effect.void_repellent": "Void Repellent Potion",
+    "item.minecraft.potion.effect.void_repellent_long": "Void Repellent Potion",
+    "item.minecraft.potion.effect.void_repellent_strong": "Void Repellent Potion",
+    "item.minecraft.splash_potion.effect.void_repellent": "Void Repellent Splash Potion",
+    "item.minecraft.splash_potion.effect.void_repellent_long": "Void Repellent Splash Potion",
+    "item.minecraft.splash_potion.effect.void_repellent_strong": "Void Repellent Splash Potion",
+    "item.minecraft.lingering_potion.effect.void_repellent": "Void Repellent Lingering Potion",
+    "item.minecraft.lingering_potion.effect.void_repellent_long": "Void Repellent Lingering Potion",
+    "item.minecraft.lingering_potion.effect.void_repellent_strong": "Void Repellent Lingering Potion",
+    "item.minecraft.tipped_arrow.effect.void_repellent": "Void Repellent Arrow",
+    "item.minecraft.tipped_arrow.effect.void_repellent_long": "Void Repellent Arrow",
+    "item.minecraft.tipped_arrow.effect.void_repellent_strong": "Void Repellent Arrow",
+
+    "item.minecraft.potion.effect.totem_popper": "Potion of Totem Popping",
+    "item.minecraft.splash_potion.effect.totem_popper": "Splash Potion of Totem Popping",
+    "item.minecraft.lingering_potion.effect.totem_popper": "Lingering Potion of Totem Popping",
+    "item.minecraft.tipped_arrow.effect.totem_popper": "Arrow of Totem Popping"
 }
