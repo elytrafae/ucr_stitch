@@ -30,7 +30,7 @@ public class ModPotions {
     }
  
     public static void registerPotionsRecipes() {
-        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(Potions.AWKWARD, Items.WITHER_ROSE, VOID_REPELLENT);
+        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(Potions.AWKWARD, ItemRegistrer.VOIDBERRY, VOID_REPELLENT);
         BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(VOID_REPELLENT, Items.REDSTONE, VOID_REPELLENT_LONG);
         BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(VOID_REPELLENT, Items.GLOWSTONE_DUST, VOID_REPELLENT_STRONG);
 

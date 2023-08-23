@@ -14,12 +14,6 @@ import com.cmdgod.mc.ucr_stitch.registrers.ModPotions;
 import com.cmdgod.mc.ucr_stitch.registrers.ModStatusEffects;
 
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.block.entity.DispenserBlockEntity;
-import net.minecraft.block.entity.DropperBlockEntity;
-import net.minecraft.enchantment.ProtectionEnchantment;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Items;
-import net.minecraft.item.PotionItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -38,6 +32,10 @@ public class UCRStitch implements ModInitializer {
 
 		//LivingEntity;
 		//ProtectionEnchantment;
+		//ChorusFruitItem;
+
+		// TODO: Make Chorus Fruits negate fall damage
+		// TODO: Debug instant arrow of Totem Popping
 
 		Registry.register(Registry.RECIPE_SERIALIZER, GravityDuperRecipeSerializer.ID, GravityDuperRecipeSerializer.INSTANCE);
         Registry.register(Registry.RECIPE_TYPE, new Identifier(MOD_NAMESPACE, GravityDuperRecipe.Type.ID), GravityDuperRecipe.Type.INSTANCE);

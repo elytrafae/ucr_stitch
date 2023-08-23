@@ -9,6 +9,7 @@ import com.cmdgod.mc.ucr_stitch.items.GravityDuperPartItem;
 import com.cmdgod.mc.ucr_stitch.items.Multitool;
 import com.cmdgod.mc.ucr_stitch.items.OrbOfGreatRegret;
 import com.cmdgod.mc.ucr_stitch.items.TooltippedItem;
+import com.cmdgod.mc.ucr_stitch.items.VoidberryItem;
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.item.v1.FabricItem;
@@ -40,6 +41,7 @@ public class ItemRegistrer {
             .icon(() -> new ItemStack(Items.BARRIER))
             .build();
 
+    /*
     public static Item EDIFIED_ENERGY_BAR = new Item(new FabricItemSettings().group(ITEM_GROUP).food(new FoodComponent.Builder()
             .hunger(1)
             .saturationModifier(6f)
@@ -56,6 +58,7 @@ public class ItemRegistrer {
             .statusEffect(new StatusEffectInstance(StatusEffects.HASTE, 1800, 0), 1)
             .statusEffect(new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 1), 1)
             .build()));
+    */
 
     public static final Item GRAVITY_DUPER_TOP = new GravityDuperPartItem(new FabricItemSettings().group(ITEM_GROUP), GravityDuperPartItem.PartType.TOP);
     public static final Item GRAVITY_DUPER_BOTTOM = new GravityDuperPartItem(new FabricItemSettings().group(ITEM_GROUP), GravityDuperPartItem.PartType.BOTTOM);
@@ -108,10 +111,12 @@ public class ItemRegistrer {
 
     public static final Item HEAVY_BOULDER = new TooltippedItem(new FabricItemSettings().maxCount(16).group(ITEM_GROUP));
 
+    public static final Item VOIDBERRY = new VoidberryItem(new FabricItemSettings());
+
     public static void registerAll() {
         UCRStitch.LOGGER.info("UCR Stitch: Items registered!");
-        registerItem("edified_energy_bar", EDIFIED_ENERGY_BAR);
-        registerItem("edified_apple", EDIFIED_APPLE);
+        //registerItem("edified_energy_bar", EDIFIED_ENERGY_BAR);
+        //registerItem("edified_apple", EDIFIED_APPLE);
 
         registerItem("gravity_duper_top", GRAVITY_DUPER_TOP);
         registerItem("gravity_duper_bottom", GRAVITY_DUPER_BOTTOM);
@@ -127,6 +132,8 @@ public class ItemRegistrer {
         registerItem("golden_multitool", GOLDEN_MULTITOOL);
         registerItem("diamond_multitool", DIAMOND_MULTITOOL);
         registerItem("netherite_multitool", NETHERITE_MULTITOOL);
+
+        registerItem("voidberry", VOIDBERRY);
     }
 
     public static Item GRAVITY_DUPER_ITEM;
