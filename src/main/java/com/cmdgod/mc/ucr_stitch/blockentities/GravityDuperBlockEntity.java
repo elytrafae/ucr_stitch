@@ -1,24 +1,16 @@
 package com.cmdgod.mc.ucr_stitch.blockentities;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.jetbrains.annotations.Nullable;
 
-import com.cmdgod.mc.ucr_stitch.UCRStitch;
 import com.cmdgod.mc.ucr_stitch.blocks.GravityDuperBlock;
 import com.cmdgod.mc.ucr_stitch.inventories.ImplementedInventory;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperRecipe;
 import com.cmdgod.mc.ucr_stitch.registrers.BlockRegistrer;
-import com.google.gson.JsonSyntaxException;
-
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.block.entity.FurnaceBlockEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SidedInventory;
 import net.minecraft.inventory.SimpleInventory;
@@ -29,7 +21,6 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.recipe.Recipe;
-import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
@@ -44,7 +35,7 @@ public class GravityDuperBlockEntity extends BlockEntity implements ImplementedI
     public static final int OUTPUT_SLOT = 1;
     public static final String TICKS_TILL_NEXT_KEY = "ticks_till_next";
     public static final String FUEL_TICKS_KEY = "fuel_ticks";
-    public static final String RECIPE_KEY = "recipe";
+    //public static final String RECIPE_KEY = "recipe";
     public static final String BLOCK_KEY = "dupe_block";
     private int ticksTillNext = 0;
     private int fuelTicks = 0;
@@ -63,7 +54,7 @@ public class GravityDuperBlockEntity extends BlockEntity implements ImplementedI
         }
 
         GravityDuperRecipe recipe = be.getRecipe(world);
-        if (recipe == null) {
+        if (recipe == null || be.blockId == null) {
             world.setBlockState(pos, state.with(GravityDuperBlock.WORKING, false).with(GravityDuperBlock.STUCK, true));
             if (!be.locked_up) {
                 System.out.println("A Gravity duper at location " + pos.toString() + " has an invalid recipe!");
@@ -112,9 +103,11 @@ public class GravityDuperBlockEntity extends BlockEntity implements ImplementedI
     @Override
     public void writeNbt(NbtCompound nbt) {
         // Save the current value of the number to the nbt
+        /*
         if (recipeId != null) {
             nbt.putString(RECIPE_KEY, recipeId.toString());
         }
+        */
         if (blockId != null) {
             nbt.putString(BLOCK_KEY, blockId.toString());
         }
@@ -131,11 +124,13 @@ public class GravityDuperBlockEntity extends BlockEntity implements ImplementedI
         Inventories.readNbt(nbt, items);
         fuelTicks = nbt.getInt(FUEL_TICKS_KEY);
         ticksTillNext = nbt.getInt(TICKS_TILL_NEXT_KEY);
+        /*
         if (nbt.contains(RECIPE_KEY)) {
             recipeId = new Identifier(nbt.getString(RECIPE_KEY));
         } else {
             recipeId = null;
         }
+        */
         if (nbt.contains(BLOCK_KEY)) {
             blockId = new Identifier(nbt.getString(BLOCK_KEY));
         } else {
@@ -193,9 +188,13 @@ public class GravityDuperBlockEntity extends BlockEntity implements ImplementedI
     }
 
     private SimpleInventory createSimpleInventory() {
-        SimpleInventory inv = new SimpleInventory(items.size());
+        SimpleInventory inv = new SimpleInventory(items.size() + 1);
         for (int i=0; i < items.size(); i++) {
             inv.setStack(i, items.get(i));
+        }
+        Optional<Item> outputItem = Registry.ITEM.getOrEmpty(blockId);
+        if (outputItem.isPresent()) {
+            inv.setStack(items.size(), new ItemStack(outputItem.get()));
         }
         return inv;
     }
@@ -204,7 +203,7 @@ public class GravityDuperBlockEntity extends BlockEntity implements ImplementedI
         GravityDuperRecipe recipe = getRecipe(world, this.recipeId, this.blockId);
         if (recipe != null) {
             this.recipeId = recipe.getId();
-            this.blockId = Registry.ITEM.getId(recipe.getOutput().getItem());
+            //this.blockId = Registry.ITEM.getId(recipe.getOutput().getItem());
         }
         return recipe;
     }

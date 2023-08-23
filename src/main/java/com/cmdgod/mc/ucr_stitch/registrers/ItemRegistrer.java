@@ -106,6 +106,8 @@ public class ItemRegistrer {
         (PickaxeItem)Items.NETHERITE_PICKAXE
     );
 
+    public static final Item HEAVY_BOULDER = new TooltippedItem(new FabricItemSettings().maxCount(16).group(ITEM_GROUP));
+
     public static void registerAll() {
         UCRStitch.LOGGER.info("UCR Stitch: Items registered!");
         registerItem("edified_energy_bar", EDIFIED_ENERGY_BAR);
@@ -117,6 +119,7 @@ public class ItemRegistrer {
 
         registerItem("head_fragment", HEAD_FRAGMENT);
         registerItem("orb_of_great_regret", ORB_OF_GREAT_REGRET);
+        registerItem("heavy_boulder", HEAVY_BOULDER);
 
         registerItem("wooden_multitool", WOODEN_MULTITOOL);
         registerItem("stone_multitool", STONE_MULTITOOL);

@@ -1,0 +1,9 @@
+
+{
+    "type": "ucr_stitch:gravity_duper_recipe",
+    "output": {
+        "tag": "c:concrete_powder"
+    },
+    "output_count": 8,
+    "time": 1600
+}

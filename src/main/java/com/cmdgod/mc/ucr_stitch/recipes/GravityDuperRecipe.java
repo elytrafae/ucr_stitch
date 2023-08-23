@@ -2,38 +2,39 @@ package com.cmdgod.mc.ucr_stitch.recipes;
 
 import com.google.gson.JsonObject;
 
-import net.minecraft.block.GravelBlock;
 import net.minecraft.inventory.SimpleInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.recipe.CraftingRecipe;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 public class GravityDuperRecipe implements Recipe<SimpleInventory> {
 
-    private ItemStack output;
+    private Ingredient output;
     private int time;
+    private int count;
 
     private Identifier id;
     private void setId(Identifier id) {
         this.id = id;
     }
 
-    public GravityDuperRecipe(ItemStack output, int time, Identifier id) {
+    public GravityDuperRecipe(Ingredient output, int outputCount, int time, Identifier id) {
         setOutput(output);
+        setCount(outputCount);
         setTime(time);
         setId(id);
     }
 
-    public void setOutput(ItemStack output) {
+    public void setOutput(Ingredient output) {
         this.output = output;
+    }
+
+    public Ingredient getOutputVal() {
+        return this.output;
     }
 
     public int getTime() {
@@ -44,15 +45,25 @@ public class GravityDuperRecipe implements Recipe<SimpleInventory> {
         this.time = time;
     }
 
-    @Override
-    public boolean matches(SimpleInventory inv, World world) {
-        if(inv.size() < 1) return false;
-        return output.isItemEqual(inv.getStack(0));
+    public int getCount() {
+        return this.count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 
     @Override
-    public ItemStack craft(SimpleInventory var1) {
-        return this.getOutput().copy();
+    public boolean matches(SimpleInventory inv, World world) {
+        if(inv.size() < 1) return false;
+        return output.test(inv.getStack(0));
+    }
+
+    @Override
+    public ItemStack craft(SimpleInventory inv) {
+        ItemStack stack = inv.getStack(2).copy();
+        stack.setCount(getCount());
+        return stack;
     }
 
     @Override
@@ -62,7 +73,12 @@ public class GravityDuperRecipe implements Recipe<SimpleInventory> {
 
     @Override
     public ItemStack getOutput() {
-        return this.output;
+        //throw new IllegalCallerException();
+        // This should be called for visual reasons only!
+        if (this.output.getMatchingStacks().length <= 0) {
+            return ItemStack.EMPTY;
+        }
+        return this.output.getMatchingStacks()[0];
     }
 
     @Override
@@ -88,7 +104,7 @@ public class GravityDuperRecipe implements Recipe<SimpleInventory> {
     }
     
     public class JsonFormat {
-        String output;
+        JsonObject output;
         int output_count;
         int time;
     }

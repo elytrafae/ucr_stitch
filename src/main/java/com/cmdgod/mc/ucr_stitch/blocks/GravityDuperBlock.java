@@ -26,6 +26,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.text.Text;
@@ -62,8 +64,9 @@ public class GravityDuperBlock extends BlockWithEntity {
 
         ItemStack fuelStack = blockEntity.getStack(GravityDuperBlockEntity.FUEL_SLOT);
 
-        if (!GravityDuperBlockEntity.isStackFuel(fuelStack)) {
+        if (!GravityDuperBlockEntity.isStackFuel(fuelStack) && !fuelStack.isEmpty()) {
             player.getInventory().offerOrDrop(fuelStack.copy());
+            playItemGetSound(player);
             fuelStack = ItemStack.EMPTY;
             blockEntity.setStack(GravityDuperBlockEntity.FUEL_SLOT, fuelStack);
             blockEntity.markDirty();
@@ -91,6 +94,9 @@ public class GravityDuperBlock extends BlockWithEntity {
         }
 
         if (handStack.isEmpty() || (ItemStack.canCombine(handStack, blockEntity.getStack(GravityDuperBlockEntity.OUTPUT_SLOT)))) {
+            if (!blockEntity.getStack(GravityDuperBlockEntity.OUTPUT_SLOT).isEmpty()) {
+                playItemGetSound(player);
+            }
             player.getInventory().offerOrDrop(blockEntity.getStack(GravityDuperBlockEntity.OUTPUT_SLOT));
             blockEntity.setStack(GravityDuperBlockEntity.OUTPUT_SLOT, ItemStack.EMPTY);
             blockEntity.markDirty();
@@ -100,6 +106,12 @@ public class GravityDuperBlock extends BlockWithEntity {
         
  
         return ActionResult.PASS;
+    }
+
+    private void playItemGetSound(PlayerEntity player) {
+        //if (player.getWorld().isClient) {
+            player.playSound(SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.PLAYERS, 1, 1);
+        //}
     }
 
     @Override

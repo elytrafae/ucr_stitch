@@ -1,6 +1,7 @@
-
 {
     "type": "ucr_stitch:gravity_duper_recipe",
-    "output": "minecraft:sand",
+    "output": {
+        "item": "minecraft:sand"
+    },
     "time": 200
 }

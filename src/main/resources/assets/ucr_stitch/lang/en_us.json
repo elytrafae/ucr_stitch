@@ -23,6 +23,9 @@
     "item.ucr_stitch.edified_energy_bar": "Edified Energy Bar",
     "item.ucr_stitch.edified_apple": "Edified Apple",
 
+    "item.ucr_stitch.heavy_boulder": "Heavy Boulder",
+    "item.ucr_stitch.heavy_boulder.desc": "§5Too heavy for Dispensers or Droppers to throw§r",
+
     "item.ucr_stitch.stars_banner_pattern": "Banner Pattern",
     "item.ucr_stitch.stars_banner_pattern.desc": "Stars",
 

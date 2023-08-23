@@ -1,13 +1,13 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-        "#P#",
-        "PYP",
-        "#P#"
+        "YPY",
+        "P#P",
+        "YPY"
     ],
     "key": {
         "#": {
-            "item": "minecraft:dragon_breath"
+            "item": "botania:ender_air_bottle"
         },
         "P": {
             "item": "minecraft:purpur_block"

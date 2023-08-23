@@ -12,6 +12,10 @@ import com.cmdgod.mc.ucr_stitch.registrers.ItemRegistrer;
 import com.cmdgod.mc.ucr_stitch.registrers.LootTableModifier;
 
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.block.entity.DispenserBlockEntity;
+import net.minecraft.block.entity.DropperBlockEntity;
+import net.minecraft.enchantment.ProtectionEnchantment;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -27,6 +31,10 @@ public class UCRStitch implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
+
+		//LivingEntity;
+		//ProtectionEnchantment;
+		//DispenserBlockEntity;
 
 		Registry.register(Registry.RECIPE_SERIALIZER, GravityDuperRecipeSerializer.ID, GravityDuperRecipeSerializer.INSTANCE);
         Registry.register(Registry.RECIPE_TYPE, new Identifier(MOD_NAMESPACE, GravityDuperRecipe.Type.ID), GravityDuperRecipe.Type.INSTANCE);

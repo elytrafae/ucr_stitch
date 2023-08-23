@@ -3,7 +3,7 @@
 	"package": "com.cmdgod.mc.ucr_stitch.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		
+		"DispenserMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

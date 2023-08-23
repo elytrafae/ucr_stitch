@@ -1,6 +1,8 @@
 
 {
     "type": "ucr_stitch:gravity_duper_recipe",
-    "output": "minecraft:gravel",
+    "output": {
+        "item": "minecraft:gravel"
+    },
     "time": 200
 }
