@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.cmdgod.mc.ucr_stitch.blockentities.GravityDuperBlockEntity;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperRecipe;
-import com.cmdgod.mc.ucr_stitch.registrers.BlockRegistrer;
+import com.cmdgod.mc.ucr_stitch.registrers.ModBlocks;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.AbstractBlock;
@@ -123,7 +123,7 @@ public class GravityDuperBlock extends BlockWithEntity {
 
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, BlockRegistrer.GRAVITY_DUPER_ENTITY, (world1, pos, state1, be) -> GravityDuperBlockEntity.tick(world1, pos, state1, be));
+        return checkType(type, ModBlocks.GRAVITY_DUPER_ENTITY, (world1, pos, state1, be) -> GravityDuperBlockEntity.tick(world1, pos, state1, be));
     }
 
     @Override

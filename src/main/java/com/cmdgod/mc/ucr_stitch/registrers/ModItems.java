@@ -31,7 +31,7 @@ import net.minecraft.item.ToolMaterials;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-public class ItemRegistrer {
+public class ModItems {
 
     private static ArrayList<Item> ITEMS = new ArrayList<>();
     public static HashMap<ToolMaterial, Multitool> MULTITOOLS = new HashMap<>();
@@ -137,6 +137,8 @@ public class ItemRegistrer {
     }
 
     public static Item GRAVITY_DUPER_ITEM;
+    public static Item VOIDSHROOM_CAP;
+    public static Item VOIDBERRY_VINE;
 
     public static void registerItem(String id, Item item) {
         Registry.register(Registry.ITEM, new Identifier(UCRStitch.MOD_NAMESPACE, id), item);

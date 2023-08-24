@@ -1,7 +1,7 @@
 package com.cmdgod.mc.ucr_stitch.items;
 
 import com.cmdgod.mc.ucr_stitch.UCRStitch;
-import com.cmdgod.mc.ucr_stitch.registrers.ItemRegistrer;
+import com.cmdgod.mc.ucr_stitch.registrers.ModItems;
 import com.google.common.collect.Multimap;
 
 import net.minecraft.entity.EquipmentSlot;
@@ -43,7 +43,7 @@ public class Multitool extends MiningToolItem {
         this.shovel = shovel;
         this.axe = axe;
         this.pickaxe = pickaxe;
-        ItemRegistrer.MULTITOOLS.put(hoe.getMaterial(), this);
+        ModItems.MULTITOOLS.put(hoe.getMaterial(), this);
         //UCRStitch.LOGGER.info(material.toString() + " has attack damage of " + getAverageAttackDamage(hoe, shovel, axe, pickaxe) + " and an attack speed of " + getAverageAttackSpeed(hoe, shovel, axe, pickaxe));
     }
 

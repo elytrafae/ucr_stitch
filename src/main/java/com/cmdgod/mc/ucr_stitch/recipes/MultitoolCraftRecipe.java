@@ -6,7 +6,7 @@ import com.cmdgod.mc.ucr_stitch.UCRStitch;
 import com.cmdgod.mc.ucr_stitch.blockentities.GravityDuperBlockEntity;
 import com.cmdgod.mc.ucr_stitch.blocks.GravityDuperBlock;
 import com.cmdgod.mc.ucr_stitch.items.Multitool;
-import com.cmdgod.mc.ucr_stitch.registrers.ItemRegistrer;
+import com.cmdgod.mc.ucr_stitch.registrers.ModItems;
 
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.inventory.CraftingInventory;
@@ -59,7 +59,7 @@ public class MultitoolCraftRecipe extends SpecialCraftingRecipe {
             return false;
         }
         ToolMaterial material = getMaterial(hoe);
-        if (!ItemRegistrer.MULTITOOLS.containsKey(material)) {
+        if (!ModItems.MULTITOOLS.containsKey(material)) {
             return false;
         }
         return (material == getMaterial(axe) && material == getMaterial(pickaxe) && material == getMaterial(shovel));
@@ -71,10 +71,10 @@ public class MultitoolCraftRecipe extends SpecialCraftingRecipe {
         if (material == null) {
             return new ItemStack(Items.STONE);
         }
-        if (!ItemRegistrer.MULTITOOLS.containsKey(material)) {
+        if (!ModItems.MULTITOOLS.containsKey(material)) {
             return new ItemStack(Items.STONE);
         }
-        Multitool tool = ItemRegistrer.MULTITOOLS.get(material);
+        Multitool tool = ModItems.MULTITOOLS.get(material);
         ItemStack stack = new ItemStack(tool);
         stack.setDamage((int)Math.floor(getDamageRelative(inv) * stack.getMaxDamage()));
         return stack;

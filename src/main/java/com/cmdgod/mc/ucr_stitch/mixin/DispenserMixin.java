@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.cmdgod.mc.ucr_stitch.registrers.ItemRegistrer;
+import com.cmdgod.mc.ucr_stitch.registrers.ModItems;
 
 import net.minecraft.block.entity.DispenserBlockEntity;
 import net.minecraft.item.ItemStack;
@@ -22,7 +22,7 @@ public class DispenserMixin  {
         int j = 1;
         for (int k = 0; k < DispenserBlockEntity.INVENTORY_SIZE; ++k) {
             ItemStack s = be.getStack(k);
-            if (s.isEmpty() || s.isOf(ItemRegistrer.HEAVY_BOULDER) || random.nextInt(j++) != 0) continue;
+            if (s.isEmpty() || s.isOf(ModItems.HEAVY_BOULDER) || random.nextInt(j++) != 0) continue;
             i = k;
         }
         info.setReturnValue(i);

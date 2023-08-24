@@ -21,6 +21,7 @@ public class TotemPopperEffect extends StatusEffect {
         return true;
     }
 
+    @Override
     public void applyInstantEffect(@Nullable Entity source, @Nullable Entity attacker, LivingEntity target, int amplifier, double proximity) {
         float health = target.getHealth();
         boolean popped = target.tryUseTotem(DamageSource.ANVIL);
@@ -31,6 +32,16 @@ public class TotemPopperEffect extends StatusEffect {
             livingAttacker.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, 1));
             livingAttacker.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 800, 0));
         }
+    }
+
+    @Override
+    public void applyUpdateEffect(LivingEntity entity, int amplifier) {
+        applyInstantEffect(null, null, entity, amplifier, 0);
+    }
+
+    @Override
+    public boolean canApplyUpdateEffect(int duration, int amplifier) {
+        return true;
     }
     
 }

@@ -7,13 +7,14 @@ import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperCraftRecipe;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperRecipe;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperRecipeSerializer;
 import com.cmdgod.mc.ucr_stitch.recipes.MultitoolCraftRecipe;
-import com.cmdgod.mc.ucr_stitch.registrers.BlockRegistrer;
-import com.cmdgod.mc.ucr_stitch.registrers.ItemRegistrer;
+import com.cmdgod.mc.ucr_stitch.registrers.ModBlocks;
+import com.cmdgod.mc.ucr_stitch.registrers.ModItems;
 import com.cmdgod.mc.ucr_stitch.registrers.LootTableModifier;
 import com.cmdgod.mc.ucr_stitch.registrers.ModPotions;
 import com.cmdgod.mc.ucr_stitch.registrers.ModStatusEffects;
 
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.block.entity.FurnaceBlockEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -33,9 +34,7 @@ public class UCRStitch implements ModInitializer {
 		//LivingEntity;
 		//ProtectionEnchantment;
 		//ChorusFruitItem;
-
-		// TODO: Make Chorus Fruits negate fall damage
-		// TODO: Debug instant arrow of Totem Popping
+		// FurnaceBlockEntity;
 
 		Registry.register(Registry.RECIPE_SERIALIZER, GravityDuperRecipeSerializer.ID, GravityDuperRecipeSerializer.INSTANCE);
         Registry.register(Registry.RECIPE_TYPE, new Identifier(MOD_NAMESPACE, GravityDuperRecipe.Type.ID), GravityDuperRecipe.Type.INSTANCE);
@@ -43,8 +42,8 @@ public class UCRStitch implements ModInitializer {
 		Registry.register(Registry.RECIPE_SERIALIZER, new Identifier(MOD_NAMESPACE, GravityDuperCraftRecipe.Serializer.ID), GravityDuperCraftRecipe.Serializer.INSTANCE);
 		Registry.register(Registry.RECIPE_SERIALIZER, new Identifier(MOD_NAMESPACE, MultitoolCraftRecipe.Serializer.ID), MultitoolCraftRecipe.Serializer.INSTANCE);
 
-		BlockRegistrer.registerAll();
-		ItemRegistrer.registerAll();
+		ModBlocks.registerAll();
+		ModItems.registerAll();
 		ModStatusEffects.registerAll();
 		ModPotions.registerPotionsRecipes();
 		LootTableModifier.doAllChanges();

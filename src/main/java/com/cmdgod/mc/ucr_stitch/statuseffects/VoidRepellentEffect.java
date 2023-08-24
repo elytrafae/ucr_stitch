@@ -15,10 +15,12 @@ public class VoidRepellentEffect extends StatusEffect {
         super(StatusEffectCategory.BENEFICIAL, 0x1b006e);
     }
 
+    @Override
     public boolean canApplyUpdateEffect(int duration, int amplifier) {
         return true;
     }
     
+    @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         World world = entity.getWorld();
         Vec3d vec = entity.getVelocity();

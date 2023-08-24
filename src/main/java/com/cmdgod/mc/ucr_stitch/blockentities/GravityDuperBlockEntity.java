@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Nullable;
 import com.cmdgod.mc.ucr_stitch.blocks.GravityDuperBlock;
 import com.cmdgod.mc.ucr_stitch.inventories.ImplementedInventory;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperRecipe;
-import com.cmdgod.mc.ucr_stitch.registrers.BlockRegistrer;
+import com.cmdgod.mc.ucr_stitch.registrers.ModBlocks;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -44,7 +44,7 @@ public class GravityDuperBlockEntity extends BlockEntity implements ImplementedI
     private boolean locked_up = false;
 
     public GravityDuperBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockRegistrer.GRAVITY_DUPER_ENTITY, pos, state);
+        super(ModBlocks.GRAVITY_DUPER_ENTITY, pos, state);
     }
     
     public static void tick(World world, BlockPos pos, BlockState state, GravityDuperBlockEntity be) {

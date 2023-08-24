@@ -5,7 +5,7 @@ import java.util.Optional;
 import com.cmdgod.mc.ucr_stitch.UCRStitch;
 import com.cmdgod.mc.ucr_stitch.blockentities.GravityDuperBlockEntity;
 import com.cmdgod.mc.ucr_stitch.blocks.GravityDuperBlock;
-import com.cmdgod.mc.ucr_stitch.registrers.ItemRegistrer;
+import com.cmdgod.mc.ucr_stitch.registrers.ModItems;
 
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.inventory.SimpleInventory;
@@ -32,12 +32,12 @@ public class GravityDuperCraftRecipe extends SpecialCraftingRecipe {
 
     @Override
     public boolean matches(CraftingInventory inv, World world) {
-        boolean hasStructure =      inv.getStack(0).isOf(ItemRegistrer.GRAVITY_DUPER_SIDE) &&
-                                    inv.getStack(1).isOf(ItemRegistrer.GRAVITY_DUPER_TOP) &&
-                                    inv.getStack(2).isOf(ItemRegistrer.GRAVITY_DUPER_SIDE) &&
-                                    inv.getStack(6).isOf(ItemRegistrer.GRAVITY_DUPER_SIDE) &&
-                                    inv.getStack(7).isOf(ItemRegistrer.GRAVITY_DUPER_BOTTOM) &&
-                                    inv.getStack(8).isOf(ItemRegistrer.GRAVITY_DUPER_SIDE);
+        boolean hasStructure =      inv.getStack(0).isOf(ModItems.GRAVITY_DUPER_SIDE) &&
+                                    inv.getStack(1).isOf(ModItems.GRAVITY_DUPER_TOP) &&
+                                    inv.getStack(2).isOf(ModItems.GRAVITY_DUPER_SIDE) &&
+                                    inv.getStack(6).isOf(ModItems.GRAVITY_DUPER_SIDE) &&
+                                    inv.getStack(7).isOf(ModItems.GRAVITY_DUPER_BOTTOM) &&
+                                    inv.getStack(8).isOf(ModItems.GRAVITY_DUPER_SIDE);
                                 
         if (!hasStructure) {
             return false;
@@ -53,7 +53,7 @@ public class GravityDuperCraftRecipe extends SpecialCraftingRecipe {
 
     @Override
     public ItemStack craft(CraftingInventory inv) {
-        ItemStack stack = new ItemStack(ItemRegistrer.GRAVITY_DUPER_ITEM, 1);
+        ItemStack stack = new ItemStack(ModItems.GRAVITY_DUPER_ITEM, 1);
         NbtCompound blockNbt = new NbtCompound();
         blockNbt.putString(GravityDuperBlockEntity.BLOCK_KEY, Registry.ITEM.getId(inv.getStack(3).getItem()).toString());
         NbtCompound itemNbt = stack.getOrCreateNbt();

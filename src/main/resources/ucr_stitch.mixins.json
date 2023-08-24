@@ -5,7 +5,9 @@
 	"mixins": [
 		"DispenserMixin",
 		"LivingEntityMixin",
-		"BrewingRecipeRegistryMixin"
+		"BrewingRecipeRegistryMixin",
+		"ItemEntityMixin",
+		"ChorusFruitItemMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

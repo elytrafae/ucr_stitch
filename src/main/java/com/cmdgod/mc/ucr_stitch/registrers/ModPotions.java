@@ -19,7 +19,7 @@ public class ModPotions {
     public static final Potion VOID_REPELLENT_LONG = register("void_repellent_long", new StatusEffectInstance(ModStatusEffects.VOID_REPELLENT, LONG_DURATION, 0));
     public static final Potion VOID_REPELLENT_STRONG = register("void_repellent_strong", new StatusEffectInstance(ModStatusEffects.VOID_REPELLENT, REGULAR_DURATION, 1));
 
-    public static final Potion TOTEM_POPPER = register("totem_popper", new StatusEffectInstance(ModStatusEffects.TOTEM_POPPER));
+    public static final Potion TOTEM_POPPER = register("totem_popper", new StatusEffectInstance(ModStatusEffects.TOTEM_POPPER, 1, 0));
  
     public static void registerPotions(){
  
@@ -30,7 +30,7 @@ public class ModPotions {
     }
  
     public static void registerPotionsRecipes() {
-        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(Potions.AWKWARD, ItemRegistrer.VOIDBERRY, VOID_REPELLENT);
+        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(Potions.AWKWARD, ModItems.VOIDBERRY, VOID_REPELLENT);
         BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(VOID_REPELLENT, Items.REDSTONE, VOID_REPELLENT_LONG);
         BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(VOID_REPELLENT, Items.GLOWSTONE_DUST, VOID_REPELLENT_STRONG);
 
