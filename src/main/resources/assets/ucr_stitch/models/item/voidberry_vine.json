@@ -1,0 +1,22 @@
+{
+    "overrides": [
+        {
+            "predicate": {
+                "fruit": 0
+            },
+            "model": "ucr_stitch:item/voidberry_vine_0"
+        },
+        {
+            "predicate": {
+                "fruit": 1
+            },
+            "model": "ucr_stitch:item/voidberry_vine_1"
+        },
+        {
+            "predicate": {
+                "fruit": 1.9
+            },
+            "model": "ucr_stitch:item/voidberry_vine_2"
+        }
+    ]
+}

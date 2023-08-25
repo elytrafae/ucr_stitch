@@ -1,36 +1,38 @@
 package com.cmdgod.mc.ucr_stitch.blocks;
 
-import com.cmdgod.mc.ucr_stitch.blockentities.GravityDuperBlockEntity;
+import com.cmdgod.mc.ucr_stitch.registrers.ModBlocks;
 import com.cmdgod.mc.ucr_stitch.registrers.ModItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.CobwebBlock;
-import net.minecraft.block.entity.StructureBlockBlockEntity.Action;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 
 public class VoidberryVine extends WaterVulnerableBlock {
 
     public static final IntProperty FRUIT = IntProperty.of("fruit", 0, 2); // How much fruit does it have?
 
     public VoidberryVine(Settings settings) {
-        super(settings);
+        super(settings.luminance((blockState) -> {return blockState.get(FRUIT)*4;}).sounds(BlockSoundGroup.CAVE_VINES));
         setDefaultState(getDefaultState().with(FRUIT, 0));
     }
 
@@ -43,7 +45,7 @@ public class VoidberryVine extends WaterVulnerableBlock {
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         entity.slowMovement(state, new Vec3d(0.25, 0.05f, 0.25));
         if (entity instanceof LivingEntity) {
-            ((LivingEntity)entity).addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 300));
+            ((LivingEntity)entity).addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, 100));
         }
     }
 
@@ -56,6 +58,28 @@ public class VoidberryVine extends WaterVulnerableBlock {
             return ActionResult.success(true);
         }
         return ActionResult.PASS;
+    }
+
+    @Override
+    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        if (!this.canPlaceAt(state, world, pos)) {
+            world.breakBlock(pos, true);
+        } else {
+            super.scheduledTick(state, world, pos, random);
+        }
+        
+    }
+
+    @Override
+    public PistonBehavior getPistonBehavior(BlockState state) {
+        return PistonBehavior.DESTROY;
+    }
+
+    @Override
+    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        BlockPos newPos = pos.add(Direction.UP.getVector());
+        Block newBlock = world.getBlockState(newPos).getBlock();
+        return newBlock == ModBlocks.VOIDSHROOM_CAP || newBlock == this;
     }
     
 }

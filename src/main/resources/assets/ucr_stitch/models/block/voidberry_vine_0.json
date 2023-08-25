@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/cross",
+    "textures": {
+      "cross": "ucr_stitch:block/voidshroom/vine_0"
+    }
+}

@@ -139,6 +139,9 @@ public class ModItems {
     public static Item GRAVITY_DUPER_ITEM;
     public static Item VOIDSHROOM_CAP;
     public static Item VOIDBERRY_VINE;
+    public static Item VOIDSHROOM_STEM;
+    public static Item STRIPPED_VOIDSHROOM_STEM;
+    public static Item VOIDSHROOM_SAPLING;
 
     public static void registerItem(String id, Item item) {
         Registry.register(Registry.ITEM, new Identifier(UCRStitch.MOD_NAMESPACE, id), item);

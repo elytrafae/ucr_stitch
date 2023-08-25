@@ -27,6 +27,10 @@
     "item.ucr_stitch.heavy_boulder.desc": "§5Too heavy for Dispensers or Droppers to throw§r",
 
     "item.ucr_stitch.voidberry": "Voidberry",
+    "block.ucr_stitch.voidberry_vine": "Voidberry Vines",
+    "item.ucr_stitch.voidshroom_stem": "Voidshroom Stem",
+    "item.ucr_stitch.stripped_voidshroom_stem": "Stripped Voidshroom Stem",
+    "item.ucr_stitch.voidshroom_cap": "Voidshroom Cap",
 
     "item.ucr_stitch.stars_banner_pattern": "Banner Pattern",
     "item.ucr_stitch.stars_banner_pattern.desc": "Stars",

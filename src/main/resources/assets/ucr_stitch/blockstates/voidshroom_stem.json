@@ -1,0 +1,16 @@
+{
+    "variants": {
+      "axis=x": {
+        "model": "ucr_stitch:block/voidshroom_stem",
+        "x": 90,
+        "y": 90
+      },
+      "axis=y": {
+        "model": "ucr_stitch:block/voidshroom_stem"
+      },
+      "axis=z": {
+        "model": "ucr_stitch:block/voidshroom_stem",
+        "x": 90
+      }
+    }
+  }

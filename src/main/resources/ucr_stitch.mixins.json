@@ -7,7 +7,9 @@
 		"LivingEntityMixin",
 		"BrewingRecipeRegistryMixin",
 		"ItemEntityMixin",
-		"ChorusFruitItemMixin"
+		"ChorusFruitItemMixin",
+		"TrunkPlacerTypeInvoker",
+		"TreeDecoratorTypeInvoker"
 	],
 	"injectors": {
 		"defaultRequire": 1

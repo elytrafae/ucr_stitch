@@ -1,8 +1,12 @@
 package com.cmdgod.mc.ucr_stitch;
 
+import java.util.Collections;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.cmdgod.mc.ucr_stitch.mixin.TreeDecoratorTypeInvoker;
+import com.cmdgod.mc.ucr_stitch.mixin.TrunkPlacerTypeInvoker;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperCraftRecipe;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperRecipe;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperRecipeSerializer;
@@ -12,11 +16,27 @@ import com.cmdgod.mc.ucr_stitch.registrers.ModItems;
 import com.cmdgod.mc.ucr_stitch.registrers.LootTableModifier;
 import com.cmdgod.mc.ucr_stitch.registrers.ModPotions;
 import com.cmdgod.mc.ucr_stitch.registrers.ModStatusEffects;
+import com.cmdgod.mc.ucr_stitch.treestuff.UpsideDownTrunkPlacer;
+import com.cmdgod.mc.ucr_stitch.treestuff.VoidshroomTreeDecorator;
 
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.FurnaceBlockEntity;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryEntry;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.ConfiguredFeatures;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.TreeFeatureConfig;
+import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
+import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
+import net.minecraft.world.gen.foliage.RandomSpreadFoliagePlacer;
+import net.minecraft.world.gen.stateprovider.BlockStateProvider;
+import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
+import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
+import net.minecraft.world.gen.trunk.TrunkPlacerType;
 
 public class UCRStitch implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
@@ -24,6 +44,21 @@ public class UCRStitch implements ModInitializer {
 	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static final String MOD_NAMESPACE = "ucr_stitch";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAMESPACE);
+
+	public static final TrunkPlacerType<UpsideDownTrunkPlacer> UPSIDE_DOWN_TRUNK_PLACER = TrunkPlacerTypeInvoker.callRegister("ucr_stitch:upside_down_trunk_placer", UpsideDownTrunkPlacer.CODEC);
+	public static final TreeDecoratorType<VoidshroomTreeDecorator> VOIDSHROOM_TREE_DECORATOR = TreeDecoratorTypeInvoker.callRegister("ucr_stitch:voidshroom_tree_decorator", VoidshroomTreeDecorator.CODEC);
+
+	public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> VOIDSHROOM_TREE = ConfiguredFeatures.register("ucr_stitch:voidshroom", Feature.TREE,
+	// Configure the feature using the builder
+	new TreeFeatureConfig.Builder(
+		BlockStateProvider.of(ModBlocks.VOIDSHROOM_STEM), // Trunk block provider
+		new UpsideDownTrunkPlacer(6, 3, 1), // places a straight trunk
+		BlockStateProvider.of(ModBlocks.VOIDSHROOM_CAP), // Foliage block provider
+		new RandomSpreadFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(0),ConstantIntProvider.create(4), 50), // places leaves as a blob (radius, offset from trunk, height)
+		new TwoLayersFeatureSize(-1, 0, -1) // The width of the tree at different layers; used to see how tall the tree can be without clipping into blocks
+	).dirtProvider(BlockStateProvider.of(Blocks.END_STONE)).decorators(Collections.singletonList(VoidshroomTreeDecorator.INSTANCE)).build());
+
+	// TODO: Add voidshrooms to world generation: https://fabricmc.net/wiki/tutorial:features
 
 	@Override
 	public void onInitialize() {
@@ -35,6 +70,7 @@ public class UCRStitch implements ModInitializer {
 		//ProtectionEnchantment;
 		//ChorusFruitItem;
 		// FurnaceBlockEntity;
+		// BlockItem;
 
 		Registry.register(Registry.RECIPE_SERIALIZER, GravityDuperRecipeSerializer.ID, GravityDuperRecipeSerializer.INSTANCE);
         Registry.register(Registry.RECIPE_TYPE, new Identifier(MOD_NAMESPACE, GravityDuperRecipe.Type.ID), GravityDuperRecipe.Type.INSTANCE);
@@ -47,6 +83,8 @@ public class UCRStitch implements ModInitializer {
 		ModStatusEffects.registerAll();
 		ModPotions.registerPotionsRecipes();
 		LootTableModifier.doAllChanges();
+
+
 
 		/*
 		ClientPickBlockCallback cb = new ClientPickBlockCallback() {

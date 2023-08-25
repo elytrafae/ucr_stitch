@@ -18,6 +18,9 @@
 		"main": [
 			"com.cmdgod.mc.ucr_stitch.UCRStitch"
 		],
+		"client": [
+			"com.cmdgod.mc.ucr_stitch.UCRStitchClient"
+		],
 		"fabric-datagen": [
 			"com.cmdgod.mc.ucr_stitch.UCRStitchDataGenerator"
 		]

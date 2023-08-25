@@ -1,0 +1,118 @@
+{
+    "type": "minecraft:block",
+    "pools": [
+        {
+            "rolls": 1,
+            "bonus_rolls": 0,
+            "entries": [
+                {
+                    "type": "minecraft:alternatives",
+                    "children": [
+                        {
+                            "type": "minecraft:item",
+                            "name": "ucr_stitch:voidberry_vine",
+                            "functions": [
+                                {
+                                    "function": "minecraft:copy_state",
+                                    "block": "ucr_stitch:voidberry_vine",
+                                    "properties": [
+                                        "fruit"
+                                    ],
+                                    "conditions": [
+                                        {
+                                            "condition": "minecraft:inverted",
+                                            "term": {
+                                                "condition": "minecraft:block_state_property",
+                                                "block": "ucr_stitch:voidberry_vine",
+                                                "properties": {
+                                                    "fruit": "0"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ],
+                            "conditions": [
+                                {
+                                    "condition": "minecraft:alternative",
+                                    "terms": [
+                                        {
+                                            "condition": "minecraft:match_tool",
+                                            "predicate": {
+                                                "items": [
+                                                    "minecraft:shears"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "condition": "minecraft:match_tool",
+                                            "predicate": {
+                                                "enchantments": [
+                                                    {
+                                                        "enchantment": "minecraft:silk_touch",
+                                                        "levels": {
+                                                            "min": 1
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "minecraft:item",
+                            "name": "ucr_stitch:voidberry",
+                            "functions": [
+                                {
+                                    "function": "minecraft:set_count",
+                                    "count": 1,
+                                    "add": false,
+                                    "conditions": [
+                                        {
+                                            "condition": "minecraft:block_state_property",
+                                            "block": "ucr_stitch:voidberry_vine",
+                                            "properties": {
+                                                "fruit": "1"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "function": "minecraft:set_count",
+                                    "count": 2,
+                                    "add": false,
+                                    "conditions": [
+                                        {
+                                            "condition": "minecraft:block_state_property",
+                                            "block": "ucr_stitch:voidberry_vine",
+                                            "properties": {
+                                                "fruit": "2"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ],
+                            "conditions": [
+                                {
+                                    "condition": "minecraft:inverted",
+                                    "term": {
+                                        "condition": "minecraft:block_state_property",
+                                        "block": "ucr_stitch:voidberry_vine",
+                                        "properties": {
+                                            "fruit": "0"
+                                        }
+                                    }
+                                },
+                                {
+                                    "condition": "minecraft:survives_explosion"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

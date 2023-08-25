@@ -1,0 +1,13 @@
+{
+    "variants": {
+      "fruit=0": {
+        "model": "ucr_stitch:block/voidberry_vine_0"
+      },
+      "fruit=1": {
+        "model": "ucr_stitch:block/voidberry_vine_1"
+      },
+      "fruit=2": {
+        "model": "ucr_stitch:block/voidberry_vine_2"
+      }
+    }
+  }

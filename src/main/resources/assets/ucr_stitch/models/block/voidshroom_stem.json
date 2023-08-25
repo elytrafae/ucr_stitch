@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "ucr_stitch:block/voidshroom/stem_top",
+    "side": "ucr_stitch:block/voidshroom/stem"
+  }
+}
