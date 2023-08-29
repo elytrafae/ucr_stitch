@@ -9,7 +9,9 @@
 		"ItemEntityMixin",
 		"ChorusFruitItemMixin",
 		"TrunkPlacerTypeInvoker",
-		"TreeDecoratorTypeInvoker"
+		"TreeDecoratorTypeInvoker",
+		"FishingBobberEntityMixin",
+		"LootTableMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

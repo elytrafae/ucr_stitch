@@ -21,7 +21,7 @@ public class WaterVulnerableBlock extends Block {
         super(settings);
     }
 
-    final static int EVAPORATE_DELAY = 2;
+    final static public int EVAPORATE_DELAY = 2;
 
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
         world.createAndScheduleBlockTick(pos, (Block) this, EVAPORATE_DELAY);

@@ -21,6 +21,7 @@ public class ModTags {
     public static class Items {
 
         public static final TagKey<Item> WATER_VULNERABLE = createTag("water_vulnerable");
+        public static final TagKey<Item> FISHING_RODS = createTag("fishing_rods");
 
         private static TagKey<Item> createTag(String name) {
             return TagKey.of(Registry.ITEM_KEY, new Identifier(UCRStitch.MOD_NAMESPACE, name));

@@ -42,8 +42,8 @@ public class VoidshroomTreeDecorator extends TreeDecorator {
 
                 maxLength = Math.min(Math.max(maxLength, 0), 10);
 
-                int fullBerries = Math.max((maxLength / 3) + random.nextBetween(0, 2), 0);
-                int halfFullBerries = Math.max((maxLength / 3) + random.nextBetween(0, 2), 0);
+                int fullBerries = Math.max((maxLength / 3) + random.nextBetween(0, 3), 0);
+                int halfFullBerries = Math.max((maxLength / 3) + random.nextBetween(0, 3), 0);
 
                 if (fullBerries + halfFullBerries > maxLength) {
                     fullBerries -= 1;

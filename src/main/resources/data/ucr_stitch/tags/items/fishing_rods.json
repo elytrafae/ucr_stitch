@@ -1,0 +1,10 @@
+{
+    "values": [
+        "minecraft:fishing_rod",
+        "ucr_stitch:stone_fishing_rod",
+        "ucr_stitch:iron_fishing_rod",
+        "ucr_stitch:golden_fishing_rod",
+        "ucr_stitch:diamond_fishing_rod",
+        "ucr_stitch:netherite_fishing_rod"
+    ]
+}

@@ -13,6 +13,12 @@
     "item.ucr_stitch.diamond_multitool": "Diamond Multitool",
     "item.ucr_stitch.netherite_multitool": "Netherite Multitool",
 
+    "item.ucr_stitch.stone_fishing_rod": "Stone Fishing Rod",
+    "item.ucr_stitch.iron_fishing_rod": "Iron Fishing Rod",
+    "item.ucr_stitch.golden_fishing_rod": "Golden Fishing Rod",
+    "item.ucr_stitch.diamond_fishing_rod": "Diamond Fishing Rod",
+    "item.ucr_stitch.netherite_fishing_rod": "Netherite Fishing Rod",
+
     "block.ucr_stitch.gravity_duper": "Gravity Duper",
     "block.ucr_stitch.gravity_duper.error": "ERROR: Invalid item/recipe for duping! Please break the block and construct a new one!",
     "block.ucr_stitch.gravity_duper.duped_block": "Block: %s",
@@ -63,5 +69,8 @@
     "item.minecraft.potion.effect.totem_popper": "Potion of Totem Popping",
     "item.minecraft.splash_potion.effect.totem_popper": "Splash Potion of Totem Popping",
     "item.minecraft.lingering_potion.effect.totem_popper": "Lingering Potion of Totem Popping",
-    "item.minecraft.tipped_arrow.effect.totem_popper": "Arrow of Totem Popping"
+    "item.minecraft.tipped_arrow.effect.totem_popper": "Arrow of Totem Popping",
+
+    "tooltip.ucr_stitch.fishing_rods.guaranteed": "Guaranteed x%d pulls!",
+    "tooltip.ucr_stitch.fishing_rods.chance": "%d%% chance for another pull!"
 }

@@ -27,11 +27,15 @@ public class ModBlocks {
 
     public static final Block GRAVITY_DUPER = new GravityDuperBlock();
 
-    public static final Block VOIDSHROOM_CAP = new WaterVulnerableBlock(FabricBlockSettings.copy(Blocks.NETHER_WART_BLOCK).mapColor(MapColor.LIGHT_BLUE));
-    public static final Block VOIDBERRY_VINE = new VoidberryVine(FabricBlockSettings.copy(Blocks.CAVE_VINES).mapColor(MapColor.LIGHT_BLUE));
-    public static final Block VOIDSHROOM_STEM = new WaterVulnerablePillar(FabricBlockSettings.copy(Blocks.CRIMSON_STEM).mapColor(MapColor.LIGHT_BLUE));
-    public static final Block STRIPPED_VOIDSHROOM_STEM = new WaterVulnerablePillar(FabricBlockSettings.copy(Blocks.STRIPPED_CRIMSON_STEM).mapColor(MapColor.LIGHT_BLUE));
-    public static final Block VOIDSHROOM_SAPLING = new VoidshroomSapling(FabricBlockSettings.copy(Blocks.OAK_SAPLING).mapColor(MapColor.LIGHT_BLUE));
+    public static final MapColor VOIDSHROOM_MAP_COLOR = MapColor.PURPLE;
+
+    public static final Block VOIDSHROOM_CAP = new WaterVulnerableBlock(FabricBlockSettings.copy(Blocks.NETHER_WART_BLOCK).mapColor(VOIDSHROOM_MAP_COLOR));
+    public static final Block VOIDBERRY_VINE = new VoidberryVine(FabricBlockSettings.copy(Blocks.CAVE_VINES).mapColor(VOIDSHROOM_MAP_COLOR));
+    public static final Block VOIDSHROOM_STEM = new WaterVulnerablePillar(FabricBlockSettings.copy(Blocks.CRIMSON_STEM).mapColor(VOIDSHROOM_MAP_COLOR));
+    public static final Block STRIPPED_VOIDSHROOM_STEM = new WaterVulnerablePillar(FabricBlockSettings.copy(Blocks.STRIPPED_CRIMSON_STEM).mapColor(VOIDSHROOM_MAP_COLOR));
+    public static final Block VOIDSHROOM_SAPLING = new VoidshroomSapling(FabricBlockSettings.copy(Blocks.OAK_SAPLING).mapColor(VOIDSHROOM_MAP_COLOR));
+
+    public static final Block VOIDSHROOM_PLANKS = new WaterVulnerableBlock(FabricBlockSettings.copy(Blocks.CRIMSON_PLANKS).mapColor(VOIDSHROOM_MAP_COLOR));
     
     public static final BlockEntityType<GravityDuperBlockEntity> GRAVITY_DUPER_ENTITY = Registry.register(
         Registry.BLOCK_ENTITY_TYPE,
@@ -48,6 +52,7 @@ public class ModBlocks {
         ModItems.VOIDSHROOM_STEM = registerBlock("voidshroom_stem", VOIDSHROOM_STEM);
         ModItems.STRIPPED_VOIDSHROOM_STEM = registerBlock("stripped_voidshroom_stem", STRIPPED_VOIDSHROOM_STEM);
         ModItems.VOIDSHROOM_SAPLING = registerBlock("voidshroom_sapling", VOIDSHROOM_SAPLING);
+        ModItems.VOIDSHROOM_PLANKS = registerBlock("voidshroom_planks", VOIDSHROOM_PLANKS);
 
         StrippableBlockRegistry.register(VOIDSHROOM_STEM, STRIPPED_VOIDSHROOM_STEM);
     }

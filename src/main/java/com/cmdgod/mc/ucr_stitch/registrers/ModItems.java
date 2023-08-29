@@ -5,6 +5,7 @@ import java.util.Dictionary;
 import java.util.HashMap;
 
 import com.cmdgod.mc.ucr_stitch.UCRStitch;
+import com.cmdgod.mc.ucr_stitch.items.CustomFishingRodItem;
 import com.cmdgod.mc.ucr_stitch.items.GravityDuperPartItem;
 import com.cmdgod.mc.ucr_stitch.items.Multitool;
 import com.cmdgod.mc.ucr_stitch.items.OrbOfGreatRegret;
@@ -35,6 +36,7 @@ public class ModItems {
 
     private static ArrayList<Item> ITEMS = new ArrayList<>();
     public static HashMap<ToolMaterial, Multitool> MULTITOOLS = new HashMap<>();
+    public static HashMap<ToolMaterial, CustomFishingRodItem> FISHING_RODS = new HashMap<>();
 
     public static final ItemGroup ITEM_GROUP = FabricItemGroupBuilder
             .create(new Identifier(UCRStitch.MOD_NAMESPACE, "misc_group"))
@@ -109,6 +111,12 @@ public class ModItems {
         (PickaxeItem)Items.NETHERITE_PICKAXE
     );
 
+    public static final CustomFishingRodItem STONE_FISHING_ROD = new CustomFishingRodItem(ToolMaterials.STONE, 25);
+    public static final CustomFishingRodItem IRON_FISHING_ROD = new CustomFishingRodItem(ToolMaterials.IRON, 50);
+    public static final CustomFishingRodItem GOLDEN_FISHING_ROD = new CustomFishingRodItem(ToolMaterials.GOLD, 25);
+    public static final CustomFishingRodItem DIAMOND_FISHING_ROD = new CustomFishingRodItem(ToolMaterials.DIAMOND, 75);
+    public static final CustomFishingRodItem NETHERITE_FISHING_ROD = new CustomFishingRodItem(ToolMaterials.NETHERITE, 100);
+
     public static final Item HEAVY_BOULDER = new TooltippedItem(new FabricItemSettings().maxCount(16).group(ITEM_GROUP));
 
     public static final Item VOIDBERRY = new VoidberryItem(new FabricItemSettings());
@@ -133,6 +141,12 @@ public class ModItems {
         registerItem("diamond_multitool", DIAMOND_MULTITOOL);
         registerItem("netherite_multitool", NETHERITE_MULTITOOL);
 
+        registerItem("stone_fishing_rod", STONE_FISHING_ROD);
+        registerItem("iron_fishing_rod", IRON_FISHING_ROD);
+        registerItem("golden_fishing_rod", GOLDEN_FISHING_ROD);
+        registerItem("diamond_fishing_rod", DIAMOND_FISHING_ROD);
+        registerItem("netherite_fishing_rod", NETHERITE_FISHING_ROD);
+
         registerItem("voidberry", VOIDBERRY);
     }
 
@@ -142,6 +156,7 @@ public class ModItems {
     public static Item VOIDSHROOM_STEM;
     public static Item STRIPPED_VOIDSHROOM_STEM;
     public static Item VOIDSHROOM_SAPLING;
+    public static Item VOIDSHROOM_PLANKS;
 
     public static void registerItem(String id, Item item) {
         Registry.register(Registry.ITEM, new Identifier(UCRStitch.MOD_NAMESPACE, id), item);
