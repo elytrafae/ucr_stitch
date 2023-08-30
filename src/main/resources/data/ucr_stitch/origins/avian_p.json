@@ -6,7 +6,8 @@
         "ucr_stitch:avian_p/fresher_air",
         "origins:like_air",
         "origins:tailwind",
-        "origins:lay_eggs"
+        "origins:lay_eggs",
+        "ucr_stitch:scare_villager"
     ],
     "icon": {
         "item": "minecraft:feather"

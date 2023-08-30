@@ -16,6 +16,7 @@ import com.cmdgod.mc.ucr_stitch.registrers.ModBlocks;
 import com.cmdgod.mc.ucr_stitch.registrers.ModItems;
 import com.cmdgod.mc.ucr_stitch.registrers.LootTableModifier;
 import com.cmdgod.mc.ucr_stitch.registrers.ModPotions;
+import com.cmdgod.mc.ucr_stitch.registrers.ModPowers;
 import com.cmdgod.mc.ucr_stitch.registrers.ModStatusEffects;
 import com.cmdgod.mc.ucr_stitch.treestuff.UpsideDownTrunkPlacer;
 import com.cmdgod.mc.ucr_stitch.treestuff.VoidshroomTreeDecorator;
@@ -87,6 +88,7 @@ public class UCRStitch implements ModInitializer {
 		//VillagerEntity;
 		//VillagerHostilesSensor;
 		// FishingRodItem;
+		// SwordItem;
 
 		Registry.register(Registry.RECIPE_SERIALIZER, GravityDuperRecipeSerializer.ID, GravityDuperRecipeSerializer.INSTANCE);
         Registry.register(Registry.RECIPE_TYPE, new Identifier(MOD_NAMESPACE, GravityDuperRecipe.Type.ID), GravityDuperRecipe.Type.INSTANCE);
@@ -99,6 +101,7 @@ public class UCRStitch implements ModInitializer {
 		ModStatusEffects.registerAll();
 		ModPotions.registerPotionsRecipes();
 		LootTableModifier.doAllChanges();
+		ModPowers.registerAll();
 
 		/*
 		BiomeModifications.addFeature(

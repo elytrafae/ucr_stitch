@@ -7,6 +7,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.cmdgod.mc.ucr_stitch.items.CustomFishingRodItem;
+import com.cmdgod.mc.ucr_stitch.registrers.ModAttributes;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.fabricmc.fabric.api.entity.event.v1.EntityElytraEvents.Custom;
@@ -29,22 +30,24 @@ public class LootTableMixin {
         if (bobber == null || !(bobber instanceof FishingBobberEntity)) {
             return;
         }
-        //System.out.println("Fishing Loot");
-        ItemStack tool = context.get(LootContextParameters.TOOL);
-        Item item = tool.getItem();
-        if (!(item instanceof CustomFishingRodItem)) {
-            return;
-        }
-        //System.out.println("Special Fishing!");
+        FishingBobberEntity actualBobber = (FishingBobberEntity)bobber;
+        int count = getFishCountFromChance(actualBobber.getPlayerOwner().getAttributeValue(ModAttributes.GENERIC_BONUS_FISH_CHANCE), Random.create());
         LootTable table = (LootTable)(Object)this;
-        CustomFishingRodItem rod = (CustomFishingRodItem)item;
-        int count = rod.getFishCount(Random.create());
         ObjectArrayList<ItemStack> objectArrayList = new ObjectArrayList<ItemStack>();
         for (int i=0; i < count; i++) {
             table.generateLoot(context, objectArrayList::add);
         }
         info.setReturnValue(objectArrayList);
         info.cancel();
+    }
+
+    private int getFishCountFromChance(double chance, Random random) {
+        int nr = (int)Math.floor(chance);
+        chance -= nr;
+        if (chance > 0 && random.nextFloat() < chance) {
+            nr++;
+        }
+        return nr;
     }
 
 }

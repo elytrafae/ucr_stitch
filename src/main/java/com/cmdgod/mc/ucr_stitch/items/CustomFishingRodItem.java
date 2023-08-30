@@ -1,15 +1,23 @@
 package com.cmdgod.mc.ucr_stitch.items;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.jetbrains.annotations.Nullable;
 
+import com.cmdgod.mc.ucr_stitch.registrers.ModAttributes;
 import com.cmdgod.mc.ucr_stitch.registrers.ModItems;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.AnvilBlock;
 import net.minecraft.client.gui.screen.ingame.AnvilScreen;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.attribute.EntityAttribute;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.FishingRodItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -24,10 +32,13 @@ import net.minecraft.text.Text;
 
 public class CustomFishingRodItem extends FishingRodItem {
 
-    ToolMaterial material;
-    FishCountData countData;
+    // Modified version of the attack speed modifier UUID.
+    protected static final UUID BONUS_FISH_CHANCE_MODIFIER_ID = UUID.fromString("FA222E1C-4180-4865-B01B-BCCE6985ACA3");
 
-    public CustomFishingRodItem(ToolMaterial material, int doubleChance) {
+    ToolMaterial material;
+    private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
+
+    public CustomFishingRodItem(ToolMaterial material, double doubleChance) {
         this(material, doubleChance, new Item.Settings());
     }
 
@@ -36,11 +47,21 @@ public class CustomFishingRodItem extends FishingRodItem {
     }
 
     // This was mainly made so that stuff like "fireproof" can be added
-    public CustomFishingRodItem(ToolMaterial material, int doubleChance, Item.Settings baseSettings) {
+    public CustomFishingRodItem(ToolMaterial material, double doubleChance, Item.Settings baseSettings) {
         super(baseSettings.maxDamage(calcDurability(material)).group(ModItems.ITEM_GROUP));
         this.material = material;
-        this.countData = getFishCountData(doubleChance);
+        ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
+        builder.put(ModAttributes.GENERIC_BONUS_FISH_CHANCE, new EntityAttributeModifier(BONUS_FISH_CHANCE_MODIFIER_ID, "Fish chance modifier", doubleChance, EntityAttributeModifier.Operation.MULTIPLY_BASE));
+        this.attributeModifiers = builder.build();
         ModItems.FISHING_RODS.put(material, this);
+    }
+
+    @Override
+    public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(EquipmentSlot slot) {
+        if (slot == EquipmentSlot.MAINHAND) {
+            return this.attributeModifiers;
+        }
+        return super.getAttributeModifiers(slot);
     }
 
     @Override
@@ -53,20 +74,7 @@ public class CustomFishingRodItem extends FishingRodItem {
         return this.material.getRepairIngredient().test(ingredient) || super.canRepair(stack, ingredient);
     }
 
-    private FishCountData getFishCountData(int chanceNr) {
-        int nr = 1 + (chanceNr/100);
-        int remainingChance = chanceNr - (nr-1)*100;
-        return new FishCountData(nr, remainingChance);
-    }
-
-    public int getFishCount(Random random) {
-        int nr = 0;
-        if (countData.chance > 0 && countData.chance > random.nextInt(100)) {
-            nr++;
-        }
-        return countData.guaranteed + nr;
-    }
-
+    /*
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         if (countData.guaranteed > 1) {
@@ -76,14 +84,6 @@ public class CustomFishingRodItem extends FishingRodItem {
             tooltip.add(Text.translatable("tooltip.ucr_stitch.fishing_rods.chance", countData.chance).formatted(Formatting.DARK_AQUA));
         }
     }
-
-    class FishCountData {
-        public int guaranteed = 0;
-        public int chance = 0;
-        public FishCountData(int g, int c) {
-            guaranteed = g;
-            chance = c;
-        }
-    }
+    */
 
 }

@@ -11,7 +11,11 @@
 		"TrunkPlacerTypeInvoker",
 		"TreeDecoratorTypeInvoker",
 		"FishingBobberEntityMixin",
-		"LootTableMixin"
+		"FishingBobberEntityRendererMixin",
+		"FishingBobberEntityRendererAccessor",
+		"EntityRendererAccessor",
+		"LootTableMixin",
+		"VillagerHostilesSensorMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

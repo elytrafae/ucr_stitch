@@ -5,9 +5,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import com.cmdgod.mc.ucr_stitch.registrers.ModAttributes;
 import com.cmdgod.mc.ucr_stitch.registrers.ModStatusEffects;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.damage.DamageSource;
 
 @Mixin(LivingEntity.class)
@@ -21,5 +23,11 @@ public class LivingEntityMixin {
             info.cancel();
         }
 	}
+
+    // This shows a warning for some reason, even though it's correct
+    @Inject(at = @At("RETURN"), method = "createLivingAttributes()Lnet/minecraft/entity/attribute/DefaultAttributeContainer/Builder;")
+    private static void createLivingAttributes(CallbackInfoReturnable<DefaultAttributeContainer.Builder> info) {
+        info.getReturnValue().add(ModAttributes.GENERIC_BONUS_FISH_CHANCE);
+    }
 
 }

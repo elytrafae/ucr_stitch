@@ -111,11 +111,11 @@ public class ModItems {
         (PickaxeItem)Items.NETHERITE_PICKAXE
     );
 
-    public static final CustomFishingRodItem STONE_FISHING_ROD = new CustomFishingRodItem(ToolMaterials.STONE, 25);
-    public static final CustomFishingRodItem IRON_FISHING_ROD = new CustomFishingRodItem(ToolMaterials.IRON, 50);
-    public static final CustomFishingRodItem GOLDEN_FISHING_ROD = new CustomFishingRodItem(ToolMaterials.GOLD, 25);
-    public static final CustomFishingRodItem DIAMOND_FISHING_ROD = new CustomFishingRodItem(ToolMaterials.DIAMOND, 75);
-    public static final CustomFishingRodItem NETHERITE_FISHING_ROD = new CustomFishingRodItem(ToolMaterials.NETHERITE, 100);
+    public static final CustomFishingRodItem STONE_FISHING_ROD = new CustomFishingRodItem(ToolMaterials.STONE, 0.25);
+    public static final CustomFishingRodItem IRON_FISHING_ROD = new CustomFishingRodItem(ToolMaterials.IRON, 0.5);
+    public static final CustomFishingRodItem GOLDEN_FISHING_ROD = new CustomFishingRodItem(ToolMaterials.GOLD, 0.25);
+    public static final CustomFishingRodItem DIAMOND_FISHING_ROD = new CustomFishingRodItem(ToolMaterials.DIAMOND, 0.75);
+    public static final CustomFishingRodItem NETHERITE_FISHING_ROD = new CustomFishingRodItem(ToolMaterials.NETHERITE, 1);
 
     public static final Item HEAVY_BOULDER = new TooltippedItem(new FabricItemSettings().maxCount(16).group(ITEM_GROUP));
 

@@ -126,7 +126,8 @@ dependencies {
 	modImplementation "dev.emi:trinkets:${project.trinkets_version}"
 
 	// Origins
-	modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
+	//modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
+	modImplementation "com.github.eggohito:origins-fabric:${project.origins_version}"
 
 	// JEI
 	//      compile against the JEI API but do not include it at runtime
