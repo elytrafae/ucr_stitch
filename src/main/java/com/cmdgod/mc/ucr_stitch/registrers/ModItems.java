@@ -27,6 +27,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ShovelItem;
+import net.minecraft.item.SignItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.ToolMaterials;
 import net.minecraft.util.Identifier;
@@ -157,6 +158,9 @@ public class ModItems {
     public static Item STRIPPED_VOIDSHROOM_STEM;
     public static Item VOIDSHROOM_SAPLING;
     public static Item VOIDSHROOM_PLANKS;
+    public static Item VOIDSHROOM_HYPHAE;
+    public static Item STRIPPED_VOIDSHROOM_HYPHAE;
+    public static SignItem VOIDSHROOM_SIGN;
 
     public static void registerItem(String id, Item item) {
         Registry.register(Registry.ITEM, new Identifier(UCRStitch.MOD_NAMESPACE, id), item);

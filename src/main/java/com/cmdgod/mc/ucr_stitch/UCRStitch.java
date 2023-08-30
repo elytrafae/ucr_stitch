@@ -89,6 +89,7 @@ public class UCRStitch implements ModInitializer {
 		//VillagerHostilesSensor;
 		// FishingRodItem;
 		// SwordItem;
+		// SignBlock;
 
 		Registry.register(Registry.RECIPE_SERIALIZER, GravityDuperRecipeSerializer.ID, GravityDuperRecipeSerializer.INSTANCE);
         Registry.register(Registry.RECIPE_TYPE, new Identifier(MOD_NAMESPACE, GravityDuperRecipe.Type.ID), GravityDuperRecipe.Type.INSTANCE);
