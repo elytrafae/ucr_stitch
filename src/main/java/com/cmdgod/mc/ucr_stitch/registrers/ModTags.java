@@ -21,6 +21,7 @@ public class ModTags {
     public static class Items {
 
         public static final TagKey<Item> WATER_VULNERABLE = createTag("water_vulnerable");
+        public static final TagKey<Item> VOID_BOUNCING = createTag("void_bouncing");
         public static final TagKey<Item> FISHING_RODS = createTag("fishing_rods");
 
         private static TagKey<Item> createTag(String name) {

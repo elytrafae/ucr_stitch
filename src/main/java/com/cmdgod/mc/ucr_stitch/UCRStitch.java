@@ -18,8 +18,8 @@ import com.cmdgod.mc.ucr_stitch.registrers.LootTableModifier;
 import com.cmdgod.mc.ucr_stitch.registrers.ModPotions;
 import com.cmdgod.mc.ucr_stitch.registrers.ModPowers;
 import com.cmdgod.mc.ucr_stitch.registrers.ModStatusEffects;
-import com.cmdgod.mc.ucr_stitch.treestuff.UpsideDownTrunkPlacer;
-import com.cmdgod.mc.ucr_stitch.treestuff.VoidshroomTreeDecorator;
+import com.cmdgod.mc.ucr_stitch.worldgen.VoidberryVineFeature;
+import com.cmdgod.mc.ucr_stitch.worldgen.VoidberryVineFeatureConfig;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -30,10 +30,12 @@ import net.minecraft.block.entity.FurnaceBlockEntity;
 import net.minecraft.entity.ai.brain.sensor.VillagerHostilesSensor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
+import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.ConfiguredFeatures;
 import net.minecraft.world.gen.feature.Feature;
@@ -42,6 +44,11 @@ import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
 import net.minecraft.world.gen.foliage.RandomSpreadFoliagePlacer;
+import net.minecraft.world.gen.heightprovider.HeightProvider;
+import net.minecraft.world.gen.heightprovider.HeightProviderType;
+import net.minecraft.world.gen.heightprovider.VeryBiasedToBottomHeightProvider;
+import net.minecraft.world.gen.placementmodifier.HeightRangePlacementModifier;
+import net.minecraft.world.gen.placementmodifier.RarityFilterPlacementModifier;
 import net.minecraft.world.gen.placementmodifier.SquarePlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
@@ -55,6 +62,7 @@ public class UCRStitch implements ModInitializer {
 	public static final String MOD_NAMESPACE = "ucr_stitch";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAMESPACE);
 
+	/*
 	public static final TrunkPlacerType<UpsideDownTrunkPlacer> UPSIDE_DOWN_TRUNK_PLACER = TrunkPlacerTypeInvoker.callRegister("ucr_stitch:upside_down_trunk_placer", UpsideDownTrunkPlacer.CODEC);
 	public static final TreeDecoratorType<VoidshroomTreeDecorator> VOIDSHROOM_TREE_DECORATOR = TreeDecoratorTypeInvoker.callRegister("ucr_stitch:voidshroom_tree_decorator", VoidshroomTreeDecorator.CODEC);
 
@@ -68,11 +76,22 @@ public class UCRStitch implements ModInitializer {
 		new RandomSpreadFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(0),ConstantIntProvider.create(4), 50), // places leaves as a blob (radius, offset from trunk, height)
 		new TwoLayersFeatureSize(-1, 0, -1) // The width of the tree at different layers; used to see how tall the tree can be without clipping into blocks
 	).dirtProvider(BlockStateProvider.of(Blocks.END_STONE)).decorators(Collections.singletonList(VoidshroomTreeDecorator.INSTANCE)).build());
+	*/
 
-	// our PlacedFeature. this is what gets passed to the biome modification API to add to the biome.
-    // public static PlacedFeature VOIDHSROOM_TREE_PLACED = new PlacedFeature(VOIDSHROOM_TREE, List.of(SquarePlacementModifier.of()));
+	public static final Identifier VOIDBERRY_VINES_FEATURE_ID = new Identifier(MOD_NAMESPACE, "voidberry_vines");
+    public static Feature<VoidberryVineFeatureConfig> VOIDBERRY_VINES_FEATURE = new VoidberryVineFeature(VoidberryVineFeatureConfig.CODEC);
 
-	// TODO: Add voidshrooms to world generation: https://fabricmc.net/wiki/tutorial:features
+	public static ConfiguredFeature<VoidberryVineFeatureConfig, VoidberryVineFeature> WILD_VOIDBERRY_VINES = new ConfiguredFeature<>(
+                    (VoidberryVineFeature) VOIDBERRY_VINES_FEATURE,
+                    new VoidberryVineFeatureConfig(false)
+    );
+
+	public static PlacedFeature WILD_VOIDBERRY_VINES_PLACED = new PlacedFeature(
+            RegistryEntry.of(
+                    WILD_VOIDBERRY_VINES
+//                    the SquarePlacementModifier makes the feature generate a cluster of pillars each time
+            ), List.of(SquarePlacementModifier.of(), RarityFilterPlacementModifier.of(22), HeightRangePlacementModifier.of(VeryBiasedToBottomHeightProvider.create(YOffset.fixed(5), YOffset.fixed(20), 22)))
+    );
 
 	@Override
 	public void onInitialize() {
@@ -104,28 +123,15 @@ public class UCRStitch implements ModInitializer {
 		LootTableModifier.doAllChanges();
 		ModPowers.registerAll();
 
-		/*
+		Registry.register(Registry.FEATURE, VOIDBERRY_VINES_FEATURE_ID, VOIDBERRY_VINES_FEATURE);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, VOIDBERRY_VINES_FEATURE_ID, WILD_VOIDBERRY_VINES);
+		Registry.register(BuiltinRegistries.PLACED_FEATURE, VOIDBERRY_VINES_FEATURE_ID, WILD_VOIDBERRY_VINES_PLACED);
+
 		BiomeModifications.addFeature(
-                BiomeSelectors.foundInOverworld(),
+                BiomeSelectors.foundInTheEnd(),
                 // the feature is to be added while flowers and trees are being generated
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                RegistryKey.of(Registry.PLACED_FEATURE_KEY, VOIDSHROOM_ID));
-		*/
-
-		/*
-		ClientPickBlockCallback cb = new ClientPickBlockCallback() {
-			@Override
-			public boolean pick(PlayerEntity player, HitResult result, Container container) {
-				System.out.println("List of all items: ");
-				System.out.println(GetAllItems.getJsonArrayList());
-				System.out.println("List of all gravity blocks: ");
-				System.out.println(GetAllGravityBlocks.getAllGravityBlocks());
-				return true;
-			}
-		};
-
-		ClientPickBlockCallback.EVENT.register( Event.DEFAULT_PHASE, cb);
-		*/
+                RegistryKey.of(Registry.PLACED_FEATURE_KEY, VOIDBERRY_VINES_FEATURE_ID));
 
 		LOGGER.info("UCR Stitch says Hello!");
 	}

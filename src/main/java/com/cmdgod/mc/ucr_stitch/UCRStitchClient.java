@@ -33,7 +33,7 @@ public class UCRStitchClient implements ClientModInitializer {
             if (!blockStateNbt.contains("fruit", NbtElement.STRING_TYPE)) {
                 return 0F;
             }
-            return Math.min(Math.max(Integer.parseInt(blockStateNbt.getString("fruit")), 0), 2);
+            return Math.max(Integer.parseInt(blockStateNbt.getString("fruit")), 0);
         });
 
         for (CustomFishingRodItem item : ModItems.FISHING_RODS.values()) {

@@ -14,7 +14,7 @@
         },
         {
             "predicate": {
-                "fruit": 1.9
+                "fruit": 2
             },
             "model": "ucr_stitch:item/voidberry_vine_2"
         }

@@ -5,13 +5,16 @@ import com.cmdgod.mc.ucr_stitch.registrers.ModItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvents;
@@ -24,6 +27,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 
@@ -79,7 +83,17 @@ public class VoidberryVine extends WaterVulnerableBlock {
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         BlockPos newPos = pos.add(Direction.UP.getVector());
         Block newBlock = world.getBlockState(newPos).getBlock();
-        return newBlock == ModBlocks.VOIDSHROOM_CAP || newBlock == this;
+        return newBlock == Blocks.END_STONE || newBlock == this;
+    }
+
+    @Override
+    public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
+        ItemStack stack = new ItemStack(this);
+        NbtCompound nbt = stack.getOrCreateNbt();
+        NbtCompound stateNbt = new NbtCompound();
+        stateNbt.putString("fruit", state.get(FRUIT) + "");
+        nbt.put(BlockItem.BLOCK_STATE_TAG_KEY, stateNbt);
+        return stack;
     }
     
 }
