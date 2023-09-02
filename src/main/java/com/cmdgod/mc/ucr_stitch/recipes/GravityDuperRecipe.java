@@ -3,7 +3,6 @@ package com.cmdgod.mc.ucr_stitch.recipes;
 import com.google.gson.JsonObject;
 
 import net.minecraft.inventory.SimpleInventory;
-import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.Recipe;

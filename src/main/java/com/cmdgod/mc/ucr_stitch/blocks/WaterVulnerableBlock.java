@@ -2,10 +2,6 @@ package com.cmdgod.mc.ucr_stitch.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.CobwebBlock;
-import net.minecraft.block.FallingBlock;
-import net.minecraft.block.PillarBlock;
-import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.server.world.ServerWorld;

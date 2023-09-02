@@ -4,7 +4,6 @@ import com.cmdgod.mc.ucr_stitch.UCRStitch;
 
 import net.minecraft.entity.attribute.ClampedEntityAttribute;
 import net.minecraft.entity.attribute.EntityAttribute;
-import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 

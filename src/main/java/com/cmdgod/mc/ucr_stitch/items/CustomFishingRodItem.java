@@ -1,34 +1,20 @@
 package com.cmdgod.mc.ucr_stitch.items;
 
-import java.util.List;
 import java.util.UUID;
-
-import org.jetbrains.annotations.Nullable;
 
 import com.cmdgod.mc.ucr_stitch.registrers.ModAttributes;
 import com.cmdgod.mc.ucr_stitch.registrers.ModItems;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.block.AnvilBlock;
-import net.minecraft.client.gui.screen.ingame.AnvilScreen;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.item.FishingRodItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.ToolMaterials;
-import net.minecraft.util.Formatting;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.World;
-import net.minecraft.text.Text;
 
 public class CustomFishingRodItem extends FishingRodItem {
 

@@ -2,16 +2,11 @@ package com.cmdgod.mc.ucr_stitch.powers;
 
 import com.cmdgod.mc.ucr_stitch.UCRStitch;
 
-import io.github.apace100.apoli.Apoli;
-import io.github.apace100.apoli.component.PowerHolderComponent;
-import io.github.apace100.apoli.power.ElytraFlightPower;
 import io.github.apace100.apoli.power.Power;
 import io.github.apace100.apoli.power.PowerType;
 import io.github.apace100.apoli.power.factory.PowerFactory;
-import io.github.apace100.apoli.power.factory.action.ActionType;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataTypes;
-import net.fabricmc.fabric.api.entity.event.v1.EntityElytraEvents;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
 

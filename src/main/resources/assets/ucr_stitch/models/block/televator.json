@@ -1,0 +1,12 @@
+{
+    "parent": "minecraft:block/cube",
+    "textures": {
+        "down": "ucr_stitch:block/televator_top_bottom",
+        "east": "ucr_stitch:block/televator_side",
+        "north": "ucr_stitch:block/televator_side",
+        "particle": "ucr_stitch:block/televator_top_bottom",
+        "south": "ucr_stitch:block/televator_side",
+        "up": "ucr_stitch:block/televator_top_bottom",
+        "west": "ucr_stitch:block/televator_side"
+    }
+}

@@ -6,13 +6,10 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class GravityDuperRecipeSerializer implements RecipeSerializer<GravityDuperRecipe> {
 

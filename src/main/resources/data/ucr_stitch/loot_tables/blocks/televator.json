@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:block",
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "ucr_stitch:televator"
+                }
+            ],
+            "conditions": [
+                {
+                    "condition": "minecraft:survives_explosion"
+                }
+            ]
+        }
+    ]
+}

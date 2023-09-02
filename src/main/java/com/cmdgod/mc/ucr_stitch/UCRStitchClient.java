@@ -7,7 +7,6 @@ import com.cmdgod.mc.ucr_stitch.registrers.ModItems;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
-import net.minecraft.block.entity.BannerPattern;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.entity.player.PlayerEntity;

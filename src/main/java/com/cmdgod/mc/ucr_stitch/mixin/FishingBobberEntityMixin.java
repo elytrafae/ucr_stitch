@@ -7,7 +7,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.cmdgod.mc.ucr_stitch.registrers.ModTags;
 
-import net.minecraft.client.render.entity.FishingBobberEntityRenderer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.FishingBobberEntity;
 import net.minecraft.item.ItemStack;

@@ -3,6 +3,7 @@ package com.cmdgod.mc.ucr_stitch.registrers;
 import com.cmdgod.mc.ucr_stitch.UCRStitch;
 import com.cmdgod.mc.ucr_stitch.blockentities.GravityDuperBlockEntity;
 import com.cmdgod.mc.ucr_stitch.blocks.GravityDuperBlock;
+import com.cmdgod.mc.ucr_stitch.blocks.TelevatorBlock;
 import com.cmdgod.mc.ucr_stitch.blocks.VoidberryVine;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -10,6 +11,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityT
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.MapColor;
+import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -33,6 +35,8 @@ public class ModBlocks {
     //public static final Block VOIDSHROOM_PLANKS = new WaterVulnerableBlock(FabricBlockSettings.copy(Blocks.CRIMSON_PLANKS).mapColor(VOIDSHROOM_MAP_COLOR));
     //public static final Block VOIDSHROOM_SIGN = registerNoBlockItem("voidshroom_sign", new WaterVulnerableSign(FabricBlockSettings.copy(Blocks.CRIMSON_SIGN), SignType.CRIMSON));
     //public static final Block VOIDSHROOM_WALL_SIGN = registerNoBlockItem("voidshroom_wall_sign", new WaterVulnerableSign(FabricBlockSettings.copy(Blocks.CRIMSON_WALL_SIGN).dropsLike(VOIDSHROOM_SIGN), SignType.CRIMSON));
+
+    public static final Block TELEVATOR = new TelevatorBlock(FabricBlockSettings.of(Material.PISTON, MapColor.DARK_DULL_PINK).luminance(6).strength(3.5f, 6f));
     
     public static final BlockEntityType<GravityDuperBlockEntity> GRAVITY_DUPER_ENTITY = Registry.register(
         Registry.BLOCK_ENTITY_TYPE,
@@ -55,6 +59,8 @@ public class ModBlocks {
         //ModItems.VOIDSHROOM_SAPLING = registerBlock("voidshroom_sapling", VOIDSHROOM_SAPLING);
         //ModItems.VOIDSHROOM_PLANKS = registerBlock("voidshroom_planks", VOIDSHROOM_PLANKS);
         //ModItems.VOIDSHROOM_SIGN = new SignItem(new Item.Settings().maxCount(16).group(ModItems.ITEM_GROUP), VOIDSHROOM_SIGN, VOIDSHROOM_WALL_SIGN);
+
+        ModItems.TELEVATOR = registerBlock("televator", TELEVATOR);
 
         //StrippableBlockRegistry.register(VOIDSHROOM_STEM, STRIPPED_VOIDSHROOM_STEM);
         //StrippableBlockRegistry.register(VOIDSHROOM_HYPHAE, STRIPPED_VOIDSHROOM_HYPHAE);

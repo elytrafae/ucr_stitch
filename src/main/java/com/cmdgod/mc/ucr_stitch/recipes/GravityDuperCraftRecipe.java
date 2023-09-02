@@ -2,9 +2,7 @@ package com.cmdgod.mc.ucr_stitch.recipes;
 
 import java.util.Optional;
 
-import com.cmdgod.mc.ucr_stitch.UCRStitch;
 import com.cmdgod.mc.ucr_stitch.blockentities.GravityDuperBlockEntity;
-import com.cmdgod.mc.ucr_stitch.blocks.GravityDuperBlock;
 import com.cmdgod.mc.ucr_stitch.registrers.ModItems;
 
 import net.minecraft.inventory.CraftingInventory;

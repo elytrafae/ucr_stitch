@@ -1,1 +1,0 @@
-playsound minecraft:entity.guardian.ambient_land player @a ~ ~ ~ 3 0.6

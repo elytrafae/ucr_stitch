@@ -1,13 +1,10 @@
 package com.cmdgod.mc.ucr_stitch;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.cmdgod.mc.ucr_stitch.mixin.TreeDecoratorTypeInvoker;
-import com.cmdgod.mc.ucr_stitch.mixin.TrunkPlacerTypeInvoker;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperCraftRecipe;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperRecipe;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperRecipeSerializer;
@@ -15,6 +12,7 @@ import com.cmdgod.mc.ucr_stitch.recipes.MultitoolCraftRecipe;
 import com.cmdgod.mc.ucr_stitch.registrers.ModBlocks;
 import com.cmdgod.mc.ucr_stitch.registrers.ModItems;
 import com.cmdgod.mc.ucr_stitch.registrers.LootTableModifier;
+import com.cmdgod.mc.ucr_stitch.registrers.ModActions;
 import com.cmdgod.mc.ucr_stitch.registrers.ModPotions;
 import com.cmdgod.mc.ucr_stitch.registrers.ModPowers;
 import com.cmdgod.mc.ucr_stitch.registrers.ModStatusEffects;
@@ -24,12 +22,7 @@ import com.cmdgod.mc.ucr_stitch.worldgen.VoidberryVineFeatureConfig;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fabricmc.fabric.mixin.content.registry.VillagerEntityMixin;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.entity.FurnaceBlockEntity;
-import net.minecraft.entity.ai.brain.sensor.VillagerHostilesSensor;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryEntry;
@@ -37,23 +30,12 @@ import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.ConfiguredFeatures;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.PlacedFeature;
-import net.minecraft.world.gen.feature.TreeFeatureConfig;
-import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
-import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
-import net.minecraft.world.gen.foliage.RandomSpreadFoliagePlacer;
-import net.minecraft.world.gen.heightprovider.HeightProvider;
-import net.minecraft.world.gen.heightprovider.HeightProviderType;
 import net.minecraft.world.gen.heightprovider.VeryBiasedToBottomHeightProvider;
 import net.minecraft.world.gen.placementmodifier.HeightRangePlacementModifier;
 import net.minecraft.world.gen.placementmodifier.RarityFilterPlacementModifier;
 import net.minecraft.world.gen.placementmodifier.SquarePlacementModifier;
-import net.minecraft.world.gen.stateprovider.BlockStateProvider;
-import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
-import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
-import net.minecraft.world.gen.trunk.TrunkPlacerType;
 
 public class UCRStitch implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
@@ -101,6 +83,7 @@ public class UCRStitch implements ModInitializer {
 
 		//LivingEntity;
 		//ProtectionEnchantment;
+		//EnchantmentHelper;
 		//ChorusFruitItem;
 		// FurnaceBlockEntity;
 		// BlockItem;
@@ -122,6 +105,7 @@ public class UCRStitch implements ModInitializer {
 		ModPotions.registerPotionsRecipes();
 		LootTableModifier.doAllChanges();
 		ModPowers.registerAll();
+		ModActions.registerAll();
 
 		Registry.register(Registry.FEATURE, VOIDBERRY_VINES_FEATURE_ID, VOIDBERRY_VINES_FEATURE);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, VOIDBERRY_VINES_FEATURE_ID, WILD_VOIDBERRY_VINES);
@@ -134,6 +118,8 @@ public class UCRStitch implements ModInitializer {
                 RegistryKey.of(Registry.PLACED_FEATURE_KEY, VOIDBERRY_VINES_FEATURE_ID));
 
 		LOGGER.info("UCR Stitch says Hello!");
+
+		// This is just to force gradle to fucking load Patchouli!
 	}
 
 	

@@ -12,6 +12,8 @@ public class ModTags {
 
     public static class Blocks {
 
+        public static final TagKey<Block> ALL_CARPETS = createTag("all_carpets");
+
         private static TagKey<Block> createTag(String name) {
             return TagKey.of(Registry.BLOCK_KEY, new Identifier(UCRStitch.MOD_NAMESPACE, name));
         }

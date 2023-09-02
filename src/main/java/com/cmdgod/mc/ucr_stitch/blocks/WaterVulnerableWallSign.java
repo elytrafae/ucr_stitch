@@ -17,7 +17,6 @@ public class WaterVulnerableWallSign extends WallSignBlock {
 
     public WaterVulnerableWallSign(Settings settings, SignType signType) {
         super(settings, signType);
-        //TODO Auto-generated constructor stub
     }
     
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {

@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#E#",
+        "EOE",
+        "#E#"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:chorus_fruit"
+        },
+        "E": {
+            "item": "minecraft:purpur_block"
+        },
+        "O": {
+            "item": "ucr_stitch:voidberry"
+        }
+    },
+    "result": {
+        "item": "ucr_stitch:televator",
+        "count": 4
+    }
+}

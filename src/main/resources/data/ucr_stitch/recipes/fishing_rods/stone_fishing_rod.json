@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+        "item": "minecraft:fishing_rod"
+    },
+    "addition": {
+        "tag": "minecraft:stone_crafting_materials"
+    },
+    "result": {
+        "item": "ucr_stitch:stone_fishing_rod"
+    }
+}

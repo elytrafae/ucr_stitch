@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+        "item": "ucr_stitch:iron_fishing_rod"
+    },
+    "addition": {
+        "item": "minecraft:diamond"
+    },
+    "result": {
+        "item": "ucr_stitch:diamond_fishing_rod"
+    }
+}

@@ -3,13 +3,10 @@ package com.cmdgod.mc.ucr_stitch.blocks;
 import java.util.List;
 
 import com.cmdgod.mc.ucr_stitch.blockentities.GravityDuperBlockEntity;
-import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperRecipe;
 import com.cmdgod.mc.ucr_stitch.registrers.ModBlocks;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
@@ -21,12 +18,9 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.PotionItem;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;

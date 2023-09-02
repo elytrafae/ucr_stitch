@@ -15,7 +15,10 @@
 		"FishingBobberEntityRendererAccessor",
 		"EntityRendererAccessor",
 		"LootTableMixin",
-		"VillagerHostilesSensorMixin"
+		"VillagerHostilesSensorMixin",
+		"PlayerEntityMixin",
+		"ProtectionEnchantmentMixin",
+		"EnchantmentHelperMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

@@ -1,6 +1,5 @@
 package com.cmdgod.mc.ucr_stitch.blocks;
 
-import com.cmdgod.mc.ucr_stitch.registrers.ModBlocks;
 import com.cmdgod.mc.ucr_stitch.registrers.ModItems;
 
 import net.minecraft.block.Block;

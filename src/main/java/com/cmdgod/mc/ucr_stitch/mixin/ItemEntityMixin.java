@@ -1,12 +1,11 @@
 package com.cmdgod.mc.ucr_stitch.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.gen.Invoker;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import com.cmdgod.mc.ucr_stitch.UCRStitch;
+import com.cmdgod.mc.ucr_stitch.items.ThrownGlowingItem;
 import com.cmdgod.mc.ucr_stitch.items.VoidBounceEventListener;
 import com.cmdgod.mc.ucr_stitch.registrers.ModTags;
 
@@ -15,8 +14,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.Item;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.Packet;
+import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.Vec3d;
@@ -28,7 +26,6 @@ public abstract class ItemEntityMixin extends Entity {
     public ItemEntityMixin(EntityType<?> type, World world) {
         super(type, world);
         throw new UnsupportedOperationException("Unimplemented constructor 'ItemEntityMixin'");
-        //TODO Auto-generated constructor stub
     }
 
     @Inject(at = @At("RETURN"), method = "tick()V")
@@ -59,6 +56,33 @@ public abstract class ItemEntityMixin extends Entity {
             return true;
         }
         return super.isInvulnerableTo(damageSource);
+    }
+
+    @Override
+    public boolean isGlowing() {
+        ItemEntity ie = (ItemEntity)(Object)this;
+        ItemStack stack = ie.getStack();
+        Item item = stack.getItem();
+        if (item instanceof ThrownGlowingItem) {
+            int glowColor = ((ThrownGlowingItem)item).getGlowColor(stack, ie);
+            return glowColor > -1;
+        }
+        return super.isGlowing();
+    }
+
+    @Override
+    public int getTeamColorValue() {
+        int color = super.getTeamColorValue();
+        if (color != 0xFFFFFF) {
+            return color;
+        }
+        ItemEntity ie = (ItemEntity)(Object)this;
+        ItemStack stack = ie.getStack();
+        Item item = stack.getItem();
+        if (!(item instanceof ThrownGlowingItem)) {
+            return 0xFFFFFF;
+        }
+        return ((ThrownGlowingItem)item).getGlowColor(stack, ie);
     }
 
 }

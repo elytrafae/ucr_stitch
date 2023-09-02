@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+        "item": "minecraft:fishing_rod"
+    },
+    "addition": {
+        "item": "minecraft:gold_ingot"
+    },
+    "result": {
+        "item": "ucr_stitch:golden_fishing_rod"
+    }
+}

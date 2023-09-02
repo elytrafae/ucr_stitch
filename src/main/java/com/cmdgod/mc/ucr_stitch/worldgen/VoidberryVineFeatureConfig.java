@@ -3,8 +3,6 @@ package com.cmdgod.mc.ucr_stitch.worldgen;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-import net.minecraft.util.Identifier;
-import net.minecraft.util.dynamic.Codecs;
 import net.minecraft.world.gen.feature.FeatureConfig;
 
 public record VoidberryVineFeatureConfig(boolean isPlanted) implements FeatureConfig {

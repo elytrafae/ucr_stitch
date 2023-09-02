@@ -1,2 +1,0 @@
-tellraw @s ["",{"text":"222","obfuscated":true,"color":"dark_red"},{"text":" Your melee blows are no longer empowered! ","color":"light_purple"},{"text":"222","obfuscated":true,"color":"dark_red"}]
-playsound minecraft:block.respawn_anchor.deplete player @a ~ ~ ~ 1 1.4

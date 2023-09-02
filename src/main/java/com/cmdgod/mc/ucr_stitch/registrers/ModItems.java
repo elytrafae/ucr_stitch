@@ -1,7 +1,6 @@
 package com.cmdgod.mc.ucr_stitch.registrers;
 
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.HashMap;
 
 import com.cmdgod.mc.ucr_stitch.UCRStitch;
@@ -13,13 +12,8 @@ import com.cmdgod.mc.ucr_stitch.items.TooltippedItem;
 import com.cmdgod.mc.ucr_stitch.items.VoidberryItem;
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.fabricmc.fabric.api.item.v1.FabricItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.block.Block;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.AxeItem;
-import net.minecraft.item.FoodComponent;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -120,7 +114,7 @@ public class ModItems {
 
     public static final Item HEAVY_BOULDER = new TooltippedItem(new FabricItemSettings().maxCount(16).group(ITEM_GROUP));
 
-    public static final Item VOIDBERRY = new VoidberryItem(new FabricItemSettings());
+    public static final Item VOIDBERRY = new VoidberryItem(new FabricItemSettings().group(ITEM_GROUP));
 
     public static void registerAll() {
         UCRStitch.LOGGER.info("UCR Stitch: Items registered!");
@@ -161,6 +155,7 @@ public class ModItems {
     public static Item VOIDSHROOM_HYPHAE;
     public static Item STRIPPED_VOIDSHROOM_HYPHAE;
     public static SignItem VOIDSHROOM_SIGN;
+    public static Item TELEVATOR;
 
     public static void registerItem(String id, Item item) {
         Registry.register(Registry.ITEM, new Identifier(UCRStitch.MOD_NAMESPACE, id), item);

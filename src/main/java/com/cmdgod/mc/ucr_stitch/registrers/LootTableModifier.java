@@ -1,6 +1,5 @@
 package com.cmdgod.mc.ucr_stitch.registrers;
 
-import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
@@ -10,10 +9,8 @@ import com.cmdgod.mc.ucr_stitch.UCRStitch;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
-import net.minecraft.loot.condition.LootCondition;
 import net.minecraft.loot.condition.RandomChanceWithLootingLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
-import net.minecraft.loot.function.LootFunction;
 import net.minecraft.loot.function.SetNameLootFunction;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;

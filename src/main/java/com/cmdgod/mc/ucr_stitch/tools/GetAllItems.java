@@ -6,12 +6,7 @@ import java.util.Set;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.resource.language.TranslationStorage;
 import net.minecraft.client.texture.AbstractTexture;
-import net.minecraft.client.texture.TextureManager;
-import net.minecraft.command.TranslatableBuiltInExceptions;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableTextContent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 

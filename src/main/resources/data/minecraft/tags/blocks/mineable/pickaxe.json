@@ -1,6 +1,7 @@
 {
     "replace": false,
     "values": [
-        "ucr_stitch:gravity_duper"
+        "ucr_stitch:gravity_duper",
+        "ucr_stitch:televator"
     ]
 }

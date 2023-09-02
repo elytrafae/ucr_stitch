@@ -1,16 +1,9 @@
 package com.cmdgod.mc.ucr_stitch.recipes;
 
-import java.util.Optional;
-
-import com.cmdgod.mc.ucr_stitch.UCRStitch;
-import com.cmdgod.mc.ucr_stitch.blockentities.GravityDuperBlockEntity;
-import com.cmdgod.mc.ucr_stitch.blocks.GravityDuperBlock;
 import com.cmdgod.mc.ucr_stitch.items.Multitool;
 import com.cmdgod.mc.ucr_stitch.registrers.ModItems;
 
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.inventory.CraftingInventory;
-import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
@@ -20,12 +13,10 @@ import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.ToolItem;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.SpecialCraftingRecipe;
 import net.minecraft.recipe.SpecialRecipeSerializer;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 public class MultitoolCraftRecipe extends SpecialCraftingRecipe {

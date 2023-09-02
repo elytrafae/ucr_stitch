@@ -3,17 +3,13 @@ package com.cmdgod.mc.ucr_stitch.mixin;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.cmdgod.mc.ucr_stitch.items.CustomFishingRodItem;
 import com.cmdgod.mc.ucr_stitch.registrers.ModAttributes;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.fabricmc.fabric.api.entity.event.v1.EntityElytraEvents.Custom;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.projectile.FishingBobberEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.context.LootContext;

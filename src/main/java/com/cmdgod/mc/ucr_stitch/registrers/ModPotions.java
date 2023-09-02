@@ -33,7 +33,9 @@ public class ModPotions {
         BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(Potions.AWKWARD, ModItems.VOIDBERRY, VOID_REPELLENT);
         BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(VOID_REPELLENT, Items.REDSTONE, VOID_REPELLENT_LONG);
         BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(VOID_REPELLENT, Items.GLOWSTONE_DUST, VOID_REPELLENT_STRONG);
+        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(VOID_REPELLENT_STRONG, Items.REDSTONE, VOID_REPELLENT_LONG);
+        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(VOID_REPELLENT_LONG, Items.GLOWSTONE_DUST, VOID_REPELLENT_STRONG);
 
-        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(Potions.AWKWARD, Items.ECHO_SHARD, TOTEM_POPPER);
+        BrewingRecipeRegistryMixin.invokeRegisterPotionRecipe(VOID_REPELLENT, Items.FERMENTED_SPIDER_EYE, TOTEM_POPPER);
     }
 }

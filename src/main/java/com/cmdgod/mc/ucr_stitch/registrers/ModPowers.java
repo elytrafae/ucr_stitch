@@ -1,6 +1,7 @@
 package com.cmdgod.mc.ucr_stitch.registrers;
 
 import com.cmdgod.mc.ucr_stitch.UCRStitch;
+import com.cmdgod.mc.ucr_stitch.powers.ForceEdgeClipPower;
 import com.cmdgod.mc.ucr_stitch.powers.VillagerScarePower;
 
 import io.github.apace100.apoli.power.factory.PowerFactory;
@@ -10,6 +11,7 @@ import net.minecraft.util.registry.Registry;
 public class ModPowers {
     
     public static PowerFactory VILLAGER_SCARE_POWER = register(VillagerScarePower.createFactory());
+    public static PowerFactory FORCE_EDGE_CLIP_POWER = register(ForceEdgeClipPower.createFactory());
 
     private static PowerFactory register(PowerFactory<?> powerFactory) {
         Registry.register(ApoliRegistries.POWER_FACTORY, powerFactory.getSerializerId(), powerFactory);
