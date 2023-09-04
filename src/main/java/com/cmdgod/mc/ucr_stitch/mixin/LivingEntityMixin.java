@@ -30,8 +30,7 @@ public class LivingEntityMixin {
         }
 	}
 
-    // This shows a warning for some reason, even though it's correct
-    @Inject(at = @At("RETURN"), method = "createLivingAttributes()Lnet/minecraft/entity/attribute/DefaultAttributeContainer/Builder;")
+    @Inject(at = @At("RETURN"), method = "createLivingAttributes()Lnet/minecraft/entity/attribute/DefaultAttributeContainer$Builder;")
     private static void createLivingAttributes(CallbackInfoReturnable<DefaultAttributeContainer.Builder> info) {
         info.getReturnValue().add(ModAttributes.GENERIC_BONUS_FISH_CHANCE);
     }

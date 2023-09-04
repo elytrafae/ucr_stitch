@@ -2,12 +2,14 @@ package com.cmdgod.mc.ucr_stitch.registrers;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import com.cmdgod.mc.ucr_stitch.UCRStitch;
 import com.cmdgod.mc.ucr_stitch.items.CustomFishingRodItem;
 import com.cmdgod.mc.ucr_stitch.items.GravityDuperPartItem;
 import com.cmdgod.mc.ucr_stitch.items.Multitool;
 import com.cmdgod.mc.ucr_stitch.items.OrbOfGreatRegret;
+import com.cmdgod.mc.ucr_stitch.items.OreNecklace;
 import com.cmdgod.mc.ucr_stitch.items.TooltippedItem;
 import com.cmdgod.mc.ucr_stitch.items.VoidberryItem;
 
@@ -32,6 +34,7 @@ public class ModItems {
     private static ArrayList<Item> ITEMS = new ArrayList<>();
     public static HashMap<ToolMaterial, Multitool> MULTITOOLS = new HashMap<>();
     public static HashMap<ToolMaterial, CustomFishingRodItem> FISHING_RODS = new HashMap<>();
+    public static HashMap<ToolMaterial, OreNecklace> ORE_NECKLACES = new HashMap<>();
 
     public static final ItemGroup ITEM_GROUP = FabricItemGroupBuilder
             .create(new Identifier(UCRStitch.MOD_NAMESPACE, "misc_group"))
@@ -112,6 +115,19 @@ public class ModItems {
     public static final CustomFishingRodItem DIAMOND_FISHING_ROD = new CustomFishingRodItem(ToolMaterials.DIAMOND, 0.75);
     public static final CustomFishingRodItem NETHERITE_FISHING_ROD = new CustomFishingRodItem(ToolMaterials.NETHERITE, 1, new FabricItemSettings().fireproof());
 
+    public static final OreNecklace AMETHYST_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), new Identifier("minecraft", "blocks/amethyst_cluster"));
+    public static final OreNecklace COPPER_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), OreNecklace.getRegularOreTables("copper"));
+    public static final OreNecklace IRON_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), OreNecklace.getRegularOreTables("iron"));
+    public static final OreNecklace GOLD_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), OreNecklace.getRegularOreTables("gold"));
+    public static final OreNecklace DIAMOND_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), OreNecklace.getRegularOreTables("diamond"));
+    public static final OreNecklace EMERALD_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), OreNecklace.getRegularOreTables("emerald"));
+    public static final OreNecklace LAPIS_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), OreNecklace.getRegularOreTables("lapis"));
+    public static final OreNecklace REDSTONE_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), OreNecklace.getRegularOreTables("redstone"));
+    public static final OreNecklace NETHER_QUARTZ_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), new Identifier("minecraft", "blocks/nether_quartz_ore"));
+    public static final OreNecklace NETHERITE_ORE_NECKLACE = new OreNecklace(new FabricItemSettings().fireproof(), new Identifier("minecraft", "blocks/ancient_debris")).setDamagePerRoll(40);
+    public static final OreNecklace SILVER_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), OreNecklace.getRegularOreTables("bewitchment", "silver"));
+    
+
     public static final Item HEAVY_BOULDER = new TooltippedItem(new FabricItemSettings().maxCount(16).group(ITEM_GROUP));
 
     public static final Item VOIDBERRY = new VoidberryItem(new FabricItemSettings().group(ITEM_GROUP));
@@ -141,6 +157,18 @@ public class ModItems {
         registerItem("golden_fishing_rod", GOLDEN_FISHING_ROD);
         registerItem("diamond_fishing_rod", DIAMOND_FISHING_ROD);
         registerItem("netherite_fishing_rod", NETHERITE_FISHING_ROD);
+
+        registerItem("amethyst_necklace", AMETHYST_ORE_NECKLACE);
+        registerItem("copper_necklace", COPPER_ORE_NECKLACE);
+        registerItem("iron_necklace", IRON_ORE_NECKLACE);
+        registerItem("gold_necklace", GOLD_ORE_NECKLACE);
+        registerItem("diamond_necklace", DIAMOND_ORE_NECKLACE);
+        registerItem("emerald_necklace", EMERALD_ORE_NECKLACE);
+        registerItem("lapis_necklace", LAPIS_ORE_NECKLACE);
+        registerItem("redstone_necklace", REDSTONE_ORE_NECKLACE);
+        registerItem("nether_quartz_necklace", NETHER_QUARTZ_ORE_NECKLACE);
+        registerItem("netherite_necklace", NETHERITE_ORE_NECKLACE);
+        registerItem("silver_necklace", SILVER_ORE_NECKLACE);
 
         registerItem("voidberry", VOIDBERRY);
     }
