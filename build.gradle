@@ -109,6 +109,8 @@ sourceSets {
 		}
 	}
 }
+
+
 dependencies {
 	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
@@ -123,8 +125,12 @@ dependencies {
 
     //modImplementation include("io.github.cottonmc:LibGui:${project.libgui_version}+${project.minecraft_version}")
 
+	// Cardinal Components
+	//modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cardinal_components_version}"
+
 	// Trinkets
 	modImplementation "dev.emi:trinkets:${project.trinkets_version}"
+
 
 	// Origins
 	//modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
@@ -132,6 +138,7 @@ dependencies {
 	//modImplementation "com.github.apace100:apoli:${project.apoli_version}"
 	//modApi "com.github.apace100:apoli:${project.apoli_version}"
 	modImplementation "com.github.eggohito:apoli:${project.apoli_version}"
+	modImplementation "com.github.apace100:calio:v1.7.0"
 
 	// Patchouli
 	//modImplementation "vazkii.patchouli:Patchouli:${project.patchouli_version}"
