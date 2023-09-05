@@ -1,0 +1,15 @@
+{
+    "name": "Evaporation",
+    "icon": "minecraft:chorus_fruit",
+    "category": "ucr_stitch:root",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "I always found it odd that (almost) every end creature hates water, but never their drops, or other items originating from there.$(br2)So, now a bunch of End materials disappear on contact with water! (Ender Pearl stasis chambers are still possible though.)"
+        },
+		{
+            "type": "patchouli:text",
+            "text": "Also, I didn't want to dedicate a whole section to this, but Chorus Fruits now nullify fall distance when eaten."
+        }
+    ]
+}

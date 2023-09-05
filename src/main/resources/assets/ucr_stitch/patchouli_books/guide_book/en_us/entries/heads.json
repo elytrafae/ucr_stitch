@@ -1,0 +1,25 @@
+{
+    "name": "Heads",
+    "icon": "minecraft:zombie_head",
+    "category": "ucr_stitch:root",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "I'll try to keep this one brief.$(br2)Zombies occasionally drop their heads when killed (heavily boosted by Looting).<br>Players drop their heads when killed by another player.<br>All kinds of heads can be crafted into Head Fragments, which can be traded for decorative heads using /head"
+        },
+		{
+			"type": "patchouli:crafting",
+			"recipe": "ucr_stitch:head_fragment/head_fragment_1",
+            "recipe2": "ucr_stitch:head_fragment/head_fragment_2"
+		},
+        {
+			"type": "patchouli:crafting",
+			"recipe": "ucr_stitch:head_fragment/head_fragment_3",
+            "recipe2": "ucr_stitch:head_fragment/head_fragment_4"
+		},
+        {
+			"type": "patchouli:crafting",
+			"recipe": "ucr_stitch:head_fragment/head_fragment_5"
+		}
+    ]
+}

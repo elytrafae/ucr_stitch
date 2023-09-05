@@ -1,0 +1,26 @@
+{
+    "name": "Fishing Rods",
+    "icon": "ucr_stitch:iron_fishing_rod",
+    "category": "ucr_stitch:root",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Fishing got a bit of a buff now, with new fishing rods being craftable!<br>These types of fishing rods provide an attribute called \"Bonus Fish Chance\", which gives you a chance to get double drops from fishing!"
+        },
+		{
+			"type": "patchouli:smithing",
+			"recipe": "ucr_stitch:fishing_rods/stone_fishing_rod",
+            "recipe2": "ucr_stitch:fishing_rods/iron_fishing_rod"
+		},
+        {
+			"type": "patchouli:smithing",
+            "recipe": "ucr_stitch:fishing_rods/golden_fishing_rod",
+            "recipe2": "ucr_stitch:fishing_rods/diamond_fishing_rod",
+            "recipe5": "ucr_stitch:fishing_rods/netherite_fishing_rod"
+		},
+        {
+			"type": "patchouli:smithing",
+            "recipe": "ucr_stitch:fishing_rods/netherite_fishing_rod"
+		}
+    ]
+}

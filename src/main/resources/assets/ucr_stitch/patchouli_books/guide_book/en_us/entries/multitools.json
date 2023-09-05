@@ -1,0 +1,23 @@
+{
+    "name": "Multitools",
+    "icon": "ucr_stitch:iron_multitool",
+    "category": "ucr_stitch:root",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Have you ever had issues with inventory management because you want to be prepared for any and all situations? Well, what if I told you that you can combine four inventory slots into one!$(br)Introducing: Multitools! They have the properties of Axes, Hoes, Shovels and Pickaxes in one, allowing to break all of those materials with ease. They also all retain their right-click functions!"
+        },
+		{
+			"type": "patchouli:text",
+            "text": "Crafted by combining an Axe, a Hoe, a Shovel and a Pickaxe of the same tier in a crafting table.$(br2)Downsides include: 3/4 Durability and inability to add enchants that can only be added to one of the tools."
+		}
+    ],
+    "extra_recipe_mappings": {
+        "ucr_stitch:wooden_multitool": 0,
+        "ucr_stitch:stone_multitool": 0,
+        "ucr_stitch:iron_multitool": 0,
+        "ucr_stitch:golden_multitool": 0,
+        "ucr_stitch:diamond_multitool": 0,
+        "ucr_stitch:netherite_multitool": 0
+    }
+}

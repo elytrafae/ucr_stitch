@@ -1,0 +1,24 @@
+{
+    "name": "Voidberry",
+    "icon": "ucr_stitch:voidberry",
+    "category": "ucr_stitch:root",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "The voidberry is a rather unusual item. It has the ability to launch whoever ate it forward, it glows purple, and it has void repelling qualities!"
+        },
+		{
+            "type": "patchouli:spotlight",
+            "item": "ucr_stitch:voidberry_vine",
+            "text": "To obtain voidberries, you must find Voidberry Vines on the underside of End Islands. Once there, right-clicking will harvest some of the berries, depending on how many were on it. I should warn you, though, touching these vines will blind you and slow you down!"
+        },
+        {
+			"type": "patchouli:text",
+            "text": "Now that you have Voidberries, you can make some cool stuff with them, such as $(l:televator)Televators$(/l)"
+		},
+        {
+			"type": "patchouli:smithing",
+            "recipe": "ucr_stitch:fishing_rods/netherite_fishing_rod"
+		}
+    ]
+}

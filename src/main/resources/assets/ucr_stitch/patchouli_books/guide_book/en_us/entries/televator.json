@@ -1,7 +1,7 @@
 {
     "name": "Televator",
     "icon": "ucr_stitch:televator",
-    "category": "patchouli:ucr_stitch_root",
+    "category": "ucr_stitch:root",
     "pages": [
         {
             "type": "patchouli:text",

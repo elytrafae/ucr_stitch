@@ -7,10 +7,10 @@
     ],
     "key": {
         "#": {
-            "item": "minecraft:sculk"
+            "item": "ucr_stitch:voidberry"
         },
         "P": {
-            "item": "minecraft:purpur_block"
+            "item": "minecraft:sculk"
         },
         "G": {
             "item": "minecraft:glow_ink_sac"

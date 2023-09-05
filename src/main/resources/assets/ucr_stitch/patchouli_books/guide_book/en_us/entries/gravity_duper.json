@@ -1,0 +1,24 @@
+{
+    "name": "Gravity Duper",
+    "icon": "ucr_stitch:gravity_duper",
+    "category": "ucr_stitch:root",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "The gravity duper is a relatively hard to make contraption that uses some misterious properties of end portals in order to duplicate specific blocks.$(br2)It needs to be built with one specific block in mind, and has to be fueled in order to work."
+        },
+		{
+			"type": "patchouli:crafting",
+			"recipe": "ucr_stitch:gravity_duper_top",
+            "recipe2": "ucr_stitch:gravity_duper_bottom"
+		},
+        {
+			"type": "patchouli:crafting",
+			"recipe": "ucr_stitch:gravity_duper_side",
+            "text": "Sadly, the recipe for the block is lost to time, but its pieces may help us find the <br>solution . . .$(br2)Works with: Sand, Red Sand, Gravel, Pointed Dripstone and all colors of Concrete Powder."
+		}
+    ],
+    "extra_recipe_mappings": {
+        "ucr_stitch:gravity_duper": 0
+    }
+}

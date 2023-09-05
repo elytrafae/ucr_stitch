@@ -1,0 +1,15 @@
+{
+    "name": "Heavy Boulder",
+    "icon": "ucr_stitch:heavy_boulder",
+    "category": "ucr_stitch:root",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "This item's use may be simple, but its strange physical property has left Villagerkind stunned.$(br2)The heavy boulder has ONE big role: When placed inside dispensers or droppers, it cannot be thrown, forcing them to choose a slot with another item instead."
+        },
+		{
+			"type": "patchouli:crafting",
+			"recipe": "ucr_stitch:heavy_boulder"
+		}
+    ]
+}
