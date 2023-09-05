@@ -22,6 +22,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.PickaxeItem;
+import net.minecraft.item.ShearsItem;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SignItem;
 import net.minecraft.item.ToolMaterial;
@@ -124,11 +125,12 @@ public class ModItems {
     public static final OreNecklace LAPIS_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), OreNecklace.getRegularOreTables("lapis"));
     public static final OreNecklace REDSTONE_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), OreNecklace.getRegularOreTables("redstone"));
     public static final OreNecklace NETHER_QUARTZ_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), new Identifier("minecraft", "blocks/nether_quartz_ore"));
-    public static final OreNecklace NETHERITE_ORE_NECKLACE = new OreNecklace(new FabricItemSettings().fireproof(), new Identifier("minecraft", "blocks/ancient_debris")).setDamagePerRoll(40);
+    //public static final OreNecklace NETHERITE_ORE_NECKLACE = new OreNecklace(new FabricItemSettings().fireproof(), new Identifier("minecraft", "blocks/ancient_debris")).setDamagePerRoll(40);
     public static final OreNecklace SILVER_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), OreNecklace.getRegularOreTables("bewitchment", "silver"));
     
 
     public static final Item HEAVY_BOULDER = new TooltippedItem(new FabricItemSettings().maxCount(16).group(ITEM_GROUP));
+    //public static final Item COPPER_SHEARS = new ShearsItem(new Item.Settings().maxDamage(180).group(ITEM_GROUP)); // Fishing Rod situation
 
     public static final Item VOIDBERRY = new VoidberryItem(new FabricItemSettings().group(ITEM_GROUP));
 
@@ -144,6 +146,7 @@ public class ModItems {
         registerItem("head_fragment", HEAD_FRAGMENT);
         registerItem("orb_of_great_regret", ORB_OF_GREAT_REGRET);
         registerItem("heavy_boulder", HEAVY_BOULDER);
+        //registerItem("copper_shears", COPPER_SHEARS);
 
         registerItem("wooden_multitool", WOODEN_MULTITOOL);
         registerItem("stone_multitool", STONE_MULTITOOL);
@@ -167,7 +170,7 @@ public class ModItems {
         registerItem("lapis_necklace", LAPIS_ORE_NECKLACE);
         registerItem("redstone_necklace", REDSTONE_ORE_NECKLACE);
         registerItem("nether_quartz_necklace", NETHER_QUARTZ_ORE_NECKLACE);
-        registerItem("netherite_necklace", NETHERITE_ORE_NECKLACE);
+        //registerItem("netherite_necklace", NETHERITE_ORE_NECKLACE);
         registerItem("silver_necklace", SILVER_ORE_NECKLACE);
 
         registerItem("voidberry", VOIDBERRY);
@@ -184,6 +187,7 @@ public class ModItems {
     public static Item STRIPPED_VOIDSHROOM_HYPHAE;
     public static SignItem VOIDSHROOM_SIGN;
     public static Item TELEVATOR;
+    public static Item COPPER_LANTERN;
 
     public static void registerItem(String id, Item item) {
         Registry.register(Registry.ITEM, new Identifier(UCRStitch.MOD_NAMESPACE, id), item);

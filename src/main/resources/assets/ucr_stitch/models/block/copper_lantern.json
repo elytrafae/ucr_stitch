@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/template_lantern",
+    "textures": {
+        "lantern": "ucr_stitch:block/copper_lantern"
+    }
+}

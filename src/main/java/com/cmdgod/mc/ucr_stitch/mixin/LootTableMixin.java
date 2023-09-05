@@ -1,11 +1,13 @@
 package com.cmdgod.mc.ucr_stitch.mixin;
 
 import java.util.Optional;
+import java.util.function.Consumer;
 
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.cmdgod.mc.ucr_stitch.items.OreNecklace;
@@ -34,7 +36,7 @@ import net.minecraft.util.math.random.Random;
 public class LootTableMixin {
     
     @Inject(at = @At("HEAD"), method = "generateLoot(Lnet/minecraft/loot/context/LootContext;)Lit/unimi/dsi/fastutil/objects/ObjectArrayList;", cancellable = true)
-    private void changeFishingLootTable(LootContext context, CallbackInfoReturnable<ObjectArrayList<ItemStack>> info) {
+    private void changeLootTable(LootContext context, CallbackInfoReturnable<ObjectArrayList<ItemStack>> info) {
         //System.out.println("generateLoot");
         if (context.get(LootContextParameters.BLOCK_STATE) != null) {
             info.setReturnValue(handleMiningLoot(context));
@@ -54,6 +56,25 @@ public class LootTableMixin {
         info.setReturnValue(objectArrayList);
         info.cancel();
     }
+
+    /*
+    @Inject(at = @At("HEAD"), method = "generateLoot(Lnet/minecraft/loot/context/LootContext;Ljava/util/function/Consumer;)V", cancellable = false)
+    public void generateLoot(LootContext context, Consumer<ItemStack> lootConsumer, CallbackInfo info) {
+        PlayerEntity player = null;
+        Entity entity = context.get(LootContextParameters.THIS_ENTITY);
+        if (entity instanceof PlayerEntity) {
+            player = (PlayerEntity)entity;
+        } else {
+            player = context.get(LootContextParameters.LAST_DAMAGE_PLAYER);
+        }
+
+        if (player == null) {
+            return;
+        }
+
+        LootContextParameters.TOOL
+    }
+    */
 
     private int getFishCountFromChance(double chance, Random random) {
         int nr = (int)Math.floor(chance);

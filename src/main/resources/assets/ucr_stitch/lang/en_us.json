@@ -6,6 +6,7 @@
     "item.ucr_stitch.orb_of_great_regret.desc": "§7Crafting ingredient§r",
     "block.ucr_stitch.woodcutter": "Woodcutter",
     "block.ucr_stitch.televator": "Televator",
+    "block.ucr_stitch.copper_lantern": "Copper Lantern",
 
     "item.ucr_stitch.wooden_multitool": "Wooden Multitool",
     "item.ucr_stitch.stone_multitool": "Stone Multitool",
@@ -19,6 +20,17 @@
     "item.ucr_stitch.golden_fishing_rod": "Golden Fishing Rod",
     "item.ucr_stitch.diamond_fishing_rod": "Diamond Fishing Rod",
     "item.ucr_stitch.netherite_fishing_rod": "Netherite Fishing Rod",
+
+    "item.ucr_stitch.amethyst_necklace": "Amethyst Necklace",
+    "item.ucr_stitch.copper_necklace": "Copper Necklace",
+    "item.ucr_stitch.iron_necklace": "Iron Necklace",
+    "item.ucr_stitch.gold_necklace": "Gold Necklace",
+    "item.ucr_stitch.diamond_necklace": "Diamond Necklace",
+    "item.ucr_stitch.emerald_necklace": "Emerald Necklace",
+    "item.ucr_stitch.lapis_necklace": "Lapis Necklace",
+    "item.ucr_stitch.redstone_necklace": "Redstone Necklace",
+    "item.ucr_stitch.nether_quartz_necklace": "Nether Quartz Necklace",
+    "item.ucr_stitch.silver_necklace": "Sliver Necklace",
 
     "block.ucr_stitch.gravity_duper": "Gravity Duper",
     "block.ucr_stitch.gravity_duper.error": "ERROR: Invalid item/recipe for duping! Please break the block and construct a new one!",
@@ -72,8 +84,5 @@
     "item.minecraft.potion.effect.totem_popper": "Potion of Totem Popping",
     "item.minecraft.splash_potion.effect.totem_popper": "Splash Potion of Totem Popping",
     "item.minecraft.lingering_potion.effect.totem_popper": "Lingering Potion of Totem Popping",
-    "item.minecraft.tipped_arrow.effect.totem_popper": "Arrow of Totem Popping",
-
-    "tooltip.ucr_stitch.fishing_rods.guaranteed": "Guaranteed x%d pulls!",
-    "tooltip.ucr_stitch.fishing_rods.chance": "%d%% chance for another pull!"
+    "item.minecraft.tipped_arrow.effect.totem_popper": "Arrow of Totem Popping"
 }

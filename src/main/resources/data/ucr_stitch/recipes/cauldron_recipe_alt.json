@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "c c",
+        "c c",
+        "cCc"
+    ],
+    "key": {
+        "c": {
+            "item": "minecraft:copper_ingot"
+        },
+        "C": {
+            "item": "minecraft:copper_block"
+        }
+    },
+    "result": {
+        "item": "minecraft:cauldron",
+        "count": 1
+    }
+}

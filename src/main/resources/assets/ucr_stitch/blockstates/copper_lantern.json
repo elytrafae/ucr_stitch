@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "hanging=false": {
+            "model": "ucr_stitch:block/copper_lantern"
+        },
+        "hanging=true": {
+            "model": "ucr_stitch:block/copper_lantern_hanging"
+        }
+    }
+}

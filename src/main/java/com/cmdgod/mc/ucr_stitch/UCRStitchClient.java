@@ -21,6 +21,7 @@ import net.fabricmc.api.EnvType;
 public class UCRStitchClient implements ClientModInitializer {
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.VOIDBERRY_VINE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.COPPER_LANTERN, RenderLayer.getCutout());
         // Replace `RenderLayer.getCutout()` with `RenderLayer.getTranslucent()` if you have a translucent texture.
 
         ModelPredicateProviderRegistry.register(ModItems.VOIDBERRY_VINE, new Identifier("fruit"), (itemStack, clientWorld, livingEntity, i) -> {

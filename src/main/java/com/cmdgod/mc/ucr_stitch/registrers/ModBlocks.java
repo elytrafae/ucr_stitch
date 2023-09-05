@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.LanternBlock;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntityType;
@@ -37,6 +38,8 @@ public class ModBlocks {
     //public static final Block VOIDSHROOM_WALL_SIGN = registerNoBlockItem("voidshroom_wall_sign", new WaterVulnerableSign(FabricBlockSettings.copy(Blocks.CRIMSON_WALL_SIGN).dropsLike(VOIDSHROOM_SIGN), SignType.CRIMSON));
 
     public static final Block TELEVATOR = new TelevatorBlock(FabricBlockSettings.of(Material.PISTON, MapColor.DARK_DULL_PINK).luminance(6).strength(3.5f, 6f));
+
+    public static final Block COPPER_LANTERN = new LanternBlock(FabricBlockSettings.copy(Blocks.LANTERN).luminance(state -> 8));
     
     public static final BlockEntityType<GravityDuperBlockEntity> GRAVITY_DUPER_ENTITY = Registry.register(
         Registry.BLOCK_ENTITY_TYPE,
@@ -61,6 +64,7 @@ public class ModBlocks {
         //ModItems.VOIDSHROOM_SIGN = new SignItem(new Item.Settings().maxCount(16).group(ModItems.ITEM_GROUP), VOIDSHROOM_SIGN, VOIDSHROOM_WALL_SIGN);
 
         ModItems.TELEVATOR = registerBlock("televator", TELEVATOR);
+        ModItems.COPPER_LANTERN = registerBlock("copper_lantern", COPPER_LANTERN);
 
         //StrippableBlockRegistry.register(VOIDSHROOM_STEM, STRIPPED_VOIDSHROOM_STEM);
         //StrippableBlockRegistry.register(VOIDSHROOM_HYPHAE, STRIPPED_VOIDSHROOM_HYPHAE);

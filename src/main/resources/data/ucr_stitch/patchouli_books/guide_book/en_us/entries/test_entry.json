@@ -1,0 +1,16 @@
+{
+    "name": "Televator",
+    "icon": "ucr_stitch:televator",
+    "category": "patchouli:ucr_stitch_root",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "The televator is a block that harnesses the relocating powers of Chorus Fruits with some Voidberry as a stabilizer.$(br2)Sneaking on one will send you to a Televator under itself, and Jumping will do the same above. Will only Teleport to safe locations."
+        },
+		{
+			"type": "patchouli:crafting",
+			"recipe": "ucr_stitch:televator",
+			"text": "PS: Can be covered by a single layer of carpets for decorative purposes. I made an exception for those."
+		}
+    ]
+}
