@@ -14,11 +14,11 @@
         },
         {
 			"type": "patchouli:text",
-            "text": "Now that you have Voidberries, you can make some cool stuff with them, such as $(l:televator)Televators$(/l)"
+            "text": "Now that you have Voidberries, you can make some cool stuff with them, such as $(l:televator)Televators$(/l), $(l:televator)Televators$(/l), $(l:gravity_duper)Gravity Dupers$(/l), $(l:ore_necklaces)Ore Necklaces$(/l) and Void Repellent and Totem Popper potions!"
 		},
         {
-			"type": "patchouli:smithing",
-            "recipe": "ucr_stitch:fishing_rods/netherite_fishing_rod"
-		}
+            "type": "patchouli:text",
+            "text": "If you want to plant more Voidberries, all you have to do is throw some voidberry into the void in the end! If the conditions are right, the Voidberry will eventually crack on impact with the void, unleashing its power and creating more Voidberry Vines!"
+        }
     ]
 }

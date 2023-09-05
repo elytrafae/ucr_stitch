@@ -66,7 +66,7 @@ public class ModItems {
     public static final Item GRAVITY_DUPER_SIDE = new GravityDuperPartItem(new FabricItemSettings().group(ITEM_GROUP), GravityDuperPartItem.PartType.SIDE);
 
     public static final Item HEAD_FRAGMENT = new TooltippedItem(new FabricItemSettings().group(ITEM_GROUP));
-    public static final Item ORB_OF_GREAT_REGRET = new OrbOfGreatRegret(new FabricItemSettings().group(ITEM_GROUP).maxCount(16));
+    //public static final Item ORB_OF_GREAT_REGRET = new OrbOfGreatRegret(new FabricItemSettings().group(ITEM_GROUP).maxCount(16));
 
     public static final Item WOODEN_MULTITOOL = new Multitool(new FabricItemSettings().group(ITEM_GROUP), 
         (HoeItem)Items.WOODEN_HOE, 
@@ -144,7 +144,7 @@ public class ModItems {
         registerItem("gravity_duper_side", GRAVITY_DUPER_SIDE);
 
         registerItem("head_fragment", HEAD_FRAGMENT);
-        registerItem("orb_of_great_regret", ORB_OF_GREAT_REGRET);
+        //registerItem("orb_of_great_regret", ORB_OF_GREAT_REGRET);
         registerItem("heavy_boulder", HEAVY_BOULDER);
         //registerItem("copper_shears", COPPER_SHEARS);
 

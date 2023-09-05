@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " V ",
+        "V#V",
+        " H "
+    ],
+    "key": {
+        "V": {
+            "item": "ucr_stitch:voidberry"
+        },
+        "#": {
+            "item": "minecraft:lead"
+        },
+        "H": {
+            "item": "minecraft:gold_block"
+        }
+    },
+    "result": {
+        "item": "ucr_stitch:gold_necklace",
+        "count": 1
+    }
+}

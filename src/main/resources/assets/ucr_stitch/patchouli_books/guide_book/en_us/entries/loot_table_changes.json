@@ -1,0 +1,11 @@
+{
+    "name": "Loot Table Changes",
+    "icon": "minecraft:chest",
+    "category": "ucr_stitch:root",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "Some quick loot table changes/additions include:$(li)Zombies and Zombie Villagers drop their head rarely.$(li)Drowned and Guardians sometimes drop Nautilus Shells.$(li)Husks sometimes drop Red Sand and Red Sandstone."
+        }
+    ]
+}
