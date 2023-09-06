@@ -1,0 +1,15 @@
+{
+    "name": "Other Mods' Changes",
+    "icon": "minecraft:magenta_dye",
+    "category": "ucr_stitch:root",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "$(li)Dispensers can fully interact with cauldrons!$(li)Elytras can be customized with dyes and banners. These can also be applies to individual wings if you separate them!$(li)Tridents received some QoL, including Loyalty ones coming back from the void!$(li)Bundles are craftable, and can be used to randomize blocks while building!"
+        },
+		{
+			"type": "patchouli:text",
+            "text": "$(li)Explosions from other mobs no longer grief. All other mob griefing is turned on.$(li)Insomnia is disabled. If you want Phantoms, they spawn in certain End biomes!$(li)Grindstones can now remove enchantments from items and put them on books for a price!$(li)You can right-click crops to harvest them."
+		}
+    ]
+}

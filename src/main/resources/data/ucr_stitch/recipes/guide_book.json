@@ -1,0 +1,12 @@
+{
+    "type": "patchouli:shapeless_book_recipe",
+    "ingredients": [
+        {
+            "item": "minecraft:book"
+        },
+        {
+            "item": "ucr_stitch:heavy_boulder"
+        }
+    ],
+    "book": "ucr_stitch:guide_book"
+}

@@ -5,6 +5,7 @@
     "creative_tab": "ucr_stitch:misc_group",
     "use_resource_pack": true,
     "book_texture": "patchouli:textures/gui/book_purple.png",
-    "model": "patchouli:book_purple",
-	"pamphlet": true
+    "model": "ucr_stitch:guide_book",
+	"pamphlet": true,
+    "show_progress": false
 }

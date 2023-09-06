@@ -51,6 +51,8 @@
     "item.ucr_stitch.stripped_voidshroom_stem": "Stripped Voidshroom Stem",
     "item.ucr_stitch.voidshroom_cap": "Voidshroom Cap",
 
+    "item.ucr_stitch.bookkeeper_bundle": "Bookkeeper's Bundle",
+
     "item.ucr_stitch.stars_banner_pattern": "Banner Pattern",
     "item.ucr_stitch.stars_banner_pattern.desc": "Stars",
 
@@ -66,7 +68,9 @@
     "attribute.name.ucr_stitch.generic.bonus_fish_chance": "Bonus Fish Chance",
 
     "effect.ucr_stitch.void_repellent": "Void Repellent",
+    "effect.ucr_stitch.void_repellent.description" : "Makes you bounce on the void.",
     "effect.ucr_stitch.totem_popper": "Totem Popper",
+    "effect.ucr_stitch.totem_popper.description" : "Instant effect that pops the totem of the recipient, as if they took lethal damage.",
 
     "item.minecraft.potion.effect.void_repellent": "Void Repellent Potion",
     "item.minecraft.potion.effect.void_repellent_long": "Void Repellent Potion",

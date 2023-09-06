@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.cmdgod.mc.ucr_stitch.UCRStitch;
+import com.cmdgod.mc.ucr_stitch.items.BookkeeperBundle;
 import com.cmdgod.mc.ucr_stitch.items.CustomFishingRodItem;
 import com.cmdgod.mc.ucr_stitch.items.GravityDuperPartItem;
 import com.cmdgod.mc.ucr_stitch.items.Multitool;
@@ -134,6 +135,8 @@ public class ModItems {
 
     public static final Item VOIDBERRY = new VoidberryItem(new FabricItemSettings().group(ITEM_GROUP));
 
+    public static final Item BOOKKEEPER_BUNDLE = new BookkeeperBundle(new FabricItemSettings().group(ITEM_GROUP));
+
     public static void registerAll() {
         UCRStitch.LOGGER.info("UCR Stitch: Items registered!");
         //registerItem("edified_energy_bar", EDIFIED_ENERGY_BAR);
@@ -174,6 +177,7 @@ public class ModItems {
         registerItem("silver_necklace", SILVER_ORE_NECKLACE);
 
         registerItem("voidberry", VOIDBERRY);
+        registerItem("bookkeeper_bundle", BOOKKEEPER_BUNDLE);
     }
 
     public static Item GRAVITY_DUPER_ITEM;
