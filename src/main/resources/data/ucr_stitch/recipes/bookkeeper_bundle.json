@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "cBc",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:leather"
+        },
+        "c": {
+            "item": "minecraft:copper_ingot"
+        },
+        "B": {
+            "item": "minecraft:bundle"
+        }
+    },
+    "result": {
+        "item": "ucr_stitch:bookkeeper_bundle",
+        "count": 1
+    }
+}

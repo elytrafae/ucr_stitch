@@ -52,6 +52,13 @@
     "item.ucr_stitch.voidshroom_cap": "Voidshroom Cap",
 
     "item.ucr_stitch.bookkeeper_bundle": "Bookkeeper's Bundle",
+    "item.ucr_stitch.bookkeeper_bundle.noselect1": "§4There is no valid selected book§r",
+    "item.ucr_stitch.bookkeeper_bundle.noselect2": "§4Please pick one with Shift+Right Click!§r",
+    "item.ucr_stitch.bookkeeper_bundle.selected": "§5Selected Book§r",
+    "item.ucr_stitch.bookkeeper_bundle.open": "§dClick to open§r",
+    "item.ucr_stitch.bookkeeper_bundle.takeout": "§dShift+Click to take out§r",
+    "item.ucr_stitch.bookkeeper_bundle.insert": "§dShift+Click to insert§r",
+    "item.ucr_stitch.bookkeeper_bundle.invalid": "§4Cannot insert§r",
 
     "item.ucr_stitch.stars_banner_pattern": "Banner Pattern",
     "item.ucr_stitch.stars_banner_pattern.desc": "Stars",

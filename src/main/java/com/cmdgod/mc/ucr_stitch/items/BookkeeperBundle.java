@@ -4,7 +4,9 @@ import org.apache.logging.log4j.core.jmx.Server;
 
 import com.cmdgod.mc.ucr_stitch.gui.BookBundleGUI;
 import com.cmdgod.mc.ucr_stitch.inventories.BookBundleInventory;
+import com.cmdgod.mc.ucr_stitch.tools.Utility;
 
+import eu.pb4.sgui.api.gui.BookGui;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -13,7 +15,9 @@ import net.minecraft.item.WrittenBookItem;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtString;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
@@ -37,18 +41,22 @@ public class BookkeeperBundle extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = user.getStackInHand(hand);
+        
         if (world.isClient) {
             return TypedActionResult.success(stack, true);
         }
         if (user.isSneaking()) {
             BookBundleGUI gui = new BookBundleGUI((ServerPlayerEntity)user, stack);
             gui.open();
+            Utility.playSound(user, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1f, 0.7f);
         } else {
             ItemStack bookStack = getSelectedStack(stack);
             if (bookStack.isEmpty() || !hasOpenInstruction(bookStack)) {
-                user.sendMessage(Text.of("There is no valid selected book"), true);
-                user.sendMessage(Text.of("There is no valid selected book"), false);
-                user.sendMessage(Text.of("Please pick one with Shift+Right Click!"), false);
+                user.sendMessage(Text.translatable("item.ucr_stitch.bookkeeper_bundle.noselect1"), true);
+                user.sendMessage(Text.translatable("item.ucr_stitch.bookkeeper_bundle.noselect1"), false);
+                user.sendMessage(Text.translatable("item.ucr_stitch.bookkeeper_bundle.noselect2"), false);
+                Utility.playSound(user, SoundEvents.ENTITY_PLAYER_BURP, 1f, 1.5f);
+                
             } else {
                 openBook(bookStack, (ServerPlayerEntity)user);
             }
@@ -71,7 +79,10 @@ public class BookkeeperBundle extends Item {
 			SoundEvent sfx = PatchouliSounds.getSound(book.openSound, PatchouliSounds.BOOK_OPEN);
 			player.playSound(sfx, 1F, (float) (0.7 + Math.random() * 0.4));
         } else if (item instanceof WrittenBookItem || item instanceof WritableBookItem) {
-            player.useBook(stack, Hand.MAIN_HAND);
+            Utility.playSound(player, SoundEvents.ITEM_BOOK_PAGE_TURN, 1f, 0.8f);
+            BookGui bookGUI = new BookGui(player, stack);
+            bookGUI.open();
+            //player.useBook(stack, Hand.MAIN_HAND);
             player.incrementStat(Stats.USED.getOrCreateStat(item));
         }
     }
@@ -80,17 +91,29 @@ public class BookkeeperBundle extends Item {
         stack.getOrCreateNbt().putInt(SELECTED_SLOT_KEY, slot);
     }
 
-    public static ItemStack getSelectedStack(ItemStack bundleStack) {
-        NbtCompound nbt = bundleStack.getOrCreateNbt();
-        ItemStack bookStack = ItemStack.EMPTY;
-        if (nbt.contains(SELECTED_SLOT_KEY, NbtCompound.INT_TYPE)) {
-            int slot = nbt.getInt(SELECTED_SLOT_KEY);
-            BookBundleInventory inv = new BookBundleInventory(bundleStack);
-            if (slot < inv.size()) {
-                bookStack = inv.getStack(slot);
-            }
+    public static int getSelectedBookSlot(ItemStack stack) {
+        NbtCompound nbt = stack.getOrCreateNbt();
+        if (!nbt.contains(SELECTED_SLOT_KEY, NbtCompound.INT_TYPE)) {
+            return -1;
         }
-        return bookStack;
+        int slot = nbt.getInt(SELECTED_SLOT_KEY);
+        if (slot < 0) {
+            return -1;
+        }
+        BookBundleInventory inv = new BookBundleInventory(stack);
+        if (slot < inv.size() && !inv.getStack(slot).isEmpty()) {
+            return slot;
+        }
+        return -1;
+    }
+
+    public static ItemStack getSelectedStack(ItemStack bundleStack) {
+        int slot = getSelectedBookSlot(bundleStack);
+        if (slot < 0) {
+            return ItemStack.EMPTY;
+        }
+        BookBundleInventory inv = new BookBundleInventory(bundleStack);
+        return inv.getStack(slot);
     }
     
 }
