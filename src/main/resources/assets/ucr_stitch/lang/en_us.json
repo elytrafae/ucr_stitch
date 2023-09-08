@@ -30,7 +30,7 @@
     "item.ucr_stitch.lapis_necklace": "Lapis Necklace",
     "item.ucr_stitch.redstone_necklace": "Redstone Necklace",
     "item.ucr_stitch.nether_quartz_necklace": "Nether Quartz Necklace",
-    "item.ucr_stitch.silver_necklace": "Sliver Necklace",
+    "item.ucr_stitch.silver_necklace": "Silver Necklace",
 
     "block.ucr_stitch.gravity_duper": "Gravity Duper",
     "block.ucr_stitch.gravity_duper.error": "ERROR: Invalid item/recipe for duping! Please break the block and construct a new one!",
@@ -59,6 +59,7 @@
     "item.ucr_stitch.bookkeeper_bundle.takeout": "§dShift+Click to take out§r",
     "item.ucr_stitch.bookkeeper_bundle.insert": "§dShift+Click to insert§r",
     "item.ucr_stitch.bookkeeper_bundle.invalid": "§4Cannot insert§r",
+    "item.ucr_stitch.bookkeeper_bundle.select_tooltip": "§dSelected: %s§r",
 
     "item.ucr_stitch.stars_banner_pattern": "Banner Pattern",
     "item.ucr_stitch.stars_banner_pattern.desc": "Stars",
@@ -95,5 +96,12 @@
     "item.minecraft.potion.effect.totem_popper": "Potion of Totem Popping",
     "item.minecraft.splash_potion.effect.totem_popper": "Splash Potion of Totem Popping",
     "item.minecraft.lingering_potion.effect.totem_popper": "Lingering Potion of Totem Popping",
-    "item.minecraft.tipped_arrow.effect.totem_popper": "Arrow of Totem Popping"
+    "item.minecraft.tipped_arrow.effect.totem_popper": "Arrow of Totem Popping",
+
+    "text.config.ucr_stitch.title": "UCR Stitch",
+    "text.config.ucr_stitch.option.sugarcaneHeight": "Max Sugarcane Height",
+    "text.config.ucr_stitch.option.cactusHeight": "Max Cactus Height",
+    "text.config.ucr_stitch.option.bookkeeperBundleSlots": "Bookkeeper's Bundle Slots", 
+    "text.config.ucr_stitch.option.necklaceDamage": "Ore Necklace Damage",
+    "text.config.ucr_stitch.option.necklaceDamage.tooltip": "The amount of durability Ore Necklaces should lose when doubling ore drops."
 }

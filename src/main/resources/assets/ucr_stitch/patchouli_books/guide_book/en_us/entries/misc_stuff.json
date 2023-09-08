@@ -9,7 +9,7 @@
         },
 		{
 			"type": "patchouli:text",
-            "text": "$(li)Explosions from other mobs no longer grief. All other mob griefing is turned on.$(li)Insomnia is disabled. If you want Phantoms, they spawn in certain End biomes!$(li)Grindstones can now remove enchantments from items and put them on books for a price!$(li)You can right-click crops to harvest them."
+            "text": "$(li)Explosions from other mobs no longer grief. All other mob griefing is turned on.$(li)Insomnia is disabled. If you want Phantoms, they spawn in certain End biomes!$(li)Grindstones can now remove enchantments from items and put them on books for a price!$(li)You can right-click crops to harvest them.$(li)While Zenith was taken out, I implemented my own version of the Sugarcane and Cactus buffs!"
 		}
     ]
 }

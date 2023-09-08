@@ -1,8 +1,10 @@
 package com.cmdgod.mc.ucr_stitch.blocks;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.cmdgod.mc.ucr_stitch.blockentities.GravityDuperBlockEntity;
+import com.cmdgod.mc.ucr_stitch.gui.GravityDuperGUI;
 import com.cmdgod.mc.ucr_stitch.registrers.ModBlocks;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -15,12 +17,14 @@ import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.entity.StructureBlockBlockEntity.Action;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
@@ -52,6 +56,7 @@ public class GravityDuperBlock extends BlockWithEntity {
         return new GravityDuperBlockEntity(pos, state);
     }
 
+    /*
     @Override
     public ActionResult onUse(BlockState blockState, World world, BlockPos blockPos, PlayerEntity player, Hand hand, BlockHitResult blockHitResult) {
         Inventory blockEntity = (Inventory) world.getBlockEntity(blockPos);
@@ -101,6 +106,21 @@ public class GravityDuperBlock extends BlockWithEntity {
         
  
         return ActionResult.PASS;
+    }
+    */
+
+    @Override
+    public ActionResult onUse(BlockState blockState, World world, BlockPos blockPos, PlayerEntity player, Hand hand, BlockHitResult blockHitResult) {
+        if (world.isClient) {
+            return ActionResult.SUCCESS;
+        }
+        Optional<GravityDuperBlockEntity> entityOpt = world.getBlockEntity(blockPos, ModBlocks.GRAVITY_DUPER_ENTITY);
+        if (entityOpt.isPresent()) {
+            GravityDuperGUI gui = new GravityDuperGUI((ServerPlayerEntity)player, entityOpt.get());
+            gui.open();
+            entityOpt.get().addGui(gui);
+        }
+        return ActionResult.FAIL;
     }
 
     private void playItemGetSound(PlayerEntity player) {

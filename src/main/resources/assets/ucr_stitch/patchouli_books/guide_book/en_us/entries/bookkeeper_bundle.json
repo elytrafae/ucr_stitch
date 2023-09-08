@@ -1,0 +1,16 @@
+{
+    "name": "Bookkeeper's Bundle",
+    "icon": "ucr_stitch:bookkeeper_bundle",
+    "category": "ucr_stitch:root",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "A simple and useful item, lets you store unstackable books, including Books and Quills, Written Books, Spellbooks, Enchanted Books and Patchouli Guide Books.$(br)Shift-Right-Click to access the menu, where shift-clicking can move books to/from the bundle, and clicking will allow you to directly read the book's contents. Simply right-clicking will open the last book you read."
+        },
+		{
+			"type": "patchouli:crafting",
+			"recipe": "ucr_stitch:bookkeeper_bundle",
+			"text": "PS: Due to technical limitations, Books and Quills will use the Written Book UI. Written Books will appear as though they are in Lecterns for the same reason."
+		}
+    ]
+}

@@ -3,6 +3,7 @@ package com.cmdgod.mc.ucr_stitch.items;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.cmdgod.mc.ucr_stitch.UCRStitch;
 import com.cmdgod.mc.ucr_stitch.registrers.ModItems;
 
 import dev.emi.trinkets.api.TrinketItem;
@@ -34,16 +35,11 @@ public class OreNecklace extends TrinketItem {
     }
 
     public int getDamagePerRoll() {
-        return damagePerRoll;
-    }
-
-    public OreNecklace setDamagePerRoll(int damagePerRoll) {
-        this.damagePerRoll = damagePerRoll;
-        return this;
+        return UCRStitch.CONFIG.necklaceDamage();
     }
 
     public static ArrayList<Identifier> getRegularOreTables(String namespace, String oreName) {
-        return new ArrayList<>(List.of(new Identifier(namespace, "blocks/deepslate_" + oreName + "_ore"), new Identifier(namespace, "blocks/" + oreName + "_ore")));
+        return new ArrayList<>(List.of(new Identifier(namespace, "blocks/deepslate_" + oreName + "_ore"), new Identifier(namespace, "blocks/" + oreName + "_ore"), new Identifier("meadow", "alpine_" + oreName + "_ore")));
     }
 
     public static ArrayList<Identifier> getRegularOreTables(String oreName) {

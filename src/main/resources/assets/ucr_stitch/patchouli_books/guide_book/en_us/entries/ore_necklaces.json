@@ -5,7 +5,7 @@
     "pages": [
         {
             "type": "patchouli:text",
-            "text": "Ore necklaces are simple, fragile, but useful artifacts. They allow the user to get double ore drops from the Necklace's type, but the necklace loses 20 Durability each time."
+            "text": "Ore necklaces are simple, fragile, but useful artifacts. They allow the user to get double ore drops from the Necklace's type, but the necklace loses major amounts of Durability each time."
         },
 		{
 			"type": "patchouli:crafting",

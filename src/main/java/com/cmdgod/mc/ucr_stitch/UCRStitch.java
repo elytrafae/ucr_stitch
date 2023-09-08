@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.cmdgod.mc.ucr_stitch.config.UCRStitchConfig;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperCraftRecipe;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperRecipe;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperRecipeSerializer;
@@ -22,6 +23,9 @@ import com.cmdgod.mc.ucr_stitch.worldgen.VoidberryVineFeatureConfig;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.minecraft.block.SmokerBlock;
+import net.minecraft.block.SugarCaneBlock;
+import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
@@ -75,23 +79,13 @@ public class UCRStitch implements ModInitializer {
             ), List.of(SquarePlacementModifier.of(), RarityFilterPlacementModifier.of(22), HeightRangePlacementModifier.of(VeryBiasedToBottomHeightProvider.create(YOffset.fixed(5), YOffset.fixed(20), 22)))
     );
 
+	public static final UCRStitchConfig CONFIG = UCRStitchConfig.createAndLoad();
+
 	@Override
 	public void onInitialize() {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
-
-		//LivingEntity;
-		//ProtectionEnchantment;
-		//EnchantmentHelper;
-		//ChorusFruitItem;
-		// FurnaceBlockEntity;
-		// BlockItem;
-		//VillagerEntity;
-		//VillagerHostilesSensor;
-		// FishingRodItem;
-		// SwordItem;
-		// SignBlock;
 
 		Registry.register(Registry.RECIPE_SERIALIZER, GravityDuperRecipeSerializer.ID, GravityDuperRecipeSerializer.INSTANCE);
         Registry.register(Registry.RECIPE_TYPE, new Identifier(MOD_NAMESPACE, GravityDuperRecipe.Type.ID), GravityDuperRecipe.Type.INSTANCE);

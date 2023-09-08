@@ -3,6 +3,22 @@
         "minecraft:written_book",
         "minecraft:enchanted_book",
         "minecraft:writable_book",
-        "patchouli:guide_book"
+        "patchouli:guide_book",
+        {
+            "id": "botania:lexicon",
+            "required": false
+        },
+        {
+            "id": "zenith:book",
+            "required": false
+        },
+        {
+            "id": "hexcasting:spellbook",
+            "required": false
+        },
+        {
+            "id": "bewitchment:book_of_shadows",
+            "required": false
+        }
     ]
 }

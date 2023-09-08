@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.cmdgod.mc.ucr_stitch.items.OreNecklace;
 import com.cmdgod.mc.ucr_stitch.registrers.ModAttributes;
+import com.cmdgod.mc.ucr_stitch.tools.Utility;
 
 import dev.emi.trinkets.api.TrinketComponent;
 import dev.emi.trinkets.api.TrinketsApi;
@@ -100,9 +101,7 @@ public class LootTableMixin {
                     if (necklace.isPartOfLootTableList(world.getServer().getLootManager(), table) /*&& world.getRandom().nextInt(100) < 15*/) {
                         count.add(1);
                         pair.getRight().damage(necklace.getDamagePerRoll(), player, (p) -> {
-                            // TODO: Find out how the fuck does the sound system work
-                            System.out.println("Break Sound!");
-                            world.playSound(p, p.getBlockPos(), SoundEvents.ENTITY_ITEM_BREAK, SoundCategory.PLAYERS, 1.0f, 1.4f);
+                            Utility.playSound(player, SoundEvents.ENTITY_ITEM_BREAK, 1.0f, 1.4f);
                         });
                     }
                 });

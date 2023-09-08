@@ -1,0 +1,11 @@
+{
+    "replace": "false",
+    "values": [
+        "ucr_stitch:wooden_multitool",
+        "ucr_stitch:stone_multitool",
+        "ucr_stitch:iron_multitool",
+        "ucr_stitch:golden_multitool",
+        "ucr_stitch:diamond_multitool",
+        "ucr_stitch:netherite_multitool"
+    ]
+}

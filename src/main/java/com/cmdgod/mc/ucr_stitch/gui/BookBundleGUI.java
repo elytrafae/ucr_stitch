@@ -1,31 +1,27 @@
 package com.cmdgod.mc.ucr_stitch.gui;
 
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.jetbrains.annotations.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.apache.commons.lang3.mutable.MutableInt;
+
+import com.cmdgod.mc.ucr_stitch.UCRStitch;
+//import com.cmdgod.mc.ucr_stitch.config.UCRStitchConfig;
 import com.cmdgod.mc.ucr_stitch.inventories.BookBundleInventory;
 import com.cmdgod.mc.ucr_stitch.items.BookkeeperBundle;
 import com.cmdgod.mc.ucr_stitch.registrers.ModTags;
 import com.cmdgod.mc.ucr_stitch.tools.Utility;
 
-import eu.pb4.sgui.api.gui.BaseSlotGui;
 import eu.pb4.sgui.api.gui.SimpleGui;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.screen.ScreenHandlerType;
-import net.minecraft.screen.slot.Slot;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.Vec3d;
 
 public class BookBundleGUI extends SimpleGui {
 
@@ -34,7 +30,7 @@ public class BookBundleGUI extends SimpleGui {
     private boolean playExitSound = true;
 
     public BookBundleGUI(ServerPlayerEntity player, ItemStack bundleStack) {
-        super(ScreenHandlerType.GENERIC_9X2, player, true);
+        super(getScreenHandlerType(UCRStitch.CONFIG.bookkeeperBundleSlots()), player, true);
         this.inventory = new BookBundleInventory(bundleStack);
         this.stack = bundleStack;
         setTitle(bundleStack.getName());
@@ -45,7 +41,7 @@ public class BookBundleGUI extends SimpleGui {
 
         ItemStack lockedSlotStack = new ItemStack(Items.GRAY_STAINED_GLASS_PANE);
         lockedSlotStack.setCustomName(Text.of(""));
-        for (int i=BookBundleInventory.SLOTS; i < getVirtualSize(); i++) {
+        for (int i=inventory.size(); i < getVirtualSize(); i++) {
             setSlot(i, lockedSlotStack);
         }
 
@@ -53,7 +49,7 @@ public class BookBundleGUI extends SimpleGui {
 
     private void reflectBookInv() {
         MutableInt selectedSlot = new MutableInt(BookkeeperBundle.getSelectedBookSlot(this.stack));
-        for (int i=0; i < BookBundleInventory.SLOTS; i++) {
+        for (int i=0; i < inventory.size(); i++) {
             ItemStack displayStack = inventory.getStack(i).copy();
             if (selectedSlot.getValue() == i) {
                 Utility.addLinesToLore(displayStack, Text.translatable("item.ucr_stitch.bookkeeper_bundle.selected"));
@@ -82,7 +78,7 @@ public class BookBundleGUI extends SimpleGui {
                         playExitSound = false;
                         close();
                         BookkeeperBundle.openBook(stack, getPlayer());
-                    } else {
+                    } else if (!stack.isEmpty()) {
                         playErrorSound();
                     }
                 }
@@ -108,10 +104,10 @@ public class BookBundleGUI extends SimpleGui {
                         reflectBookInv();
                         reflectPlayerInv();
                         playMoveSound();
-                    } else {
+                    } else if (!stack.isEmpty()){
                         playErrorSound();
                     }
-                } else {
+                } else if (!stack.isEmpty()) {
                     playErrorSound();
                 }
             });
@@ -134,6 +130,12 @@ public class BookBundleGUI extends SimpleGui {
 
     private void playErrorSound() {
         playSound(SoundEvents.ENTITY_PLAYER_BURP, 1f, 1.5f);
+    }
+
+    private static ScreenHandlerType<?> getScreenHandlerType(int slots) {
+        int rows = (int)Math.ceil(((double)slots)/9);
+        ArrayList<ScreenHandlerType<?>> types = new ArrayList<>(List.of(ScreenHandlerType.GENERIC_9X1, ScreenHandlerType.GENERIC_9X2, ScreenHandlerType.GENERIC_9X3, ScreenHandlerType.GENERIC_9X4, ScreenHandlerType.GENERIC_9X5, ScreenHandlerType.GENERIC_9X6));
+        return types.get(Math.max(Math.min(rows-1, types.size()-1), 0));
     }
         
 }

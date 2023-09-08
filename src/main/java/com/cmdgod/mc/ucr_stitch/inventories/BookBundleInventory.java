@@ -1,13 +1,17 @@
 package com.cmdgod.mc.ucr_stitch.inventories;
 
+import com.cmdgod.mc.ucr_stitch.UCRStitch;
+
+//import com.cmdgod.mc.ucr_stitch.config.UCRStitchConfig;
+
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.collection.DefaultedList;
 
 public class BookBundleInventory implements ImplementedInventory {
 
-    public static int SLOTS = 18;
-    private DefaultedList<ItemStack> items = DefaultedList.ofSize(SLOTS, ItemStack.EMPTY);
+    //public static int SLOTS = 18;
+    private DefaultedList<ItemStack> items = DefaultedList.ofSize(UCRStitch.CONFIG.bookkeeperBundleSlots(), ItemStack.EMPTY);
     private ItemStack stack;
 
     public BookBundleInventory(ItemStack stack) {

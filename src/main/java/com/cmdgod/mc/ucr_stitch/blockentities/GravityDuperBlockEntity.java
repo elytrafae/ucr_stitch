@@ -1,13 +1,17 @@
 package com.cmdgod.mc.ucr_stitch.blockentities;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import org.jetbrains.annotations.Nullable;
 
 import com.cmdgod.mc.ucr_stitch.blocks.GravityDuperBlock;
+import com.cmdgod.mc.ucr_stitch.gui.GravityDuperGUI;
 import com.cmdgod.mc.ucr_stitch.inventories.ImplementedInventory;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperRecipe;
 import com.cmdgod.mc.ucr_stitch.registrers.ModBlocks;
+import com.cmdgod.mc.ucr_stitch.tools.Utility;
+
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -43,6 +47,8 @@ public class GravityDuperBlockEntity extends BlockEntity implements ImplementedI
     private Identifier blockId = null;
     private boolean locked_up = false;
 
+    private ArrayList<GravityDuperGUI> guis = new ArrayList<>();
+
     public GravityDuperBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlocks.GRAVITY_DUPER_ENTITY, pos, state);
     }
@@ -56,6 +62,7 @@ public class GravityDuperBlockEntity extends BlockEntity implements ImplementedI
         GravityDuperRecipe recipe = be.getRecipe(world);
         if (recipe == null || be.blockId == null) {
             world.setBlockState(pos, state.with(GravityDuperBlock.WORKING, false).with(GravityDuperBlock.STUCK, true));
+            be.updateAllGuiStuck();
             if (!be.locked_up) {
                 System.out.println("A Gravity duper at location " + pos.toString() + " has an invalid recipe!");
                 be.locked_up = true;
@@ -75,6 +82,10 @@ public class GravityDuperBlockEntity extends BlockEntity implements ImplementedI
             isHalted = true;
         }
 
+        if (be.ticksTillNext <= 0 && recipe != null) {
+            be.ticksTillNext = recipe.getTime();
+        }
+
         if (!isHalted && be.fuelTicks > 0) {
             be.ticksTillNext--;
             if (be.ticksTillNext <= 0) {
@@ -90,7 +101,7 @@ public class GravityDuperBlockEntity extends BlockEntity implements ImplementedI
         }
         
         ItemStack fuelStack = be.getStack(FUEL_SLOT);
-        if (be.fuelTicks <= 0 && !isHalted && isStackFuel(fuelStack)) {
+        if (be.fuelTicks <= 0 && !isHalted && Utility.isStackFuel(fuelStack)) {
             be.fuelTicks = FuelRegistry.INSTANCE.get(fuelStack.getItem());
             if (fuelStack.getCount() == 1) {
                 be.setStack(FUEL_SLOT, new ItemStack(fuelStack.getItem().getRecipeRemainder()));
@@ -98,6 +109,9 @@ public class GravityDuperBlockEntity extends BlockEntity implements ImplementedI
                 fuelStack.decrement(1);
             }
         }
+
+        be.updateAllGui(be.ticksTillNext, recipe.getTime(), be.fuelTicks);
+
     }
 
     @Override
@@ -167,24 +181,12 @@ public class GravityDuperBlockEntity extends BlockEntity implements ImplementedI
 
     @Override
     public boolean canInsert(int slot, ItemStack stack, Direction direction) {
-        return slot == FUEL_SLOT && isStackFuel(stack);
+        return slot == FUEL_SLOT && Utility.isStackFuel(stack);
     }
 
     @Override
     public boolean canExtract(int slot, ItemStack stack, Direction direction) {
-        return slot == OUTPUT_SLOT || (slot == FUEL_SLOT && !isStackFuel(stack));
-    }
-
-    static public boolean isStackFuel(ItemStack stack) {
-        if (stack.isEmpty()) {
-            return false;
-        }
-        Item item = stack.getItem();
-        int fuelTime = 0;
-        try {
-            fuelTime = FuelRegistry.INSTANCE.get(item);
-        } catch (Exception e) {}
-        return fuelTime > 0;
+        return slot == OUTPUT_SLOT || (slot == FUEL_SLOT && !Utility.isStackFuel(stack));
     }
 
     private SimpleInventory createSimpleInventory() {
@@ -253,6 +255,34 @@ public class GravityDuperBlockEntity extends BlockEntity implements ImplementedI
     public void markDirty() {
         if (this.world != null) {
             BlockEntity.markDirty(this.world, this.pos, this.getCachedState());
+        }
+    }
+
+    public void addGui(GravityDuperGUI gui) {
+        guis.add(gui);
+    }
+
+    private void updateAllGui(int timeLeft, int totalTime, int fuelTicks) {
+        for (var i=0; i < guis.size(); i++) {
+            GravityDuperGUI gui = guis.get(i);
+            if (!gui.isOpen()) {
+                guis.remove(i);
+                i--;
+            } else {
+                gui.updateProgress(timeLeft, totalTime, fuelTicks);
+            }
+        }
+    }
+
+    private void updateAllGuiStuck() {
+        for (var i=0; i < guis.size(); i++) {
+            GravityDuperGUI gui = guis.get(i);
+            if (!gui.isOpen()) {
+                guis.remove(i);
+                i--;
+            } else {
+                gui.updateInvalid();
+            }
         }
     }
 

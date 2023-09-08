@@ -50,6 +50,7 @@ public class ModBlocks {
     public static void registerAll() {
         UCRStitch.LOGGER.info("UCR Stitch: Blocks registered!");
         // Blocks.OAK_PLANKS;
+        // Blocks.PLAYER_HEAD;
 
         ModItems.GRAVITY_DUPER_ITEM = registerBlock("gravity_duper", GRAVITY_DUPER, null);
 

@@ -18,7 +18,10 @@
 		"VillagerHostilesSensorMixin",
 		"PlayerEntityMixin",
 		"ProtectionEnchantmentMixin",
-		"EnchantmentHelperMixin"
+		"EnchantmentHelperMixin",
+		"SugarCaneBlockMixin",
+		"CactusBlockMixin",
+		"FireworkRocketItemMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
