@@ -7,14 +7,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.cmdgod.mc.ucr_stitch.blocks.CustomBlockEventListener;
+import com.cmdgod.mc.ucr_stitch.powers.PreventDismountPower;
 import com.cmdgod.mc.ucr_stitch.registrers.ModAttributes;
 import com.cmdgod.mc.ucr_stitch.registrers.ModStatusEffects;
 
+import io.github.apace100.apoli.component.PowerHolderComponent;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -28,6 +32,7 @@ public class LivingEntityMixin {
             info.setReturnValue(0f);
             info.cancel();
         }
+        // MobEntity;
 	}
 
     @Inject(at = @At("RETURN"), method = "createLivingAttributes()Lnet/minecraft/entity/attribute/DefaultAttributeContainer$Builder;")
@@ -49,5 +54,7 @@ public class LivingEntityMixin {
             }
         }
     }
+
+    
 
 }

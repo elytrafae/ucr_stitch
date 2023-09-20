@@ -6,31 +6,45 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.cmdgod.mc.ucr_stitch.config.UCRStitchConfig;
+import com.cmdgod.mc.ucr_stitch.networking.PVPTogglePacket;
+import com.cmdgod.mc.ucr_stitch.networking.RecallParticlePacket;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperCraftRecipe;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperRecipe;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperRecipeSerializer;
 import com.cmdgod.mc.ucr_stitch.recipes.MultitoolCraftRecipe;
 import com.cmdgod.mc.ucr_stitch.registrers.ModBlocks;
+import com.cmdgod.mc.ucr_stitch.registrers.ModCommands;
+import com.cmdgod.mc.ucr_stitch.registrers.ModConditions;
 import com.cmdgod.mc.ucr_stitch.registrers.ModItems;
 import com.cmdgod.mc.ucr_stitch.registrers.LootTableModifier;
 import com.cmdgod.mc.ucr_stitch.registrers.ModActions;
 import com.cmdgod.mc.ucr_stitch.registrers.ModPotions;
 import com.cmdgod.mc.ucr_stitch.registrers.ModPowers;
 import com.cmdgod.mc.ucr_stitch.registrers.ModStatusEffects;
+import com.cmdgod.mc.ucr_stitch.tools.Utility;
 import com.cmdgod.mc.ucr_stitch.worldgen.VoidberryVineFeature;
 import com.cmdgod.mc.ucr_stitch.worldgen.VoidberryVineFeatureConfig;
 
+import io.wispforest.owo.network.OwoNetChannel;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.block.SmokerBlock;
 import net.minecraft.block.SugarCaneBlock;
+import net.minecraft.client.particle.Particle;
+import net.minecraft.entity.effect.InstantStatusEffect;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.thrown.PotionEntity;
 import net.minecraft.item.Items;
+import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.Vec3f;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.World;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
@@ -48,21 +62,9 @@ public class UCRStitch implements ModInitializer {
 	public static final String MOD_NAMESPACE = "ucr_stitch";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAMESPACE);
 
-	/*
-	public static final TrunkPlacerType<UpsideDownTrunkPlacer> UPSIDE_DOWN_TRUNK_PLACER = TrunkPlacerTypeInvoker.callRegister("ucr_stitch:upside_down_trunk_placer", UpsideDownTrunkPlacer.CODEC);
-	public static final TreeDecoratorType<VoidshroomTreeDecorator> VOIDSHROOM_TREE_DECORATOR = TreeDecoratorTypeInvoker.callRegister("ucr_stitch:voidshroom_tree_decorator", VoidshroomTreeDecorator.CODEC);
-
-	public static final Identifier VOIDSHROOM_ID = new Identifier(MOD_NAMESPACE, "voidshroom");
-	public static final RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> VOIDSHROOM_TREE = ConfiguredFeatures.register(VOIDSHROOM_ID.toString(), Feature.TREE,
-	// Configure the feature using the builder
-	new TreeFeatureConfig.Builder(
-		BlockStateProvider.of(ModBlocks.VOIDSHROOM_STEM), // Trunk block provider
-		new UpsideDownTrunkPlacer(6, 3, 1), // places a straight trunk
-		BlockStateProvider.of(ModBlocks.VOIDSHROOM_CAP), // Foliage block provider
-		new RandomSpreadFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(0),ConstantIntProvider.create(4), 50), // places leaves as a blob (radius, offset from trunk, height)
-		new TwoLayersFeatureSize(-1, 0, -1) // The width of the tree at different layers; used to see how tall the tree can be without clipping into blocks
-	).dirtProvider(BlockStateProvider.of(Blocks.END_STONE)).decorators(Collections.singletonList(VoidshroomTreeDecorator.INSTANCE)).build());
-	*/
+	// PotionEntity;
+	// Particle
+	
 
 	public static final Identifier VOIDBERRY_VINES_FEATURE_ID = new Identifier(MOD_NAMESPACE, "voidberry_vines");
     public static Feature<VoidberryVineFeatureConfig> VOIDBERRY_VINES_FEATURE = new VoidberryVineFeature(VoidberryVineFeatureConfig.CODEC);
@@ -80,6 +82,8 @@ public class UCRStitch implements ModInitializer {
     );
 
 	public static final UCRStitchConfig CONFIG = UCRStitchConfig.createAndLoad();
+	public static final OwoNetChannel PVP_TOGGLE_CHANNEL = OwoNetChannel.create(new Identifier(MOD_NAMESPACE, "toggle_pvp"));
+	public static final OwoNetChannel RECALL_PARTICLE_CHANNEL = OwoNetChannel.create(new Identifier(MOD_NAMESPACE, "recall_particle"));
 
 	@Override
 	public void onInitialize() {
@@ -100,6 +104,8 @@ public class UCRStitch implements ModInitializer {
 		LootTableModifier.doAllChanges();
 		ModPowers.registerAll();
 		ModActions.registerAll();
+		ModConditions.registerAll();
+		ModCommands.registerAll();
 
 		Registry.register(Registry.FEATURE, VOIDBERRY_VINES_FEATURE_ID, VOIDBERRY_VINES_FEATURE);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, VOIDBERRY_VINES_FEATURE_ID, WILD_VOIDBERRY_VINES);
@@ -112,6 +118,22 @@ public class UCRStitch implements ModInitializer {
                 RegistryKey.of(Registry.PLACED_FEATURE_KEY, VOIDBERRY_VINES_FEATURE_ID));
 
 		LOGGER.info("UCR Stitch says Hello!");
+
+		PVP_TOGGLE_CHANNEL.registerServerbound(PVPTogglePacket.class, (message, access) -> {
+			Utility.getInterfacePlayer(access.player()).togglePVPRequest();
+        });
+
+		RECALL_PARTICLE_CHANNEL.registerClientbound(RecallParticlePacket.class, (message, access) -> {
+			PlayerEntity player = access.player();
+			Vec3d position = message.position();
+			float c = 0.2f + player.getRandom().nextFloat()*0.2f;
+			for (double j=0; j < 3; j+=0.3) {
+				for (int i=0; i < 360; i+=10) {
+					player.getWorld().addParticle(new DustParticleEffect(new Vec3f(c, c, 0.8f), 1f), false, position.getX() + Math.sin(Math.toRadians(i))*(5-j*2), position.getY() + j + 0.1, position.getZ() + Math.cos(Math.toRadians(i))*(5-j*2), 0, 0, 0);
+				}
+			}
+			
+        });
 
 		// This is just to force gradle to fucking load Patchouli!
 	}

@@ -14,6 +14,9 @@ public class UCRStitchConfig extends ConfigWrapper<com.cmdgod.mc.ucr_stitch.conf
     private final Option<java.lang.Integer> cactusHeight = this.optionForKey(new Option.Key("cactusHeight"));
     private final Option<java.lang.Integer> bookkeeperBundleSlots = this.optionForKey(new Option.Key("bookkeeperBundleSlots"));
     private final Option<java.lang.Integer> necklaceDamage = this.optionForKey(new Option.Key("necklaceDamage"));
+    private final Option<java.lang.Integer> assistTicks = this.optionForKey(new Option.Key("assistTicks"));
+    private final Option<java.lang.Integer> pvpToggleBan = this.optionForKey(new Option.Key("pvpToggleBan"));
+    private final Option<java.lang.Integer> pvpOffTime = this.optionForKey(new Option.Key("pvpOffTime"));
 
     private UCRStitchConfig() {
         super(com.cmdgod.mc.ucr_stitch.config.ConfigModel.class);
@@ -55,6 +58,30 @@ public class UCRStitchConfig extends ConfigWrapper<com.cmdgod.mc.ucr_stitch.conf
 
     public void necklaceDamage(int value) {
         necklaceDamage.set(value);
+    }
+
+    public int assistTicks() {
+        return assistTicks.value();
+    }
+
+    public void assistTicks(int value) {
+        assistTicks.set(value);
+    }
+
+    public int pvpToggleBan() {
+        return pvpToggleBan.value();
+    }
+
+    public void pvpToggleBan(int value) {
+        pvpToggleBan.set(value);
+    }
+
+    public int pvpOffTime() {
+        return pvpOffTime.value();
+    }
+
+    public void pvpOffTime(int value) {
+        pvpOffTime.set(value);
     }
 
 

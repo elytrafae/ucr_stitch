@@ -2,6 +2,8 @@ package com.cmdgod.mc.ucr_stitch.tools;
 
 import java.util.Locale;
 
+import com.cmdgod.mc.ucr_stitch.mixininterfaces.IPlayerEntityMixin;
+
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -12,6 +14,7 @@ import net.minecraft.nbt.NbtString;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.MutableText;
+import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.text.Texts;
 import net.minecraft.text.Text.Serializer;
@@ -59,6 +62,18 @@ public class Utility {
             fuelTime = FuelRegistry.INSTANCE.get(item);
         } catch (Exception e) {}
         return fuelTime > 0;
+    }
+
+    public static IPlayerEntityMixin getInterfacePlayer(PlayerEntity player) {
+        return (IPlayerEntityMixin)(Object)player;
+    }
+
+    public static boolean canHarmEachOther(PlayerEntity p1, PlayerEntity p2) {
+        return p1 == null || p2 == null || p1.equals(p2) || (getInterfacePlayer(p1).getPVPStatus() && getInterfacePlayer(p2).getPVPStatus());
+    }
+
+    public static Text addStyle(Text text, Style style) {
+        return text.getWithStyle(style).get(0);
     }
 
 }

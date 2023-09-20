@@ -21,7 +21,11 @@
 		"EnchantmentHelperMixin",
 		"SugarCaneBlockMixin",
 		"CactusBlockMixin",
-		"FireworkRocketItemMixin"
+		"FireworkRocketItemMixin",
+		"PlayerManagerMixin",
+		"ActiveTargetGoalMixin",
+		"ActiveTargetGoalAccessor",
+		"ItemStackMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

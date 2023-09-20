@@ -33,8 +33,8 @@ public class Multitool extends MiningToolItem {
 
     public Multitool(Settings settings, HoeItem hoe, ShovelItem shovel, AxeItem axe, PickaxeItem pickaxe) {
         super(
-                getAverageAttackDamage(hoe, shovel, axe, pickaxe), 
-                getAverageAttackSpeed(hoe, shovel, axe, pickaxe), 
+                getAverageAttackDamage(hoe, shovel, axe, pickaxe)/2, 
+                getAverageAttackSpeed(hoe, shovel, axe, pickaxe)/4, 
                 hoe.getMaterial(), 
                 TagKey.of(Registry.BLOCK_KEY, new Identifier(UCRStitch.MOD_NAMESPACE, "mineable/multitool")), 
                 settings.maxDamage(hoe.getMaterial().getDurability() * 3)

@@ -1,13 +1,13 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-        "# #",
-        " E ",
-        "# #"
+        "#E#",
+        "E#E",
+        "#E#"
     ],
     "key": {
         "#": {
-            "item": "ucr_stitch:orb_of_great_regret"
+            "item": "minecraft:zombie_head"
         },
         "E": {
             "item": "minecraft:ender_eye"

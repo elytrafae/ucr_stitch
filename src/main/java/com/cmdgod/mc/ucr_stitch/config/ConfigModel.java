@@ -19,4 +19,7 @@ public class ConfigModel {
     public int bookkeeperBundleSlots = 18;
 
     public int necklaceDamage = 20;
+    public int assistTicks = 200;
+    public int pvpToggleBan = 2400;
+    public int pvpOffTime = 1200;
 }

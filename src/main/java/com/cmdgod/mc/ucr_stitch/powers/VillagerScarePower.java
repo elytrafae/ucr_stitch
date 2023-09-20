@@ -8,6 +8,8 @@ import io.github.apace100.apoli.power.factory.PowerFactory;
 import io.github.apace100.calio.data.SerializableData;
 import io.github.apace100.calio.data.SerializableDataTypes;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.goal.IronGolemLookGoal;
+import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.util.Identifier;
 
 public class VillagerScarePower extends Power {
@@ -17,6 +19,7 @@ public class VillagerScarePower extends Power {
     public VillagerScarePower(PowerType<?> type, LivingEntity entity, float squaredDistance) {
         super(type, entity);
         this.distance = squaredDistance;
+        // IronGolemEntity
     }
 
     public float getDistance() {

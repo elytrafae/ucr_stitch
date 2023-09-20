@@ -46,7 +46,7 @@ public class LootTableModifier {
 			if (source.isBuiltin() && (ZOMBIE_LOOT_DROP_ID.equals(id) || ZOMBIE_VILLAGER_LOOT_DROP_ID.equals(id))) {
 				LootPool.Builder poolBuilder = LootPool.builder()
 												.with(ItemEntry.builder(Items.ZOMBIE_HEAD).weight(1))
-												.conditionally(RandomChanceWithLootingLootCondition.builder(0.04f, 0.02f));
+												.conditionally(RandomChanceWithLootingLootCondition.builder(0.03f, 0.01f));
  
         		tableBuilder.pool(poolBuilder);
 			}

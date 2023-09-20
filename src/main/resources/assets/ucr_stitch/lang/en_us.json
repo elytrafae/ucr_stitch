@@ -103,5 +103,12 @@
     "text.config.ucr_stitch.option.cactusHeight": "Max Cactus Height",
     "text.config.ucr_stitch.option.bookkeeperBundleSlots": "Bookkeeper's Bundle Slots", 
     "text.config.ucr_stitch.option.necklaceDamage": "Ore Necklace Damage",
-    "text.config.ucr_stitch.option.necklaceDamage.tooltip": "The amount of durability Ore Necklaces should lose when doubling ore drops."
+    "text.config.ucr_stitch.option.necklaceDamage.tooltip": "The amount of durability Ore Necklaces should lose when doubling ore drops.",
+    "text.config.ucr_stitch.option.assistTicks": "Assist Ticks",
+    "text.config.ucr_stitch.option.pvpToggleBan": "Default PVP Toggle Ban Time",
+
+    "category.ucr_stitch.main": "UCR Stitch",
+    "key.ucr_stitch.toggle_pvp": "Toggle PVP",
+    
+    "message.ucr_stitch.cannot_toggle_pvp": "§4You can't toggle PVP for §4%d§4 more seconds!§r"
 }
