@@ -1,0 +1,4 @@
+
+Gravity Duper textures by Adapt
+
+"Bar textures 1" first two bars are recolored versions of some of "https://github.com/apace100/origins-fabric/blob/1.18/src/main/resources/assets/origins/textures/gui/community/spiderkolo/resource_bar_02.png". The rest are drawn by me.

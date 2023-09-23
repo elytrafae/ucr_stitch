@@ -31,31 +31,61 @@ public class MediaUtility {
     private static final Identifier BATTERY_ID = new Identifier("hexcasting", "battery");
 
     private static final int DUST_VALUE = 10000;
-    private static final HashMap<Identifier, Function<ItemStack, MyINT>> VALUE_MAP = new HashMap<>();
+    private static final HashMap<Identifier, Function<ItemStack, Integer>> VALUE_MAP = new HashMap<>();
     static {
-        VALUE_MAP.put(DUST_ID, (stack) -> new MyINT(DUST_VALUE));
-        VALUE_MAP.put(SHARD_ID, (stack) -> new MyINT(DUST_VALUE*5));
-        VALUE_MAP.put(CRYSTAL_ID, (stack) -> new MyINT(DUST_VALUE*10));
-        VALUE_MAP.put(CREATIVE_ID, (stack) -> MyINT.INF);
+        VALUE_MAP.put(DUST_ID, (stack) -> DUST_VALUE);
+        VALUE_MAP.put(SHARD_ID, (stack) -> DUST_VALUE*5);
+        VALUE_MAP.put(CRYSTAL_ID, (stack) -> DUST_VALUE*10);
+        VALUE_MAP.put(CREATIVE_ID, (stack) -> Integer.MAX_VALUE);
         VALUE_MAP.put(BATTERY_ID, (stack) -> {
             NbtCompound nbt = stack.getOrCreateNbt();
             if (nbt.contains("hexcasting:media", NbtElement.INT_TYPE)) {
-                return new MyINT(nbt.getInt("hexcasting:media"));
+                return nbt.getInt("hexcasting:media");
             }
-            return new MyINT(0);
+            return 0;
         });
     }
     
+    /*
     public static int getMediaInInventory(Inventory inv) {
         MyINT count = new MyINT(0);
         for (var i=0; i < inv.size(); i++) {
             ItemStack stack = inv.getStack(i);
             Identifier itemId = Registry.ITEM.getId(stack.getItem());
             if (VALUE_MAP.containsKey(itemId)) {
+                System.out.println("Media in " + itemId + " : " + VALUE_MAP.get(itemId).apply(stack).getValue());
                 count.add(VALUE_MAP.get(itemId).apply(stack).multiply(stack.getCount()));
             }
         }
         return count.getValue();
+    }
+    */
+
+    public static int getMediaInInventory(Inventory inv) {
+        InventoryMediaSummary summary = new InventoryMediaSummary(inv);
+        if (summary.creative.size() > 0) {
+            return Integer.MAX_VALUE;
+        }
+        int count = 0;
+        count += getMediaFromList(summary.dust);
+        count += getMediaFromList(summary.shard);
+        count += getMediaFromList(summary.crystal);
+        count += getMediaFromList(summary.battery);
+        return count;
+    }
+
+    // This is a helper function that assumes that all stacks have the same type of media holding item
+    // Works with batteries, at the cost of a bit of performance loss
+    private static int getMediaFromList(ArrayList<ItemStack> stacks) {
+        if (stacks.size() <= 0) {
+            return 0;
+        }
+        int count = 0;
+        Function<ItemStack, Integer> func = VALUE_MAP.get(Registry.ITEM.getId(stacks.get(0).getItem()));
+        for (int i=0; i < stacks.size(); i++) {
+            count += func.apply(stacks.get(i)) * stacks.get(i).getCount();
+        }
+        return count;
     }
 
     public static double mediaToAmethystDust(int media) {
@@ -91,7 +121,7 @@ public class MediaUtility {
                 summary.shard.get(0).decrement(1);
                 amount -= DUST_VALUE*5;
             } else if (summary.crystal.size() > 0) {
-                summary.shard.get(0).decrement(1);
+                summary.crystal.get(0).decrement(1);
                 amount -= DUST_VALUE*10;
             }
         }
@@ -120,7 +150,7 @@ public class MediaUtility {
     private static void payWithBatteries(ArrayList<ItemStack> list, int amount) {
         for (var i=0; i < list.size(); i++) {
             ItemStack stack = list.get(i);
-            int amountInStack = VALUE_MAP.get(BATTERY_ID).apply(stack).getValue();
+            int amountInStack = VALUE_MAP.get(BATTERY_ID).apply(stack);
             if (amountInStack <= 0) {
                 continue;
             }
@@ -139,9 +169,9 @@ public class MediaUtility {
     }
 
     private static int mediaInBatteries(ArrayList<ItemStack> list) {
-        MyINT count = new MyINT(0);
+        MutableInt count = new MutableInt(0);
         list.forEach((stack) -> {
-            count.add(VALUE_MAP.get(BATTERY_ID).apply(stack).multiply(stack.getCount()));
+            count.add(VALUE_MAP.get(BATTERY_ID).apply(stack)*stack.getCount());
         });
         return count.getValue();
     }
@@ -173,42 +203,6 @@ public class MediaUtility {
             }
         }
 
-    }
-
-    // This is for handling the concept of infinity.
-    public static class MyINT {
-        public boolean infinite = false;
-        public int value = 0;
-
-        public static final MyINT INF = new MyINT(0);
-        static {
-            INF.infinite = true;
-        }
-
-        public MyINT(int i) {
-            this.value = i;
-        }
-
-        public MyINT add(MyINT other) {
-            this.value += other.value;
-            this.infinite = this.infinite && other.infinite;
-            return this;
-        }
-
-        public MyINT multiply(int i) {
-            if (this.infinite) {
-                return this;
-            }
-            this.value *= i;
-            return this;
-        }
-
-        public int getValue() {
-            if (this.infinite) {
-                return Integer.MAX_VALUE;
-            }
-            return this.value;
-        }
     }
 
 }

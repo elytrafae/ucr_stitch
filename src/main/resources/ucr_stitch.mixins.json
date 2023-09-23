@@ -25,7 +25,8 @@
 		"PlayerManagerMixin",
 		"ActiveTargetGoalMixin",
 		"ActiveTargetGoalAccessor",
-		"ItemStackMixin"
+		"ItemStackMixin",
+		"MobEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
