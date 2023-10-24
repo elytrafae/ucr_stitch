@@ -21,7 +21,6 @@
 		"EnchantmentHelperMixin",
 		"SugarCaneBlockMixin",
 		"CactusBlockMixin",
-		"FireworkRocketItemMixin",
 		"PlayerManagerMixin",
 		"ActiveTargetGoalMixin",
 		"ActiveTargetGoalAccessor",

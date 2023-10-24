@@ -7,15 +7,22 @@ import com.cmdgod.mc.ucr_stitch.tools.MediaUtility;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
+import eu.pb4.placeholders.api.PlaceholderContext;
+import eu.pb4.placeholders.api.Placeholders;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.command.EntitySelector;
 import net.minecraft.command.argument.EntityArgumentType;
+import net.minecraft.command.argument.MessageArgumentType;
+import net.minecraft.command.argument.TextArgumentType;
+import net.minecraft.command.argument.MessageArgumentType.MessageFormat;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.CommandOutput;
 import net.minecraft.server.command.GiveCommand;
+import net.minecraft.server.command.SayCommand;
 import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.server.command.TellRawCommand;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
@@ -51,6 +58,7 @@ public class ModCommands {
         )));
         */
 
+        /*
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(
         literal("getpotionlist")
         .executes(context -> {
@@ -89,6 +97,17 @@ public class ModCommands {
             return media;
             }
         )));
+
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(
+        literal("testplaceholder").then(CommandManager.argument("message", TextArgumentType.text())
+        .executes(context -> {
+            ServerCommandSource source = context.getSource();
+            Text stringMessage = TextArgumentType.getTextArgument(context, "message");
+            source.sendFeedback(Placeholders.parseText(stringMessage, PlaceholderContext.of(source)), false);
+            return 0;
+            }
+        ))));
+        */
     }
 
 }

@@ -1,5 +1,7 @@
 package com.cmdgod.mc.ucr_stitch.elytratrails;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.DustColorTransitionParticleEffect;
@@ -9,6 +11,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3f;
 import net.minecraft.world.World;
 
+@Environment(EnvType.CLIENT)
 public class RedElytraTrail implements ElytraTrail {
     
     @Override

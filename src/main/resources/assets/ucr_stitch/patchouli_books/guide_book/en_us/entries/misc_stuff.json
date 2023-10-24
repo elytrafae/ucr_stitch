@@ -1,11 +1,21 @@
 {
-    "name": "Other Mods' Changes",
+    "name": "Misc Changes",
     "icon": "minecraft:magenta_dye",
     "category": "ucr_stitch:root",
     "pages": [
         {
             "type": "patchouli:text",
-            "text": "$(li)Dispensers can fully interact with cauldrons!$(li)Elytras can be customized with dyes and banners. These can also be applies to individual wings if you separate them!$(li)Tridents received some QoL, including Loyalty ones coming back from the void!$(li)Bundles are craftable, and can be used to randomize blocks while building!"
+            "text": "$(bold)Evaporation$()$(br)I always found it odd that (almost) every end creature hates water, but never their drops, or other items originating from there.$(br2)So, now a bunch of End materials disappear on contact with water! (Ender Pearl stasis chambers are still possible though.)"
+        },
+        {
+            "type": "patchouli:link",
+            "text": "$(bold)Chorus Fruits$()$(br)Chorus Fruits now nullify fall distance when eaten.$(br2)$(bold)Combat Changes$()$(br)The video below demonstrates the combat changes introduced!",
+            "url": "https://youtu.be/ZgqZRSH-xmg?si=D5gFui2MaVPujc-a",
+            "link_text": "YouTube video"
+        },
+        {
+            "type": "patchouli:text",
+            "text": "$(bold)Next are (mostly) other mods' changes$()$(br)$(li)Dispensers can fully interact with cauldrons!$(li)Elytras can be customized with dyes and banners. These can also be applies to individual wings if you separate them!$(li)Tridents received some QoL, including Loyalty ones coming back from the void!$(li)Bundles are craftable, and can be used to randomize blocks while building!"
         },
 		{
 			"type": "patchouli:text",

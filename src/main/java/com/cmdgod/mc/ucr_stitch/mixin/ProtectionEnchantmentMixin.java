@@ -21,7 +21,7 @@ public abstract class ProtectionEnchantmentMixin extends Enchantment {
     @Inject(at = @At("HEAD"), method = "canAccept(Lnet/minecraft/enchantment/Enchantment;)Z", cancellable = true)
     public void canAccept(Enchantment other, CallbackInfoReturnable<Boolean> info) {
         ProtectionEnchantment ench = (ProtectionEnchantment)(Object)this;
-        if (ench instanceof ProtectionEnchantment) {
+        if (other instanceof ProtectionEnchantment) {
             ProtectionEnchantment protectionEnchantment = (ProtectionEnchantment)other;
             if (ench.protectionType == protectionEnchantment.protectionType) {
                 info.setReturnValue(false);

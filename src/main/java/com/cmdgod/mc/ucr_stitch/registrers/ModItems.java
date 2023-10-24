@@ -117,17 +117,17 @@ public class ModItems {
     public static final CustomFishingRodItem DIAMOND_FISHING_ROD = new CustomFishingRodItem(ToolMaterials.DIAMOND, 0.75);
     public static final CustomFishingRodItem NETHERITE_FISHING_ROD = new CustomFishingRodItem(ToolMaterials.NETHERITE, 1, new FabricItemSettings().fireproof());
 
-    public static final OreNecklace AMETHYST_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), new Identifier("minecraft", "blocks/amethyst_cluster"));
-    public static final OreNecklace COPPER_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), OreNecklace.getRegularOreTables("copper"));
-    public static final OreNecklace IRON_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), OreNecklace.getRegularOreTables("iron"));
-    public static final OreNecklace GOLD_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), OreNecklace.getRegularOreTables("gold"));
-    public static final OreNecklace DIAMOND_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), OreNecklace.getRegularOreTables("diamond"));
-    public static final OreNecklace EMERALD_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), OreNecklace.getRegularOreTables("emerald"));
-    public static final OreNecklace LAPIS_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), OreNecklace.getRegularOreTables("lapis"));
-    public static final OreNecklace REDSTONE_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), OreNecklace.getRegularOreTables("redstone"));
-    public static final OreNecklace NETHER_QUARTZ_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), new Identifier("minecraft", "blocks/nether_quartz_ore"));
-    //public static final OreNecklace NETHERITE_ORE_NECKLACE = new OreNecklace(new FabricItemSettings().fireproof(), new Identifier("minecraft", "blocks/ancient_debris")).setDamagePerRoll(40);
-    public static final OreNecklace SILVER_ORE_NECKLACE = new OreNecklace(new FabricItemSettings(), OreNecklace.getRegularOreTables("bewitchment", "silver"));
+    public static final OreNecklace AMETHYST_ORE_NECKLACE = new OreNecklace(new FabricItemSettings().group(ITEM_GROUP), new Identifier("minecraft", "blocks/amethyst_cluster"));
+    public static final OreNecklace COPPER_ORE_NECKLACE = new OreNecklace(new FabricItemSettings().group(ITEM_GROUP), OreNecklace.getRegularOreTables("copper"));
+    public static final OreNecklace IRON_ORE_NECKLACE = new OreNecklace(new FabricItemSettings().group(ITEM_GROUP), OreNecklace.getRegularOreTables("iron"));
+    public static final OreNecklace GOLD_ORE_NECKLACE = new OreNecklace(new FabricItemSettings().group(ITEM_GROUP), OreNecklace.getRegularOreTables("gold"));
+    public static final OreNecklace DIAMOND_ORE_NECKLACE = new OreNecklace(new FabricItemSettings().group(ITEM_GROUP), OreNecklace.getRegularOreTables("diamond"));
+    public static final OreNecklace EMERALD_ORE_NECKLACE = new OreNecklace(new FabricItemSettings().group(ITEM_GROUP), OreNecklace.getRegularOreTables("emerald"));
+    public static final OreNecklace LAPIS_ORE_NECKLACE = new OreNecklace(new FabricItemSettings().group(ITEM_GROUP), OreNecklace.getRegularOreTables("lapis"));
+    public static final OreNecklace REDSTONE_ORE_NECKLACE = new OreNecklace(new FabricItemSettings().group(ITEM_GROUP), OreNecklace.getRegularOreTables("redstone"));
+    public static final OreNecklace NETHER_QUARTZ_ORE_NECKLACE = new OreNecklace(new FabricItemSettings().group(ITEM_GROUP), new Identifier("minecraft", "blocks/nether_quartz_ore"));
+    //public static final OreNecklace NETHERITE_ORE_NECKLACE = new OreNecklace(new FabricItemSettings().group(ITEM_GROUP).fireproof(), new Identifier("minecraft", "blocks/ancient_debris")).setDamagePerRoll(40);
+    public static final OreNecklace SILVER_ORE_NECKLACE = new OreNecklace(new FabricItemSettings().group(ITEM_GROUP), OreNecklace.getRegularOreTables("bewitchment", "silver"));
     
 
     public static final Item HEAVY_BOULDER = new TooltippedItem(new FabricItemSettings().maxCount(16).group(ITEM_GROUP));

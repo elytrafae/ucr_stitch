@@ -21,7 +21,7 @@ public class OreNecklace extends TrinketItem {
     }
 
     public OreNecklace(Settings settings, ArrayList<Identifier> lootTables) {
-        super(settings.group(ModItems.ITEM_GROUP).maxDamageIfAbsent(200));
+        super(settings.maxDamageIfAbsent(200));
         this.lootTableIds = lootTables;
     }
 

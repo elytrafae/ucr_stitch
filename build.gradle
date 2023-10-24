@@ -69,6 +69,10 @@ repositories {
     }
 	maven { url 'https://maven.nucleoid.xyz' }
 	maven { url 'https://maven.wispforest.io' }
+	maven { 
+        url "https://maven.nucleoid.xyz/"
+        name "Nucleoid"
+    }
 	/*
     maven {
         name = "CottonMC"
@@ -139,9 +143,10 @@ dependencies {
 	// Libgui
 	// modImplementation include("io.github.cottonmc:LibGui:${project.libgui_version}")
 
-	// Polymer and SGUI
+	// Polymer, SGUI and Placeholder API
 	// modImplementation include("eu.pb4:polymer-core:${project.polymer_version}")
 	modImplementation include("eu.pb4:sgui:${project.sgui_version}")
+	modImplementation include("eu.pb4:placeholder-api:${project.placeholder_api_version}")
 
 	// owo-lib
 	annotationProcessor modImplementation("io.wispforest:owo-lib:${project.owo_version}")

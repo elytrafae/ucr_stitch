@@ -17,6 +17,8 @@ public class UCRStitchConfig extends ConfigWrapper<com.cmdgod.mc.ucr_stitch.conf
     private final Option<java.lang.Integer> assistTicks = this.optionForKey(new Option.Key("assistTicks"));
     private final Option<java.lang.Integer> pvpToggleBan = this.optionForKey(new Option.Key("pvpToggleBan"));
     private final Option<java.lang.Integer> pvpOffTime = this.optionForKey(new Option.Key("pvpOffTime"));
+    private final Option<java.lang.String> pvpOnSign = this.optionForKey(new Option.Key("pvpOnSign"));
+    private final Option<java.lang.String> pvpOffSign = this.optionForKey(new Option.Key("pvpOffSign"));
 
     private UCRStitchConfig() {
         super(com.cmdgod.mc.ucr_stitch.config.ConfigModel.class);
@@ -82,6 +84,22 @@ public class UCRStitchConfig extends ConfigWrapper<com.cmdgod.mc.ucr_stitch.conf
 
     public void pvpOffTime(int value) {
         pvpOffTime.set(value);
+    }
+
+    public java.lang.String pvpOnSign() {
+        return pvpOnSign.value();
+    }
+
+    public void pvpOnSign(java.lang.String value) {
+        pvpOnSign.set(value);
+    }
+
+    public java.lang.String pvpOffSign() {
+        return pvpOffSign.value();
+    }
+
+    public void pvpOffSign(java.lang.String value) {
+        pvpOffSign.set(value);
     }
 
 

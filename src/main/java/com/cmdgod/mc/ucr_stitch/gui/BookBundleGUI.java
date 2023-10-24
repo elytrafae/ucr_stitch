@@ -13,7 +13,6 @@ import com.cmdgod.mc.ucr_stitch.registrers.ModTags;
 import com.cmdgod.mc.ucr_stitch.tools.Utility;
 
 import eu.pb4.sgui.api.gui.SimpleGui;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;

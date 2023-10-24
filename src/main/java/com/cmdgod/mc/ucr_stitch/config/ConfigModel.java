@@ -22,4 +22,7 @@ public class ConfigModel {
     public int assistTicks = 200;
     public int pvpToggleBan = 2400;
     public int pvpOffTime = 1200;
+
+    public String pvpOnSign = "☠";
+    public String pvpOffSign = "✌";
 }

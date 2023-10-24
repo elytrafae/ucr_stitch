@@ -1,11 +1,13 @@
 package com.cmdgod.mc.ucr_stitch;
 
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.cmdgod.mc.ucr_stitch.config.UCRStitchConfig;
+import com.cmdgod.mc.ucr_stitch.mixininterfaces.IPlayerEntityMixin;
 import com.cmdgod.mc.ucr_stitch.networking.PVPTogglePacket;
 import com.cmdgod.mc.ucr_stitch.networking.RecallParticlePacket;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperCraftRecipe;
@@ -37,6 +39,12 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.thrown.PotionEntity;
 import net.minecraft.item.Items;
 import net.minecraft.particle.DustParticleEffect;
+import net.minecraft.scoreboard.Scoreboard;
+import net.minecraft.scoreboard.ScoreboardObjective;
+import net.minecraft.scoreboard.ScoreboardPlayerScore;
+import net.minecraft.scoreboard.ServerScoreboard;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3f;
@@ -54,6 +62,8 @@ import net.minecraft.world.gen.heightprovider.VeryBiasedToBottomHeightProvider;
 import net.minecraft.world.gen.placementmodifier.HeightRangePlacementModifier;
 import net.minecraft.world.gen.placementmodifier.RarityFilterPlacementModifier;
 import net.minecraft.world.gen.placementmodifier.SquarePlacementModifier;
+import eu.pb4.placeholders.api.PlaceholderResult;
+import eu.pb4.placeholders.api.Placeholders;
 
 public class UCRStitch implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
@@ -92,6 +102,7 @@ public class UCRStitch implements ModInitializer {
 		// Proceed with mild caution.
 
 		// Items;
+		
 
 		Registry.register(Registry.RECIPE_SERIALIZER, GravityDuperRecipeSerializer.ID, GravityDuperRecipeSerializer.INSTANCE);
         Registry.register(Registry.RECIPE_TYPE, new Identifier(MOD_NAMESPACE, GravityDuperRecipe.Type.ID), GravityDuperRecipe.Type.INSTANCE);
@@ -118,6 +129,43 @@ public class UCRStitch implements ModInitializer {
                 // the feature is to be added while flowers and trees are being generated
                 GenerationStep.Feature.VEGETAL_DECORATION,
                 RegistryKey.of(Registry.PLACED_FEATURE_KEY, VOIDBERRY_VINES_FEATURE_ID));
+
+
+		Placeholders.register(new Identifier(MOD_NAMESPACE, "pvp_status"), (ctx, arg) -> {
+			if (!ctx.hasPlayer()) {
+				return PlaceholderResult.invalid("No player!");
+			}
+			ServerPlayerEntity player = ctx.player();
+			if (player == null) {
+				return PlaceholderResult.invalid("No player!");
+			}
+			IPlayerEntityMixin iPlayer = (IPlayerEntityMixin)(Object)player;
+			
+			Text text = Text.of(iPlayer.getPVPStatus() ? CONFIG.pvpOnSign() : CONFIG.pvpOffSign());
+			return PlaceholderResult.value(text);
+		});
+
+		Placeholders.register(new Identifier(MOD_NAMESPACE, "objective"), (ctx, arg) -> {
+			if (!ctx.hasPlayer()) {
+				return PlaceholderResult.invalid("No player!");
+			}
+			ServerPlayerEntity player = ctx.player();
+			if (player == null) {
+				return PlaceholderResult.invalid("No player!");
+			}
+			try {
+				ServerScoreboard scoreboard = ctx.server().getScoreboard();
+				ScoreboardObjective scoreboardObjective = scoreboard.getNullableObjective(arg);
+				if (scoreboardObjective == null) {
+					return PlaceholderResult.invalid("Invalid objective!");
+				}
+				ScoreboardPlayerScore score = scoreboard.getPlayerScore(player.getEntityName(), scoreboardObjective);
+				return PlaceholderResult.value(String.valueOf(score.getScore()));
+			} catch (Exception e) {
+				/* Into the void you go! */
+			}
+			return PlaceholderResult.invalid("Invalid objective!");
+		});
 
 		LOGGER.info("UCR Stitch says Hello!");
 
