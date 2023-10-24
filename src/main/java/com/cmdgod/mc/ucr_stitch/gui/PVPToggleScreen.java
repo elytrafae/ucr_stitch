@@ -1,16 +1,10 @@
 package com.cmdgod.mc.ucr_stitch.gui;
 
-import javax.swing.text.TextAction;
-
 import com.cmdgod.mc.ucr_stitch.tools.Utility;
 
 import eu.pb4.sgui.api.elements.BookElementBuilder;
 import eu.pb4.sgui.api.gui.BookGui;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.WrittenBookItem;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.ClickEvent;
-import net.minecraft.text.HoverEvent;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;

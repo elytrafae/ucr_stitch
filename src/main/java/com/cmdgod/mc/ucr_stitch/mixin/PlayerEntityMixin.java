@@ -14,7 +14,6 @@ import com.cmdgod.mc.ucr_stitch.UCRStitch;
 import com.cmdgod.mc.ucr_stitch.blocks.CustomBlockEventListener;
 import com.cmdgod.mc.ucr_stitch.gui.PVPToggleScreen;
 import com.cmdgod.mc.ucr_stitch.mixininterfaces.IPlayerEntityMixin;
-import com.cmdgod.mc.ucr_stitch.networking.PVPTogglePacket;
 import com.cmdgod.mc.ucr_stitch.networking.RecallParticlePacket;
 import com.cmdgod.mc.ucr_stitch.powers.ForceEdgeClipPower;
 import com.cmdgod.mc.ucr_stitch.powers.PreventDismountPower;
@@ -33,8 +32,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.packet.s2c.play.PlayerPositionLookS2CPacket;
-import net.minecraft.particle.DustParticleEffect;
-import net.minecraft.server.command.TeleportCommand;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Style;
@@ -42,7 +39,6 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.Vec3f;
 import net.minecraft.world.World;
 
 @Mixin(PlayerEntity.class)
@@ -104,27 +100,6 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IPlayerE
                 ((CustomBlockEventListener)block).onFirstSneakTick(world, pos, state, player);
             }
         }
-
-        /*
-        if (player.isFallFlying() && player instanceof ClientPlayerEntity) {
-            //ElytraEntityModel;
-            // FireworkRocketItem;
-            // PlayerEntityRenderer;
-            ClientPlayerEntity clinetPlayer = (ClientPlayerEntity)player;
-            ElytraTrail trail = new RedElytraTrail();
-            World world = player.getWorld();
-            Vec3d velocity = player.getVelocity();
-            Vec3d position = player.getPos();
-            Vec3d offset = velocity.normalize().multiply(trail.getFrequency());
-            int i=0;
-            
-            while (i==0 || offset.multiply(i).lengthSquared() < velocity.lengthSquared()) {
-                Vec3d particlePos = position.subtract(offset.multiply(i));
-                trail.renderParticle(world, clinetPlayer, particlePos);
-                i++;
-            }
-        }
-        */
     }
 
     private void pvpTick() {
