@@ -5,6 +5,7 @@ import org.lwjgl.glfw.GLFW;
 
 import com.cmdgod.mc.ucr_stitch.items.CustomFishingRodItem;
 import com.cmdgod.mc.ucr_stitch.networking.PVPTogglePacket;
+import com.cmdgod.mc.ucr_stitch.networking.RecallParticlePacket;
 import com.cmdgod.mc.ucr_stitch.registrers.ModBlocks;
 import com.cmdgod.mc.ucr_stitch.registrers.ModItems;
 
@@ -22,7 +23,10 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.FishingRodItem;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
+import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.Vec3f;
 import net.fabricmc.api.EnvType;
 
 @Environment(EnvType.CLIENT)
@@ -80,6 +84,18 @@ public class UCRStitchClient implements ClientModInitializer {
             } else {
                 wasPressed.setFalse();
             }
+        });
+
+        UCRStitch.RECALL_PARTICLE_CHANNEL.registerClientbound(RecallParticlePacket.class, (message, access) -> {
+			PlayerEntity player = access.player();
+			Vec3d position = message.position();
+			float c = 0.2f + player.getRandom().nextFloat()*0.2f;
+			for (double j=0; j < 3; j+=0.3) {
+				for (int i=0; i < 360; i+=10) {
+					player.getWorld().addParticle(new DustParticleEffect(new Vec3f(c, c, 0.8f), 1f), false, position.getX() + Math.sin(Math.toRadians(i))*(5-j*2), position.getY() + j + 0.1, position.getZ() + Math.cos(Math.toRadians(i))*(5-j*2), 0, 0, 0);
+				}
+			}
+			
         });
 
 
