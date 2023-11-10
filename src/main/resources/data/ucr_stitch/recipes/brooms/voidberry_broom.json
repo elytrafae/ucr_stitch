@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      " L ",
+      " D ",
+      "SOS"
+    ],
+    "key": {
+      "L": {
+        "item": "ucr_stitch:voidberry"
+      },
+      "D": {
+        "item": "bewitchment:demon_heart"
+      },
+      "S": {
+        "item": "ucr_stitch:voidberry_vine"
+      },
+      "O": {
+        "item": "bewitchment:heaven_extract"
+      }
+    },
+    "result": {
+      "item": "ucr_stitch:voidberry_broom"
+    }
+}

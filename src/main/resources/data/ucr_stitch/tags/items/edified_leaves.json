@@ -1,0 +1,16 @@
+{
+    "values": [
+        {
+            "id": "hexcasting:amethyst_edified_leaves",
+            "required": false
+        },
+        {
+            "id": "hexcasting:aventurine_edified_leaves",
+            "required": false
+        },
+        {
+            "id": "hexcasting:citrine_edified_leaves",
+            "required": false
+        }
+    ]
+}

@@ -4,6 +4,7 @@
     "item.ucr_stitch.head_fragment.desc": "§5Spend these with /head§r",
     "item.ucr_stitch.orb_of_great_regret": "Orb Of Great Regret",
     "item.ucr_stitch.orb_of_great_regret.desc": "§7Crafting ingredient§r",
+    "item.ucr_stitch.crafting_ingredient_desc": "§7Crafting ingredient§r",
     "block.ucr_stitch.woodcutter": "Woodcutter",
     "block.ucr_stitch.televator": "Televator",
     "block.ucr_stitch.copper_lantern": "Copper Lantern",
@@ -61,6 +62,9 @@
     "item.ucr_stitch.bookkeeper_bundle.invalid": "§4Cannot insert§r",
     "item.ucr_stitch.bookkeeper_bundle.select_tooltip": "§dSelected: %s§r",
 
+    "item.ucr_stitch.voidberry_broom": "Voidberry Broom",
+    "item.ucr_stitch.edified_broom": "Edified Broom",
+
     "item.ucr_stitch.stars_banner_pattern": "Banner Pattern",
     "item.ucr_stitch.stars_banner_pattern.desc": "Stars",
 
@@ -107,9 +111,17 @@
     "text.config.ucr_stitch.option.necklaceDamage.tooltip": "The amount of durability Ore Necklaces should lose when doubling ore drops.",
     "text.config.ucr_stitch.option.assistTicks": "Assist Ticks",
     "text.config.ucr_stitch.option.pvpToggleBan": "Default PVP Toggle Ban Time",
+    "text.config.ucr_stitch.option.pvpOffTime": "PVP Off Time",
+    "text.config.ucr_stitch.option.pvpOnSign": "PVP On Symbol",
+    "text.config.ucr_stitch.option.pvpOffSign": "PVP Off Symbol",
+    "text.config.ucr_stitch.option.descriptionShowType": "Elytra Upgrade Description Show Type",
+    "text.config.ucr_stitch.option.descriptionShowType.value.show": "Show Always",
+    "text.config.ucr_stitch.option.descriptionShowType.value.shift_show": "Show With Shift",
+    "text.config.ucr_stitch.option.descriptionShowType.value.hide": "Hide",
 
     "category.ucr_stitch.main": "UCR Stitch",
     "key.ucr_stitch.toggle_pvp": "Toggle PVP",
     
-    "message.ucr_stitch.cannot_toggle_pvp": "§4You can't toggle PVP for §4%d§4 more seconds!§r"
+    "message.ucr_stitch.cannot_toggle_pvp": "§4You can't toggle PVP for §4%d§4 more seconds!§r",
+    "ucr_stitch.elytra_upgrade": "§7Upgrade: §r"
 }

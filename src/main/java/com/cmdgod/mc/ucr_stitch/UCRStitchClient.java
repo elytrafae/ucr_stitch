@@ -9,6 +9,7 @@ import com.cmdgod.mc.ucr_stitch.networking.RecallParticlePacket;
 import com.cmdgod.mc.ucr_stitch.registrers.ModBlocks;
 import com.cmdgod.mc.ucr_stitch.registrers.ModItems;
 
+import io.wispforest.owo.network.ClientAccess;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -95,7 +96,6 @@ public class UCRStitchClient implements ClientModInitializer {
 					player.getWorld().addParticle(new DustParticleEffect(new Vec3f(c, c, 0.8f), 1f), false, position.getX() + Math.sin(Math.toRadians(i))*(5-j*2), position.getY() + j + 0.1, position.getZ() + Math.cos(Math.toRadians(i))*(5-j*2), 0, 0, 0);
 				}
 			}
-			
         });
 
 

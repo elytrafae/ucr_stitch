@@ -25,7 +25,11 @@
 		"ActiveTargetGoalMixin",
 		"ActiveTargetGoalAccessor",
 		"ItemStackMixin",
-		"MobEntityMixin"
+		"MobEntityMixin",
+		"SmithingScreenHandlerMixin",
+		"SmithingScreenHandlerAccessor",
+		"ForgingScreenHandlerAccessor",
+		"ElytraItemMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

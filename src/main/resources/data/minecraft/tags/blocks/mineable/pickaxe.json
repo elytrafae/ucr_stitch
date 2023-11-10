@@ -2,6 +2,7 @@
     "replace": false,
     "values": [
         "ucr_stitch:gravity_duper",
-        "ucr_stitch:televator"
+        "ucr_stitch:televator",
+        "ucr_stitch:copper_lantern"
     ]
 }

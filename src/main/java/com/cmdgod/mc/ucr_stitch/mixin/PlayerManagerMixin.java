@@ -11,11 +11,15 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 import com.cmdgod.mc.ucr_stitch.UCRStitch;
 import com.cmdgod.mc.ucr_stitch.mixininterfaces.IPlayerEntityMixin;
 import com.cmdgod.mc.ucr_stitch.registrers.ModStatusEffects;
+import com.cmdgod.mc.ucr_stitch.tools.ElytraUpgradeUtil;
 import com.cmdgod.mc.ucr_stitch.tools.Utility;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
 import io.github.apace100.apoli.power.Power;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.item.ElytraItem;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.PlayerManager;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -27,11 +31,14 @@ public class PlayerManagerMixin {
     
     @Inject(method = "respawnPlayer", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/network/ServerPlayerEntity;onSpawn()V"), locals = LocalCapture.CAPTURE_FAILHARD)
 	private void invokePowerRespawnCallback(ServerPlayerEntity player, boolean alive, CallbackInfoReturnable<ServerPlayerEntity> cir, BlockPos blockPos, float f, boolean bl, ServerWorld serverWorld, Optional optional2, ServerWorld serverWorld2, ServerPlayerEntity serverPlayerEntity, boolean b) {
-		if(!alive) {
-			IPlayerEntityMixin p = Utility.getInterfacePlayer(player);
-            p.disablePVP();
-            //p.setPvpToggleBan(UCRStitch.CONFIG.pvpToggleBan());
-            //player.addStatusEffect(new StatusEffectInstance(ModStatusEffects.VOID_REPELLENT, 100));
+		// "serverPlayerEntity" is the new player entity. IDK what kind of witchcraft grabs it
+		IPlayerEntityMixin p = Utility.getInterfacePlayer(serverPlayerEntity);
+        p.disablePVP();
+
+		ElytraUpgradeUtil.revokeAllElytraPowers(serverPlayerEntity);
+		ItemStack stack = serverPlayerEntity.getEquippedStack(EquipmentSlot.CHEST);
+		if ((!stack.isEmpty()) && (stack.getItem() instanceof ElytraItem)) {
+			ElytraUpgradeUtil.giveEntityElytraPowers(stack, serverPlayerEntity);
 		}
 	}
 

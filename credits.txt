@@ -1,4 +1,8 @@
 
 Gravity Duper textures by Adapt
 
-"Bar textures 1" first two bars are recolored versions of some of "https://github.com/apace100/origins-fabric/blob/1.18/src/main/resources/assets/origins/textures/gui/community/spiderkolo/resource_bar_02.png". The rest are drawn by me.
+"Bar textures 1": 
+First two bars are recolored versions of some of "https://github.com/apace100/origins-fabric/blob/1.18/src/main/resources/assets/origins/textures/gui/community/spiderkolo/resource_bar_02.png". 
+Fifth one is a recolored version of "https://github.com/apace100/origins-fabric/blob/1.18/src/main/resources/assets/origins/textures/gui/community/huang/resource_bar_01.png" #7
+Sixth one is a recolored version of "https://github.com/apace100/origins-fabric/blob/1.18/src/main/resources/assets/origins/textures/gui/community/spiderkolo/resource_bar_03.png" #16. 
+The rest are drawn by me.

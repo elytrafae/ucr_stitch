@@ -8,6 +8,7 @@ import com.cmdgod.mc.ucr_stitch.UCRStitch;
 import com.cmdgod.mc.ucr_stitch.items.BookkeeperBundle;
 import com.cmdgod.mc.ucr_stitch.items.CustomFishingRodItem;
 import com.cmdgod.mc.ucr_stitch.items.GravityDuperPartItem;
+import com.cmdgod.mc.ucr_stitch.items.IngredientBroomItem;
 import com.cmdgod.mc.ucr_stitch.items.Multitool;
 import com.cmdgod.mc.ucr_stitch.items.OrbOfGreatRegret;
 import com.cmdgod.mc.ucr_stitch.items.OreNecklace;
@@ -178,6 +179,8 @@ public class ModItems {
 
         registerItem("voidberry", VOIDBERRY);
         registerItem("bookkeeper_bundle", BOOKKEEPER_BUNDLE);
+        registerItem("voidberry_broom", new IngredientBroomItem());
+        registerItem("edified_broom", new IngredientBroomItem());
     }
 
     public static Item GRAVITY_DUPER_ITEM;

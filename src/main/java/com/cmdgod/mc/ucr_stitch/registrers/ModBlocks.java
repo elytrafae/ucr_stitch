@@ -39,7 +39,7 @@ public class ModBlocks {
 
     public static final Block TELEVATOR = new TelevatorBlock(FabricBlockSettings.of(Material.PISTON, MapColor.DARK_DULL_PINK).luminance(6).strength(3.5f, 6f));
 
-    public static final Block COPPER_LANTERN = new LanternBlock(FabricBlockSettings.copy(Blocks.LANTERN).luminance(state -> 8));
+    public static final Block COPPER_LANTERN = new LanternBlock(FabricBlockSettings.copy(Blocks.LANTERN));
     
     public static final BlockEntityType<GravityDuperBlockEntity> GRAVITY_DUPER_ENTITY = Registry.register(
         Registry.BLOCK_ENTITY_TYPE,
@@ -69,6 +69,7 @@ public class ModBlocks {
 
         //StrippableBlockRegistry.register(VOIDSHROOM_STEM, STRIPPED_VOIDSHROOM_STEM);
         //StrippableBlockRegistry.register(VOIDSHROOM_HYPHAE, STRIPPED_VOIDSHROOM_HYPHAE);
+        
     }
 
     private static Item registerBlock(String id, Block block) {

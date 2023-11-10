@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      " L ",
+      " D ",
+      "SOS"
+    ],
+    "key": {
+      "L": {
+        "item": "hexcasting:edified_log"
+      },
+      "D": {
+        "item": "bewitchment:demon_heart"
+      },
+      "S": {
+        "tag": "ucr_stitch:edified_leaves"
+      },
+      "O": {
+        "item": "bewitchment:heaven_extract"
+      }
+    },
+    "result": {
+      "item": "ucr_stitch:edified_broom"
+    }
+}

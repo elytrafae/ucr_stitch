@@ -8,6 +8,8 @@ import com.cmdgod.mc.ucr_stitch.config.UCRStitchConfig;
 import com.cmdgod.mc.ucr_stitch.mixininterfaces.IPlayerEntityMixin;
 import com.cmdgod.mc.ucr_stitch.networking.PVPTogglePacket;
 import com.cmdgod.mc.ucr_stitch.networking.RecallParticlePacket;
+import com.cmdgod.mc.ucr_stitch.recipes.ElytraUpgradeRecipe;
+import com.cmdgod.mc.ucr_stitch.recipes.ElytraUpgradeRecipeSerializer;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperCraftRecipe;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperRecipe;
 import com.cmdgod.mc.ucr_stitch.recipes.GravityDuperRecipeSerializer;
@@ -96,6 +98,9 @@ public class UCRStitch implements ModInitializer {
 		Registry.register(Registry.RECIPE_SERIALIZER, GravityDuperRecipeSerializer.ID, GravityDuperRecipeSerializer.INSTANCE);
         Registry.register(Registry.RECIPE_TYPE, new Identifier(MOD_NAMESPACE, GravityDuperRecipe.Type.ID), GravityDuperRecipe.Type.INSTANCE);
 
+		Registry.register(Registry.RECIPE_SERIALIZER, ElytraUpgradeRecipeSerializer.ID, ElytraUpgradeRecipeSerializer.INSTANCE);
+        Registry.register(Registry.RECIPE_TYPE, new Identifier(MOD_NAMESPACE, ElytraUpgradeRecipe.Type.ID), ElytraUpgradeRecipe.Type.INSTANCE);
+
 		Registry.register(Registry.RECIPE_SERIALIZER, new Identifier(MOD_NAMESPACE, GravityDuperCraftRecipe.Serializer.ID), GravityDuperCraftRecipe.Serializer.INSTANCE);
 		Registry.register(Registry.RECIPE_SERIALIZER, new Identifier(MOD_NAMESPACE, MultitoolCraftRecipe.Serializer.ID), MultitoolCraftRecipe.Serializer.INSTANCE);
 
@@ -162,7 +167,7 @@ public class UCRStitch implements ModInitializer {
 			Utility.getInterfacePlayer(access.player()).togglePVPRequest();
         });
 
-		
+		RECALL_PARTICLE_CHANNEL.registerClientboundDeferred(RecallParticlePacket.class);
 
 		// This is just to force gradle to fucking load Patchouli!
 	}

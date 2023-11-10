@@ -1,10 +1,15 @@
 package com.cmdgod.mc.ucr_stitch.tools;
 
+import java.util.List;
 import java.util.Locale;
 
 import com.cmdgod.mc.ucr_stitch.mixininterfaces.IPlayerEntityMixin;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.minecraft.client.network.AbstractClientPlayerEntity;
+import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -16,10 +21,12 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
+import net.minecraft.text.TextColor;
 import net.minecraft.text.Texts;
 import net.minecraft.text.Text.Serializer;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
 
 public class Utility {
     
@@ -74,6 +81,37 @@ public class Utility {
 
     public static Text addStyle(Text text, Style style) {
         return text.getWithStyle(style).get(0);
+    }
+
+    @Environment(EnvType.CLIENT)
+    public static AbstractClientPlayerEntity getMainPlayer(World world) {
+        if (world instanceof ClientWorld) {
+            ClientWorld clientWorld = (ClientWorld) world;
+            AbstractClientPlayerEntity mainPlayer = null;
+            List<AbstractClientPlayerEntity> players = clientWorld.getPlayers();
+            for (int i=0; i < players.size(); i++) {
+                AbstractClientPlayerEntity p = players.get(i);
+                if (p.isMainPlayer()) {
+                    mainPlayer = p;
+                }
+            }
+            return mainPlayer;
+        }
+        return null;
+    }
+
+    public static MutableText colorWithString(MutableText text, String string) {
+        if (string == null || string == "") {
+            return text;
+        }
+        return text.styled((style) -> {return style.withColor(TextColor.parse(string));});
+    }
+
+    public static String stringOr(String main, String ifNone) {
+        if (main == null || main == "") {
+            return ifNone;
+        }
+        return main;
     }
 
 }
