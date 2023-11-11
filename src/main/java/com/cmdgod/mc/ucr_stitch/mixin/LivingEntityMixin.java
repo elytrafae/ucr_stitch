@@ -71,7 +71,7 @@ public class LivingEntityMixin {
     public void onEquipStack(EquipmentSlot slot, ItemStack oldStack, ItemStack newStack, CallbackInfo info) {
         LivingEntity entity = (LivingEntity)(Object)this;
         boolean bl = newStack.isEmpty() && oldStack.isEmpty();
-        if (!bl && !ItemStack.areItemsEqual(oldStack, newStack)) {
+        if (!bl && !ItemStack.canCombine(oldStack, newStack)) {
             if ((!oldStack.isEmpty()) && oldStack.getItem() instanceof ElytraItem) {
                 ElytraUpgradeUtil.revokeAllElytraPowers(entity);
             }
