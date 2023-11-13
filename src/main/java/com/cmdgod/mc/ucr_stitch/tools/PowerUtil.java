@@ -25,4 +25,9 @@ public class PowerUtil {
         component.sync();
 	}
 
+	public static boolean hasPower(LivingEntity entity, PowerType<?> power, Identifier source) {
+		PowerHolderComponent component = PowerHolderComponent.KEY.get(entity);
+		return component.hasPower(power, source);
+	}
+
 }

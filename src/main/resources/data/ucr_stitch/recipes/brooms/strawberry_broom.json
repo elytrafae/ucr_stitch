@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      " L ",
+      " D ",
+      "SOS"
+    ],
+    "key": {
+      "L": {
+        "item": "minecraft:blue_ice"
+      },
+      "D": {
+        "item": "bewitchment:demon_heart"
+      },
+      "S": {
+        "item": "bakery:strawberry_crate"
+      },
+      "O": {
+        "item": "bewitchment:heaven_extract"
+      }
+    },
+    "result": {
+      "item": "ucr_stitch:strawberry_broom"
+    }
+}

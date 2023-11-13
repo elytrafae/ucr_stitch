@@ -9,6 +9,7 @@ import com.cmdgod.mc.ucr_stitch.UCRStitch;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
+import net.minecraft.loot.condition.KilledByPlayerLootCondition;
 import net.minecraft.loot.condition.RandomChanceWithLootingLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.SetNameLootFunction;
@@ -46,7 +47,8 @@ public class LootTableModifier {
 			if (source.isBuiltin() && (ZOMBIE_LOOT_DROP_ID.equals(id) || ZOMBIE_VILLAGER_LOOT_DROP_ID.equals(id))) {
 				LootPool.Builder poolBuilder = LootPool.builder()
 												.with(ItemEntry.builder(Items.ZOMBIE_HEAD).weight(1))
-												.conditionally(RandomChanceWithLootingLootCondition.builder(0.03f, 0.01f));
+												.conditionally(RandomChanceWithLootingLootCondition.builder(0.03f, 0.01f))
+                                                .conditionally(KilledByPlayerLootCondition.builder());
  
         		tableBuilder.pool(poolBuilder);
 			}
@@ -63,7 +65,8 @@ public class LootTableModifier {
                 float f = (float)d;
 				LootPool.Builder poolBuilder = LootPool.builder()
 												.with(ItemEntry.builder(Items.NAUTILUS_SHELL).weight(1))
-												.conditionally(RandomChanceWithLootingLootCondition.builder(f, 0.01f));
+												.conditionally(RandomChanceWithLootingLootCondition.builder(f, 0.01f))
+                                                .conditionally(KilledByPlayerLootCondition.builder());
  
         		tableBuilder.pool(poolBuilder);
 			}

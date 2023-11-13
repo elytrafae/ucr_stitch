@@ -4,6 +4,7 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.logging.log4j.core.jmx.Server;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -17,6 +18,7 @@ import com.cmdgod.mc.ucr_stitch.mixininterfaces.IPlayerEntityMixin;
 import com.cmdgod.mc.ucr_stitch.networking.RecallParticlePacket;
 import com.cmdgod.mc.ucr_stitch.powers.ForceEdgeClipPower;
 import com.cmdgod.mc.ucr_stitch.powers.PreventDismountPower;
+import com.cmdgod.mc.ucr_stitch.tools.ElytraUpgradeUtil;
 import com.cmdgod.mc.ucr_stitch.tools.Utility;
 
 import io.github.apace100.apoli.component.PowerHolderComponent;
@@ -65,6 +67,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IPlayerE
     private boolean isPvpOn = false;
     private int pvpToggleBan = UCRStitch.CONFIG.pvpToggleBan();
     private int pvpOffTimer = -1;
+    private int notSyncedServerTick = 0;
 
     private Vec3d pvpOffPos = new Vec3d(0, 0, 0);
 
@@ -99,6 +102,17 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IPlayerE
             if (block instanceof CustomBlockEventListener) {
                 ((CustomBlockEventListener)block).onFirstSneakTick(world, pos, state, player);
             }
+        }
+        if (player instanceof ServerPlayerEntity) {
+            serverTick((ServerPlayerEntity)player);
+        }
+    }
+
+    private void serverTick(ServerPlayerEntity self) {
+        notSyncedServerTick++;
+        if (notSyncedServerTick >= 100) {
+            ElytraUpgradeUtil.syncPowerWithReality(self);
+            notSyncedServerTick = 0;
         }
     }
 

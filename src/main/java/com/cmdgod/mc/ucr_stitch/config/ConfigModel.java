@@ -1,5 +1,6 @@
 package com.cmdgod.mc.ucr_stitch.config;
 
+import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.HashMap;
 

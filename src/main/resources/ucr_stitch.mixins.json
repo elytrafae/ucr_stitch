@@ -29,7 +29,7 @@
 		"SmithingScreenHandlerMixin",
 		"SmithingScreenHandlerAccessor",
 		"ForgingScreenHandlerAccessor",
-		"ElytraItemMixin"
+		"ItemMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

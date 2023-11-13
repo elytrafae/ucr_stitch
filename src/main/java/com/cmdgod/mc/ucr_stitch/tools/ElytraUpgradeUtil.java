@@ -10,10 +10,12 @@ import io.github.apace100.apoli.power.PowerType;
 import io.github.apace100.apoli.power.PowerTypeReference;
 import io.github.apace100.apoli.power.PowerTypeRegistry;
 import net.minecraft.block.SmithingTableBlock;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.recipe.Recipe;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
@@ -69,6 +71,23 @@ public class ElytraUpgradeUtil {
             return;
         } 
         PowerUtil.grantPower(entity, power, ELYTRA_POWER_SOURCE);
+    }
+
+    public static void syncPowerWithReality(ServerPlayerEntity player) {
+        ItemStack chestStack = player.getEquippedStack(EquipmentSlot.CHEST);
+        if (chestStack == null || chestStack.isEmpty()) {
+            revokeAllElytraPowers(player);
+            return;
+        }
+        PowerType power = getPowerForElytra(chestStack, player.getWorld());
+        if (power == null) {
+            revokeAllElytraPowers(player);
+            return;
+        }
+        if (!PowerUtil.hasPower(player, power, ELYTRA_POWER_SOURCE)) {
+            revokeAllElytraPowers(player);
+            PowerUtil.grantPower(player, power, ELYTRA_POWER_SOURCE);
+        }
     }
 
     public enum DescriptionShowType {

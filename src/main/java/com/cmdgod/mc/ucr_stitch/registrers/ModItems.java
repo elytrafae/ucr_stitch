@@ -181,6 +181,7 @@ public class ModItems {
         registerItem("bookkeeper_bundle", BOOKKEEPER_BUNDLE);
         registerItem("voidberry_broom", new IngredientBroomItem());
         registerItem("edified_broom", new IngredientBroomItem());
+        registerItem("strawberry_broom", new IngredientBroomItem());
     }
 
     public static Item GRAVITY_DUPER_ITEM;
