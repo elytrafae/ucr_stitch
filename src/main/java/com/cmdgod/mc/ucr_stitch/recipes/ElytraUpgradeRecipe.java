@@ -1,20 +1,14 @@
 package com.cmdgod.mc.ucr_stitch.recipes;
 
-import java.util.ArrayList;
-
 import com.cmdgod.mc.ucr_stitch.tools.ElytraUpgradeUtil;
 import com.google.gson.JsonObject;
 
-import io.github.apace100.apoli.power.Power;
-import net.minecraft.client.gui.screen.ingame.SmithingScreen;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.recipe.SmithingRecipe;
-import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class ElytraUpgradeRecipe extends SmithingRecipe {

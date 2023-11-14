@@ -32,6 +32,14 @@ public class ModConditions {
                 return comparison.compare(media, data.getInt("compare_to"));
             }));
 
+        register(new ConditionFactory<Entity>(new Identifier(UCRStitch.MOD_NAMESPACE, "velocity"), new SerializableData()
+            .add("comparison", ApoliDataTypes.COMPARISON)
+            .add("compare_to", SerializableDataTypes.FLOAT),
+            (data, entity) -> {
+                Comparison comparison = data.get("comparison");
+                return comparison.compare(entity.getVelocity().length(), data.getFloat("compare_to"));
+            }));
+
     }
 
     private static void register(ConditionFactory<Entity> conditionFactory) {

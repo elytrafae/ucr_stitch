@@ -7,10 +7,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 
-import io.github.apace100.apoli.component.PowerHolderComponent;
-import io.github.apace100.apoli.power.PowerTypeReference;
-import io.github.apace100.apoli.util.PowerPackageRegistry;
-import net.minecraft.data.server.recipe.CraftingRecipeJsonBuilder;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.Ingredient;
@@ -43,9 +39,12 @@ public class ElytraUpgradeRecipeSerializer implements RecipeSerializer<ElytraUpg
         String nameColor = Utility.stringOr(recipeJson.nameColor, "");
         String descColor = Utility.stringOr(recipeJson.descriptionColor, "");
 
+        // Do not error if tags were not loaded yet!
+        /*
         if (baseIngredient.getMatchingStacks().length <= 0 || additionIngredient.getMatchingStacks().length <= 0) {
             throw new JsonSyntaxException("Base or Addition ingredient is empty!");
         }
+        */
 
         // Add check for power existing!
 
