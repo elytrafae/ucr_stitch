@@ -29,7 +29,8 @@
 		"SmithingScreenHandlerMixin",
 		"SmithingScreenHandlerAccessor",
 		"ForgingScreenHandlerAccessor",
-		"ItemMixin"
+		"ItemMixin",
+		"ServerPlayerEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

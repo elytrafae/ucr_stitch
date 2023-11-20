@@ -71,7 +71,7 @@ public class ElytraUpgradeRecipe extends SmithingRecipe {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return GravityDuperRecipeSerializer.INSTANCE;
+        return ElytraUpgradeRecipeSerializer.INSTANCE;
     }
 
 

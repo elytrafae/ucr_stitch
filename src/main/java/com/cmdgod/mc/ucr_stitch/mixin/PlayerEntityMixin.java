@@ -67,7 +67,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IPlayerE
     private boolean isPvpOn = false;
     private int pvpToggleBan = UCRStitch.CONFIG.pvpToggleBan();
     private int pvpOffTimer = -1;
-    private int notSyncedServerTick = 0;
+    
 
     private Vec3d pvpOffPos = new Vec3d(0, 0, 0);
 
@@ -102,17 +102,6 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IPlayerE
             if (block instanceof CustomBlockEventListener) {
                 ((CustomBlockEventListener)block).onFirstSneakTick(world, pos, state, player);
             }
-        }
-        if (player instanceof ServerPlayerEntity) {
-            serverTick((ServerPlayerEntity)player);
-        }
-    }
-
-    private void serverTick(ServerPlayerEntity self) {
-        notSyncedServerTick++;
-        if (notSyncedServerTick >= 100) {
-            ElytraUpgradeUtil.syncPowerWithReality(self);
-            notSyncedServerTick = 0;
         }
     }
 
