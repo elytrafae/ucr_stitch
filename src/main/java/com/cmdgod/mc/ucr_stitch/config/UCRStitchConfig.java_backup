@@ -20,7 +20,6 @@ public class UCRStitchConfig extends ConfigWrapper<com.cmdgod.mc.ucr_stitch.conf
     private final Option<java.lang.String> pvpOnSign = this.optionForKey(new Option.Key("pvpOnSign"));
     private final Option<java.lang.String> pvpOffSign = this.optionForKey(new Option.Key("pvpOffSign"));
     private final Option<com.cmdgod.mc.ucr_stitch.tools.ElytraUpgradeUtil.DescriptionShowType> descriptionShowType = this.optionForKey(new Option.Key("descriptionShowType"));
-    private final Option<java.util.ArrayList<java.lang.String>> elytraUpgradeShowRecipes = this.optionForKey(new Option.Key("elytraUpgradeShowRecipes"));
 
     private UCRStitchConfig() {
         super(com.cmdgod.mc.ucr_stitch.config.ConfigModel.class);
@@ -110,14 +109,6 @@ public class UCRStitchConfig extends ConfigWrapper<com.cmdgod.mc.ucr_stitch.conf
 
     public void descriptionShowType(com.cmdgod.mc.ucr_stitch.tools.ElytraUpgradeUtil.DescriptionShowType value) {
         descriptionShowType.set(value);
-    }
-
-    public java.util.ArrayList<java.lang.String> elytraUpgradeShowRecipes() {
-        return elytraUpgradeShowRecipes.value();
-    }
-
-    public void elytraUpgradeShowRecipes(java.util.ArrayList<java.lang.String> value) {
-        elytraUpgradeShowRecipes.set(value);
     }
 
 

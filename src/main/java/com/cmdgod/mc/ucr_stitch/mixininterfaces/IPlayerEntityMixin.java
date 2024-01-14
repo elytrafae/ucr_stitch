@@ -7,9 +7,11 @@ public interface IPlayerEntityMixin {
 
     public void togglePVPRequest();
     public boolean getPVPStatus();
+    public int getPVPToggleBan();
     public void enablePVP();
     public void disablePVP();
     public void startDisablingPVP();
     public void setPvpToggleBan(int time);
+    public void copyPvPData(IPlayerEntityMixin from);
 
 }

@@ -7,9 +7,13 @@ import java.util.Optional;
 import com.cmdgod.mc.ucr_stitch.UCRStitch;
 import com.cmdgod.mc.ucr_stitch.tools.MediaUtility;
 
+import dev.emi.trinkets.api.SlotReference;
+import dev.emi.trinkets.api.TrinketComponent;
+import dev.emi.trinkets.api.TrinketsApi;
 import io.github.apace100.apoli.data.ApoliDataTypes;
 import io.github.apace100.apoli.power.ModifyStatusEffectAmplifierPower;
 import io.github.apace100.apoli.power.factory.action.ActionFactory;
+import io.github.apace100.apoli.power.factory.condition.ConditionFactory;
 import io.github.apace100.apoli.registry.ApoliRegistries;
 import io.github.apace100.apoli.util.modifier.Modifier;
 import io.github.apace100.calio.data.SerializableData;
@@ -20,6 +24,8 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.nbt.NbtElement;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
@@ -30,6 +36,8 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 public class ModActions {
+
+    private static final int FLUGEL_LIMIT = 1200;
     
     public static void registerAll() {
         //EntityActions;
@@ -100,6 +108,40 @@ public class ModActions {
             .add("amount", SerializableDataTypes.INT, 1),
             (data, pair) -> {
                 pair.getRight().increment(data.getInt("amount"));
+            }));
+
+        register(new ActionFactory<Entity>(new Identifier(UCRStitch.MOD_NAMESPACE, "action_on_trinkets"), new SerializableData()
+            .add("item_condition", ApoliDataTypes.ITEM_CONDITION)
+            .add("item_action", ApoliDataTypes.ITEM_ACTION),
+            (data, entity) -> {
+                if (!(entity instanceof LivingEntity)) {
+                    return;
+                }
+                LivingEntity livingEntity = (LivingEntity)entity;
+                Optional<TrinketComponent> opt = TrinketsApi.getTrinketComponent(livingEntity);
+                if (!opt.isPresent()) {
+                    return;
+                }
+                TrinketComponent component = opt.get();
+                ConditionFactory<ItemStack>.Instance itemCondition = ((ConditionFactory<ItemStack>.Instance) data.get("item_condition"));
+                ActionFactory<Pair<World, ItemStack>>.Instance itemAction = ((ActionFactory<Pair<World, ItemStack>>.Instance) data.get("item_action"));
+                List<Pair<SlotReference, ItemStack>> slots = component.getEquipped((stack) -> {return itemCondition.test(stack);});
+                slots.forEach((pair) -> {
+                    itemAction.accept(new Pair<>(livingEntity.getWorld(), pair.getRight()));
+                });
+            }));
+
+        
+        registerItemAction(new ActionFactory<Pair<World, ItemStack>>(new Identifier(UCRStitch.MOD_NAMESPACE, "add_tiara_flight"), new SerializableData()
+            .add("amount", SerializableDataTypes.INT, 1),
+            (data, pair) -> {
+                ItemStack stack = pair.getRight();
+                NbtCompound nbt = stack.getOrCreateNbt();
+                int currentTime = FLUGEL_LIMIT;
+                if (nbt.contains("timeLeft", NbtElement.INT_TYPE)) {
+                    currentTime = nbt.getInt("timeLeft");
+                }
+                nbt.putInt("timeLeft", Math.min(Math.max(currentTime + data.getInt("amount"), 0), FLUGEL_LIMIT));
             }));
 
         UCRStitch.LOGGER.info("UCR Stitch: Entity Actions Registered!");

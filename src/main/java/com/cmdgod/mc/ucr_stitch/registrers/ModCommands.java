@@ -7,6 +7,8 @@ import com.cmdgod.mc.ucr_stitch.tools.MediaUtility;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
+import dev.emi.trinkets.api.SlotGroup;
+import dev.emi.trinkets.api.TrinketsApi;
 import eu.pb4.placeholders.api.PlaceholderContext;
 import eu.pb4.placeholders.api.Placeholders;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
@@ -29,6 +31,7 @@ import net.minecraft.util.Identifier;
 import static net.minecraft.server.command.CommandManager.*;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class ModCommands {
 
@@ -108,6 +111,19 @@ public class ModCommands {
             }
         ))));
         */
+
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(
+        literal("testtrinket")
+        .executes(context -> {
+            ServerCommandSource source = context.getSource();
+            if (source.isExecutedByPlayer()) {
+                PlayerEntity player = source.getPlayer();
+                Map<String, SlotGroup> slotMap = TrinketsApi.getEntitySlots(player.getWorld(), player.getType());
+                System.out.println(TrinketsApi.getEntitySlots(player.getWorld(), player.getType()));
+            }
+            return 0;
+            }
+        )));
     }
 
 }

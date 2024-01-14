@@ -175,11 +175,14 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IPlayerE
         info.cancel();
 	}
 
+    /* This is in PlayerManagerMixin!
     @Inject(at = @At("HEAD"), method = "onDeath(Lnet/minecraft/entity/damage/DamageSource;)V", cancellable = false)
     public void onDeath(DamageSource damageSource, CallbackInfo info) {
         //disablePVP();
         pvpToggleBan = UCRStitch.CONFIG.pvpToggleBan();
     }
+
+    */
 
     private PlayerEntity getCausedPlayer(DamageSource source) {
         Entity entity = source.getAttacker();
@@ -331,6 +334,16 @@ public abstract class PlayerEntityMixin extends LivingEntity implements IPlayerE
         }
     }
 
+    @Override
+    public void copyPvPData(IPlayerEntityMixin from) {
+        this.isPvpOn = from.getPVPStatus();
+        this.assistTicks = from.getAssistedKillTicks();
+        this.pvpToggleBan = from.getPVPToggleBan();
+    }
 
+    @Override
+    public int getPVPToggleBan() {
+        return this.pvpToggleBan;
+    }
 
 }
